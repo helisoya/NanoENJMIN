@@ -50,6 +50,6 @@ public class PlayerMovements : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 speedVelocity = velocity * (dashing ? dashSpeed : baseSpeed);
-        rb.linearVelocity = new Vector3(speedVelocity.x, 0, speedVelocity.y);
+        rb.linearVelocity = new Vector3(speedVelocity.x, speedVelocity.y, 0);
     }
 }
