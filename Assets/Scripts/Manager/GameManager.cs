@@ -2,6 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The color targets
+/// </summary>
+public enum ColorTarget
+{
+    ALL,
+    PLAYER1,
+    PLAYER2
+}
+
+
 public class GameManager : MonoBehaviour
 {
     [Header("Players")]
