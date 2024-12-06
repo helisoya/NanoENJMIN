@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7269084059130227482}
   - component: {fileID: 3829255831137065972}
   - component: {fileID: 3286826322626187617}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SharkProt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
