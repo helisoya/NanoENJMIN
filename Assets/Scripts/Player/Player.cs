@@ -11,14 +11,15 @@ public class Player : MonoBehaviour
     public int ID { get; private set; }
     public int GUIID { get; private set; }
     public bool Alive { get; private set; }
-    public bool HasMana { get { return currentMana > 0; } }
+    public bool HasMana { get { return currentMana >= 1; } }
     public int Score { get; private set; }
     public ColorTarget Color { get; private set; }
 
     [Header("Infos")]
     [SerializeField] private int maxHealth;
-    [SerializeField] private int maxMana;
-    private int currentMana;
+    [SerializeField] private float maxMana;
+    [SerializeField] private float manaFillSpeed;
+    private float currentMana;
     private int currentHealth;
 
     [Header("Components")]
@@ -50,6 +51,14 @@ public class Player : MonoBehaviour
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(ID);
     }
 
+    void Update()
+    {
+        if (currentMana < maxMana)
+        {
+            AddMana(manaFillSpeed * Time.deltaTime);
+        }
+    }
+
     /// <summary>
     /// Sets the animator's trigger
     /// </summary>
@@ -69,12 +78,13 @@ public class Player : MonoBehaviour
         if (!Alive || Color == color) return;
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+        GameGUI.instance.SetPlayerHealth(GUIID, currentHealth);
 
         if (currentHealth == 0)
         {
             Alive = false;
-
             // Dead
+            gameObject.SetActive(false);
         }
     }
 
@@ -83,9 +93,10 @@ public class Player : MonoBehaviour
     /// Adds mana to the player
     /// </summary>
     /// <param name="amount">The amount of mana to add</param>
-    public void AddMana(int amount)
+    public void AddMana(float amount)
     {
         currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
+        GameGUI.instance.SetPlayerManaFill(GUIID, currentMana / maxMana);
     }
 
 

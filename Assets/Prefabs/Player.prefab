@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   maxMana: 20
+  manaFillSpeed: 0.4
   movements: {fileID: 7197915407237680396}
   attack: {fileID: 3650043358166233185}
   animator: {fileID: 0}

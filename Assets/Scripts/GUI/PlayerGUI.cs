@@ -26,6 +26,7 @@ public class PlayerGUI : MonoBehaviour
     public void SetHealthOnLeft(bool value)
     {
         layout.childAlignment = value ? TextAnchor.MiddleLeft : TextAnchor.MiddleRight;
+        manaFill.fillOrigin = value ? 0 : 1;
     }
 
     /// <summary>
