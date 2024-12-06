@@ -14,11 +14,15 @@ public class Projectile : MonoBehaviour
 
     #endregion
 
+    private MeshRenderer _renderer;
 
     private bool _ready = false;
     
     public void Initialize(ProjectileType projectileType, ColorTarget colour, Vector3 direction)
     {
+        _renderer = GetComponent<MeshRenderer>();
+        _renderer.material = projectileType.colourMaterials[(int)colour];
+        
         _colour = colour;
 
         _speed = projectileType.speed;
@@ -35,6 +39,12 @@ public class Projectile : MonoBehaviour
         {
             Move();
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Bound"))
+            Destroy(gameObject);
     }
 
     private void Move()
