@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7197915407237680396}
   - component: {fileID: 2767707473171916277}
   - component: {fileID: 3650043358166233185}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &3650043358166233185
 MonoBehaviour:
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 2837378046051916613}
   - component: {fileID: 7144082489502065604}
   - component: {fileID: 8952503599592223462}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

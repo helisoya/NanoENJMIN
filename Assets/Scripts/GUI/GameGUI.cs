@@ -156,4 +156,13 @@ public class GameGUI : MonoBehaviour
     {
         playersGUI[playerID].SetPlayerHealth(health);
     }
+
+
+    /// <summary>
+    /// Quits the gameplay scene
+    /// </summary>
+    public void Click_ToMainMenu()
+    {
+        // Quit
+    }
 }

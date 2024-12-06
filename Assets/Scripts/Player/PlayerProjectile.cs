@@ -21,6 +21,8 @@ public class PlayerProjectile : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+        if (transform.position.x >= 30) Destroy(gameObject);
     }
 
     void OnTriggerEnter(Collider collider)
