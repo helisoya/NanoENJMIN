@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public int ID { get; private set; }
     public int GUIID { get; private set; }
     public bool Alive { get; private set; }
+    public bool HasMana { get { return currentMana > 0; } }
+    public int Score { get; private set; }
     public ColorTarget Color { get; private set; }
 
     [Header("Infos")]
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerMovements movements;
     [SerializeField] private PlayerAttack attack;
     [SerializeField] private Animator animator;
+    [SerializeField] private Renderer playerRenderer;
 
     [Header("Collisions")]
     [SerializeField] private PlayerInput playerInput;
@@ -36,7 +39,7 @@ public class Player : MonoBehaviour
 
         ID = GameManager.instance.RegisterPlayer(this);
         gameObject.name = "Player-" + ID;
-        //GUIID = GameGUI.instance.AddNewPlayerGUI(ID);
+        GUIID = GameGUI.instance.AddNewPlayerGUI(ID);
 
         //animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Players/" + ID + "/Player");
 
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         Alive = true;
         Color = (ColorTarget)(ID + 1);
+        playerRenderer.material = GameManager.instance.GetPlayerMaterial(ID);
     }
 
     /// <summary>
@@ -60,9 +64,9 @@ public class Player : MonoBehaviour
     /// Takes damage
     /// </summary>
     /// <param name="amount"></param>
-    void OnTakeDamage(int amount)
+    void OnTakeDamage(int amount, ColorTarget color)
     {
-        if (!Alive) return;
+        if (!Alive || Color == color) return;
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
 
@@ -74,6 +78,15 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Adds mana to the player
+    /// </summary>
+    /// <param name="amount">The amount of mana to add</param>
+    public void AddMana(int amount)
+    {
+        currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
+    }
 
 
     void OnMove(InputValue input)
@@ -102,7 +115,6 @@ public class Player : MonoBehaviour
 
     void OnPause(InputValue input)
     {
-        print("Pause");
         if (input.isPressed)
         {
             if (!GameManager.instance.InGame)

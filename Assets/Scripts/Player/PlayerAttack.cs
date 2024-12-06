@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float fireRate = 0.3f;
     [SerializeField] private GameObject prefabProjectile;
     private float lastAttack;
-    private bool canAttack;
+    private bool pressedFire;
 
 
     /// <summary>
@@ -19,14 +19,15 @@ public class PlayerAttack : MonoBehaviour
     /// <param name="value">Can the player fire ?</param>
     public void SetCanAttack(bool value)
     {
-        canAttack = value;
+        pressedFire = value;
     }
 
     void Update()
     {
-        if (canAttack && Time.time - lastAttack >= fireRate)
+        if (pressedFire && player.HasMana && Time.time - lastAttack >= fireRate)
         {
             lastAttack = Time.time;
+            player.AddMana(-1);
             Instantiate(prefabProjectile, transform.position, Quaternion.identity).SendMessage("OnSpawn", player.Color);
         }
     }

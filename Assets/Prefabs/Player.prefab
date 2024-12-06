@@ -135,11 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fccbc910ed4d442949f4f0819a897f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  maxMana: 0
+  maxHealth: 3
+  maxMana: 20
   movements: {fileID: 7197915407237680396}
-  attack: {fileID: 0}
+  attack: {fileID: 3650043358166233185}
   animator: {fileID: 0}
+  playerRenderer: {fileID: 7144082489502065604}
   playerInput: {fileID: 7006348633870953166}
 --- !u!114 &7197915407237680396
 MonoBehaviour:
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3190169125713043025}
   fireRate: 0.3
-  prefabProjectile: {fileID: 0}
+  prefabProjectile: {fileID: 2244950853461899712, guid: 182c9a25ca9dfcd469def9f2ec2bb5c4, type: 3}
 --- !u!1 &6551086449102331491
 GameObject:
   m_ObjectHideFlags: 0
