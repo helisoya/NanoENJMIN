@@ -59,6 +59,12 @@ public class Enemy : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Bound"))
             Destroy(gameObject);
+
+        if (other.gameObject.CompareTag("PlayerProjectile"))
+        {
+            TakeHit();
+            Destroy(other.gameObject);
+        }
     }
 
     private void Move()
@@ -72,7 +78,6 @@ public class Enemy : MonoBehaviour
         _fireTimer -= Time.deltaTime;
         if(_fireTimer <= 0)
             Fire();
-            
     }
 
     private void Fire()
@@ -82,5 +87,17 @@ public class Enemy : MonoBehaviour
         spawnedProjectile.AddComponent<Projectile>().Initialize(_projectileType, _projectileColour, transform.forward);
 
         _fireTimer = _fireRate;
+    }
+
+    private void TakeHit()
+    {
+        _lifePoints--;
+        if (_lifePoints <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

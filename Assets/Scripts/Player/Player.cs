@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -144,5 +145,25 @@ public class Player : MonoBehaviour
         if (Alive && !GameManager.instance.InGame) return;
 
         // Collided with thing
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("EnemyProjectile"))
+        {
+            TakeHit();
+        }
+    }
+
+    private void TakeHit()
+    {
+        currentHealth--;
+        if(currentHealth <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        //TODO implement player death logic
     }
 }
