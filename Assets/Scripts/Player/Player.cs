@@ -151,7 +151,15 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyProjectile"))
         {
-            TakeHit();
+            EnemyProjectile enemyProjectile = other.gameObject.GetComponent<EnemyProjectile>();
+            
+            int inkRecharge = enemyProjectile.GetInkToRecharge(Color);
+            if(inkRecharge == 0)
+                TakeHit();
+            else
+                RechargeInk(inkRecharge);
+            
+            Destroy(other.gameObject);
         }
     }
 
@@ -160,6 +168,11 @@ public class Player : MonoBehaviour
         currentHealth--;
         if(currentHealth <= 0)
             Die();
+    }
+
+    private void RechargeInk(int amount)
+    {
+        
     }
 
     private void Die()

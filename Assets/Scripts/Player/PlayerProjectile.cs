@@ -29,4 +29,15 @@ public class PlayerProjectile : MonoBehaviour
     {
         print(collider);
     }
+
+    public int GetDamage(bool hasShield, ColorTarget targetColour)
+    {
+        if (hasShield)
+        {
+            if (targetColour != color)
+                return 0;
+        }
+
+        return 1;
+    }
 }

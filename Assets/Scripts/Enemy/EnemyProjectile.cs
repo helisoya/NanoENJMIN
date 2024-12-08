@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     #region params
 
@@ -51,5 +51,13 @@ public class Projectile : MonoBehaviour
     {
         Vector3 movement = _direction * (_speed * Time.deltaTime);
         transform.Translate(movement, Space.World);
+    }
+
+    public int GetInkToRecharge(ColorTarget playerColour)
+    {
+        if (playerColour != _colour)
+            return 0;
+        
+        return _inkRecharge;
     }
 }

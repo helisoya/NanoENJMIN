@@ -62,7 +62,11 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("PlayerProjectile"))
         {
-            TakeHit();
+            PlayerProjectile playerProjectile = other.gameObject.GetComponent<PlayerProjectile>();
+            int damage = playerProjectile.GetDamage(_hasShield, _shieldColour);
+            if(damage != 0) 
+                TakeHit(damage);
+            
             Destroy(other.gameObject);
         }
     }
@@ -84,18 +88,32 @@ public class Enemy : MonoBehaviour
     {
         //Projetile Spawning
         GameObject spawnedProjectile = Instantiate(_projectileType.prefab, transform.position, transform.rotation);
-        spawnedProjectile.AddComponent<Projectile>().Initialize(_projectileType, _projectileColour, transform.forward);
+        spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileType, _projectileColour, transform.forward);
 
         _fireTimer = _fireRate;
     }
 
-    private void TakeHit()
+    private void TakeHit(int damage)
     {
-        _lifePoints--;
-        if (_lifePoints <= 0)
-            Die();
+        if (_hasShield)
+        {
+            _shieldLifePoints -= damage;
+            if(_shieldLifePoints <= 0)
+                LoseShield();
+        }
+        else
+        {
+            _lifePoints-= damage;
+            if (_lifePoints <= 0)
+                Die();
+        }
     }
 
+    private void LoseShield()
+    {
+        _hasShield = false;
+    }
+    
     private void Die()
     {
         Destroy(gameObject);
