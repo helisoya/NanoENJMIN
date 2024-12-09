@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  maxMana: 20
-  manaFillSpeed: 0.4
+  maxMana: 30
+  manaFillSpeed: 0.6
   movements: {fileID: 7197915407237680396}
   attack: {fileID: 3650043358166233185}
   animator: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69db2faca09f32343ad94ec6cdbfbf98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 15
+  baseSpeed: 12
   dashSpeed: 40
   dashLength: 0.25
   rb: {fileID: 2767707473171916277}
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3190169125713043025}
-  fireRate: 0.3
+  fireRate: 0.2
   prefabProjectile: {fileID: 2313566190322523393, guid: 182c9a25ca9dfcd469def9f2ec2bb5c4, type: 3}
 --- !u!1 &6551086449102331491
 GameObject:

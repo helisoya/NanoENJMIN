@@ -14,6 +14,7 @@ namespace Editor
             DrawShield(enemyType);
             
             DrawProjectile(enemyType);
+            serializedObject.ApplyModifiedProperties();
         }
 
         private void DrawShield(EnemyType enemyType)

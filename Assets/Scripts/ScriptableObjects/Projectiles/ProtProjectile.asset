@@ -17,5 +17,5 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d2210df6b8e0a684e8a3a9b359602de0, type: 2}
   - {fileID: 2100000, guid: b519c522c20f44f4d9ebf0a6bfa05084, type: 2}
   - {fileID: 2100000, guid: ff697648b12511c43aebbc8583225df5, type: 2}
-  speed: 2
-  inkRecharge: 1
+  speed: 12
+  inkRecharge: 2
