@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
     public void Initialize(EnemyType enemyType)
     {
         _renderer = GetComponent<MeshRenderer>();
-        print(enemyType.projectileColour + " - " + (int)enemyType.projectileColour);
         _renderer.material = enemyType.colourMaterials[(int)enemyType.projectileColour];
 
         _speed = enemyType.speed;
@@ -66,7 +65,7 @@ public class Enemy : MonoBehaviour
             PlayerProjectile playerProjectile = other.gameObject.GetComponent<PlayerProjectile>();
             int damage = playerProjectile.GetDamage(_hasShield, _shieldColour);
             if (damage != 0)
-                TakeHit(damage);
+                TakeHit(damage, playerProjectile.GetParent());
 
             Destroy(other.gameObject);
         }
@@ -94,7 +93,7 @@ public class Enemy : MonoBehaviour
         _fireTimer = _fireRate;
     }
 
-    private void TakeHit(int damage)
+    private void TakeHit(int damage, Player from)
     {
         if (_hasShield)
         {
@@ -106,7 +105,7 @@ public class Enemy : MonoBehaviour
         {
             _lifePoints -= damage;
             if (_lifePoints <= 0)
-                Die();
+                Die(from);
         }
     }
 
@@ -115,8 +114,9 @@ public class Enemy : MonoBehaviour
         _hasShield = false;
     }
 
-    private void Die()
+    private void Die(Player killer)
     {
+        killer.AddScore(_score);
         Destroy(gameObject);
     }
 }

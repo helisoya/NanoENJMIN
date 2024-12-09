@@ -11,18 +11,27 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] private float speed = 5;
     [SerializeField] private Renderer projectileRender;
     private ColorTarget color;
+    private Player parent;
 
-    void OnSpawn(ColorTarget color)
+    /// <summary>
+    /// Initialize the projectile
+    /// </summary>
+    /// <param name="color">The projectile's color</param>
+    /// <param name="parent">The projectile's parent</param>
+    public void OnSpawn(ColorTarget color, Player parent)
     {
+        this.parent = parent;
         this.color = color;
         projectileRender.material = GameManager.instance.GetPlayerMaterial(((int)color) - 1);
     }
 
-    void Update()
+    /// <summary>
+    /// Gets the projectile's parent
+    /// </summary>
+    /// <returns>The parent</returns>
+    public Player GetParent()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-
-        if (transform.position.x >= 30) Destroy(gameObject);
+        return parent;
     }
 
     void OnTriggerEnter(Collider collider)
@@ -39,5 +48,12 @@ public class PlayerProjectile : MonoBehaviour
         }
 
         return 1;
+    }
+
+    void Update()
+    {
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+        if (transform.position.x >= 30) Destroy(gameObject);
     }
 }
