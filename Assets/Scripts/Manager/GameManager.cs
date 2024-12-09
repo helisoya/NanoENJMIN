@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// The color targets
@@ -47,6 +48,17 @@ public class GameManager : MonoBehaviour
         GameGUI.instance.SetScore(total);
     }
 
+    public void SaveScoreAndQuit(string entryName)
+    {
+        LeaderboardManager.instance.AddEntry(
+            entryName,
+            players.Count >= 1 ? players[0].Score : 0,
+            players.Count >= 2 ? players[1].Score : 0
+        );
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
     /// <summary>
     /// Registers a new player
     /// </summary>
@@ -74,7 +86,27 @@ public class GameManager : MonoBehaviour
             if (readyUps.Count >= players.Count)
             {
                 InGame = true;
+                readyUps.Clear();
                 GameGUI.instance.OpenGamePlayScreen();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Register that a player is dead
+    /// </summary>
+    /// <param name="ID">The player's ID</param>
+    public void KillPlayer(int ID)
+    {
+        if (!readyUps.Contains(ID))
+        {
+            readyUps.Add(ID);
+
+            if (readyUps.Count >= players.Count)
+            {
+                InGame = false;
+                readyUps.Clear();
+                GameGUI.instance.OpenEndScreen(players);
             }
         }
     }

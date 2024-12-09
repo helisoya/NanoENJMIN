@@ -30,7 +30,7 @@ public class GameGUI : MonoBehaviour
 
     [Header("End Screen")]
     [SerializeField] private GameObject endScreen;
-    [SerializeField] private GameObject buttonEnding;
+    [SerializeField] private TMP_InputField endNameInputField;
     [SerializeField] private PlayerScore[] scores;
 
     [Header("Pause Screen")]
@@ -60,10 +60,8 @@ public class GameGUI : MonoBehaviour
     {
         gameplayScreen.SetActive(false);
         endScreen.SetActive(true);
-        eventSystem.SetSelectedGameObject(buttonEnding);
-        eventSystem.firstSelectedGameObject = buttonEnding;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < scores.Length; i++)
         {
             if (i < players.Count)
             {
@@ -75,7 +73,6 @@ public class GameGUI : MonoBehaviour
                 scores[i].gameObject.SetActive(false);
             }
         }
-
     }
 
 
@@ -165,5 +162,9 @@ public class GameGUI : MonoBehaviour
     public void Click_ToMainMenu()
     {
         // Quit
+        if (!string.IsNullOrEmpty(endNameInputField.text))
+        {
+            GameManager.instance.SaveScoreAndQuit(endNameInputField.text);
+        }
     }
 }

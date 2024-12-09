@@ -144,6 +144,7 @@ public class Player : MonoBehaviour
             else
             {
                 // UI Pause
+                GameGUI.instance.TogglePauseMenu();
             }
         }
     }
@@ -173,8 +174,8 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        //TODO implement player death logic
         Alive = false;
         gameObject.SetActive(false);
+        GameManager.instance.KillPlayer(ID);
     }
 }
