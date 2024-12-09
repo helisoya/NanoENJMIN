@@ -7,15 +7,13 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
 
-    [SerializeField] private List<EnemyType> _enemyTypes;
+    [SerializeField] private List<EnemyTypeSO> _enemyTypes;
     
     [SerializeField] private List<GameObject> _enemySpawnPoints;
 
     [SerializeField] private float _spawnRate;
 
     private float _spawnTimer;
-
-    public Action<int> onChangeWave;
 
     private void Awake()
     {
@@ -43,21 +41,21 @@ public class EnemyManager : MonoBehaviour
     {
         print("doing spawning");
         GameObject spawnPoint = _enemySpawnPoints[Random.Range(0, _enemySpawnPoints.Count)];
-        EnemyType spawnEnemyType = _enemyTypes[Random.Range(0, _enemyTypes.Count)];
+        EnemyTypeSO spawnEnemyTypeSo = _enemyTypes[Random.Range(0, _enemyTypes.Count)];
         
-        CreateEnemy(spawnEnemyType, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        CreateEnemy(spawnEnemyTypeSo, spawnPoint.transform.position, spawnPoint.transform.rotation);
         
         _spawnTimer = _spawnRate;
     }
 
-    private void CreateEnemy(EnemyType enemyType, Vector3 spawnPosition, Quaternion spawnRotation)
+    private void CreateEnemy(EnemyTypeSO enemyTypeSo, Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        GameObject spawnedEnemy = Instantiate(enemyType.prefab, spawnPosition, spawnRotation);
-        spawnedEnemy.AddComponent<Enemy>().Initialize(enemyType);
+        GameObject spawnedEnemy = Instantiate(enemyTypeSo.prefab, spawnPosition, spawnRotation);
+        spawnedEnemy.AddComponent<Enemy>().Initialize(enemyTypeSo);
     }
 
-    public void ChangeWave(int waveIndex)
+    public void SpawnWave(WaveSO wave)
     {
-        onChangeWave.Invoke(waveIndex);
+        
     }
 }

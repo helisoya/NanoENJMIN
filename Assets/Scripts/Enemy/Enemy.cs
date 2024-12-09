@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     private int _shieldLifePoints;
 
     private bool _canFire;
-    private ProjectileType _projectileType;
+    private ProjectileTypeSO _projectileTypeSo;
     private float _fireRate;
 
     #endregion
@@ -27,31 +27,31 @@ public class Enemy : MonoBehaviour
 
     private float _fireTimer;
 
-    public void Initialize(EnemyType enemyType)
+    public void Initialize(EnemyTypeSO enemyTypeSo)
     {
         //Params
-        _colour = enemyType.colour;
+        _colour = enemyTypeSo.colour;
         
-        _speed = enemyType.speed;
-        _score = enemyType.score;
-        _lifePoints = enemyType.lifePoints;
+        _speed = enemyTypeSo.speed;
+        _score = enemyTypeSo.score;
+        _lifePoints = enemyTypeSo.lifePoints;
         
         //Shield params
         _shield = transform.GetChild(0).gameObject;
-        _hasShield = enemyType.hasShield;
+        _hasShield = enemyTypeSo.hasShield;
         _shield.SetActive(_hasShield);
         if (_hasShield)
         {
             _shieldRenderer = _shield.GetComponent<MeshRenderer>();
-            _shieldRenderer.material = enemyType.shieldMaterial;
+            _shieldRenderer.material = enemyTypeSo.shieldMaterial;
 
-            _shieldLifePoints = enemyType.shieldLifePoints;
+            _shieldLifePoints = enemyTypeSo.shieldLifePoints;
         }
 
         //Projectile params
-        _canFire = enemyType.canFire;
-        _projectileType = enemyType.projectileType;
-        _fireRate = enemyType.fireRate;
+        _canFire = enemyTypeSo.canFire;
+        _projectileTypeSo = enemyTypeSo.projectileTypeSo;
+        _fireRate = enemyTypeSo.fireRate;
         _fireTimer = _fireRate;
 
         _ready = true;
@@ -99,8 +99,8 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         //Projetile Spawning
-        GameObject spawnedProjectile = Instantiate(_projectileType.prefab, transform.position, transform.rotation);
-        spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileType, _colour, transform.forward);
+        GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, transform.rotation);
+        spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour, transform.forward);
 
         _fireTimer = _fireRate;
     }

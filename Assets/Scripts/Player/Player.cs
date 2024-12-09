@@ -161,8 +161,8 @@ public class Player : MonoBehaviour
         {
             EnemyProjectile enemyProjectile = other.gameObject.GetComponent<EnemyProjectile>();
 
-            int inkRecharge = enemyProjectile.GetInkToRecharge(Color);
-            if (inkRecharge == 0)
+            float inkRecharge = enemyProjectile.GetInkToRecharge(Color);
+            if (inkRecharge == 0f)
                 OnTakeDamage(1);
             else
                 AddMana(inkRecharge);

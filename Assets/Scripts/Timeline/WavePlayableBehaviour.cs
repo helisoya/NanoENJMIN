@@ -13,7 +13,7 @@ public class WavePlayableBehaviour : PlayableBehaviour
         {
             return;
         }
-        // EnemyManager.instance.SpawnWave(wave);
+        EnemyManager.instance.SpawnWave(wave);
         Debug.Log($"Spawning wave {wave.name}");
         _isProcessed = true;
     }
