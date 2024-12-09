@@ -8,8 +8,8 @@ using UnityEngine;
 public enum ColorTarget
 {
     ALL,
-    PLAYER1,
-    PLAYER2
+    YELLOW,
+    PURPLE
 }
 
 

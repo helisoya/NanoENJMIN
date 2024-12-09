@@ -28,19 +28,26 @@ public class Enemy : MonoBehaviour
 
     public void Initialize(EnemyType enemyType)
     {
-        _shield = transform.GetChild(0).gameObject;
-        _shieldRenderer = _shield.GetComponent<MeshRenderer>();
-        _shieldRenderer.material = enemyType.shieldMaterial;
-
+        //Params
         _colour = enemyType.colour;
         
         _speed = enemyType.speed;
         _score = enemyType.score;
         _lifePoints = enemyType.lifePoints;
-
+        
+        //Shield params
+        _shield = transform.GetChild(0).gameObject;
         _hasShield = enemyType.hasShield;
-        _shieldLifePoints = enemyType.shieldLifePoints;
+        _shield.SetActive(_hasShield);
+        if (_hasShield)
+        {
+            _shieldRenderer = _shield.GetComponent<MeshRenderer>();
+            _shieldRenderer.material = enemyType.shieldMaterial;
 
+            _shieldLifePoints = enemyType.shieldLifePoints;
+        }
+
+        //Projectile params
         _projectileType = enemyType.projectileType;
         _fireRate = enemyType.fireRate;
         _fireTimer = _fireRate;
