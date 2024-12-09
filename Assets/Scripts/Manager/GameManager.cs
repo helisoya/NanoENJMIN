@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Players")]
     [SerializeField] private Transform[] spawnPositions;
+    [SerializeField] private Material[] playerMaterials;
 
     public static GameManager instance;
 
@@ -56,12 +57,22 @@ public class GameManager : MonoBehaviour
         if (!readyUps.Contains(ID))
         {
             readyUps.Add(ID);
-            //GameGUI.instance.ReadyUpPlayer(ID);
+            GameGUI.instance.ReadyUpPlayer(ID);
             if (readyUps.Count >= players.Count)
             {
                 InGame = true;
-                //GameGUI.instance.OpenGamePlayScreen();
+                GameGUI.instance.OpenGamePlayScreen();
             }
         }
+    }
+
+    /// <summary>
+    /// Gets a player's material
+    /// </summary>
+    /// <param name="idx">The player's ID</param>
+    /// <returns>The player's material</returns>
+    public Material GetPlayerMaterial(int idx)
+    {
+        return playerMaterials[idx];
     }
 }
