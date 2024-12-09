@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     [Header("Players")]
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private Material[] playerMaterials;
+    [SerializeField] private PlayerInputManager inputManager;
 
     public static GameManager instance;
 
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour
             {
                 InGame = true;
                 readyUps.Clear();
+                inputManager.DisableJoining();
                 GameGUI.instance.OpenGamePlayScreen();
             }
         }

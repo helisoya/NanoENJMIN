@@ -46,6 +46,7 @@ public class GameGUI : MonoBehaviour
 
     [Header("Pause Screen")]
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private SettingsMenu settings;
 
     void Awake()
     {
@@ -61,6 +62,7 @@ public class GameGUI : MonoBehaviour
     {
         pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
         Time.timeScale = pauseScreen.activeInHierarchy ? 0 : 1;
+        if (!pauseScreen.activeInHierarchy) settings.Close();
     }
 
     /// <summary>
@@ -173,18 +175,8 @@ public class GameGUI : MonoBehaviour
 
 
     /// <summary>
-    /// Quits the gameplay scene
+    /// Opens the leaderboard
     /// </summary>
-    public void Click_ToMainMenu()
-    {
-        // Quit
-        if (!string.IsNullOrEmpty(endNameInputField.text))
-        {
-            GameManager.instance.SaveScore(endNameInputField.text);
-            OpenLeaderboard();
-        }
-    }
-
     void OpenLeaderboard()
     {
         endScreen.SetActive(false);
@@ -204,11 +196,25 @@ public class GameGUI : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// Opens the death screen
+    /// </summary>
+    /// <param name="finalScore">The final score</param>
     public void OpenDeathScreen(int finalScore)
     {
         gameplayScreen.SetActive(false);
         loseScreen.SetActive(true);
         loseScoreText.text = "Score : " + finalScore;
+    }
+
+    public void Click_ToLeaderboard()
+    {
+        // Quit
+        if (!string.IsNullOrEmpty(endNameInputField.text))
+        {
+            GameManager.instance.SaveScore(endNameInputField.text);
+            OpenLeaderboard();
+        }
     }
 
     public void Click_Quit()
@@ -219,5 +225,15 @@ public class GameGUI : MonoBehaviour
     public void Click_Retry()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void Click_Continue()
+    {
+        TogglePauseMenu();
+    }
+
+    public void Click_Settings()
+    {
+        settings.Open();
     }
 }
