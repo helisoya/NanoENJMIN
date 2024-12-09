@@ -18,6 +18,7 @@ namespace Editor
 
         private void DrawShield(EnemyType enemyType)
         {
+            EditorGUILayout.Separator();
             enemyType.hasShield = EditorGUILayout.Toggle("Has Shield", enemyType.hasShield);
 
             if (enemyType.hasShield)
@@ -32,11 +33,12 @@ namespace Editor
         private void DrawProjectile(EnemyType enemyType)
         {
             EditorGUILayout.Separator();
-            enemyType.projectileType =
-                (ProjectileType)EditorGUILayout.ObjectField("Projectile Type", enemyType.projectileType, typeof(ProjectileType), false);
+            enemyType.canFire = EditorGUILayout.Toggle("Can Fire", enemyType.canFire);
 
-            if (enemyType.projectileType != null)
+            if (enemyType.canFire)
             {
+                enemyType.projectileType =
+                    (ProjectileType)EditorGUILayout.ObjectField("Projectile Type", enemyType.projectileType, typeof(ProjectileType), false);
                 enemyType.fireRate =
                     EditorGUILayout.FloatField("Fire Rate", enemyType.fireRate);
             }
