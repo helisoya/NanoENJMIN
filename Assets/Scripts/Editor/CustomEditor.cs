@@ -22,7 +22,7 @@ namespace Editor
 
             if (enemyType.hasShield)
             {
-                enemyType.shieldColour = (ColorTarget)EditorGUILayout.EnumPopup("Shield Colour", enemyType.shieldColour);
+                enemyType.shieldMaterial = (Material)EditorGUILayout.ObjectField("Shield Material", enemyType.shieldMaterial, typeof(Material), false);
                 
                 enemyType.shieldLifePoints =
                     EditorGUILayout.IntField("Shield Life Points", enemyType.shieldLifePoints);
@@ -33,12 +33,10 @@ namespace Editor
         {
             EditorGUILayout.Separator();
             enemyType.projectileType =
-                (ProjectileType)EditorGUILayout.ObjectField("Projectile Type", enemyType.projectileType, typeof(ProjectileType), true);
+                (ProjectileType)EditorGUILayout.ObjectField("Projectile Type", enemyType.projectileType, typeof(ProjectileType), false);
 
             if (enemyType.projectileType != null)
             {
-                enemyType.projectileColour = (ColorTarget)EditorGUILayout.EnumPopup("Projectile Colour", enemyType.projectileColour);
-                
                 enemyType.fireRate =
                     EditorGUILayout.FloatField("Fire Rate", enemyType.fireRate);
             }

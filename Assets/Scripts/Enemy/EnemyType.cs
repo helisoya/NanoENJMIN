@@ -5,16 +5,15 @@ using UnityEngine;
 public class EnemyType : ScriptableObject
 {
     public GameObject prefab;
-    public List<Material> colourMaterials;
+    public ColorTarget colour;
     public float speed;
     public int score;
     public int lifePoints;
 
     [HideInInspector]public bool hasShield;
-    [HideInInspector]public ColorTarget shieldColour;
+    [HideInInspector]public Material shieldMaterial;
     [HideInInspector]public int shieldLifePoints;
     
     [HideInInspector]public ProjectileType projectileType;
-    [HideInInspector] public ColorTarget projectileColour;
     [HideInInspector]public float fireRate;
 }
