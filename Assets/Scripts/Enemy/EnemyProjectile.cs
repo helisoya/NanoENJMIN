@@ -56,7 +56,7 @@ public class EnemyProjectile : MonoBehaviour
     public float GetInkToRecharge(ColorTarget playerColour)
     {
         if (playerColour != _colour)
-            return 0;
+            return 0f;
 
         return _inkRecharge;
     }
