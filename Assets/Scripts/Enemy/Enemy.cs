@@ -4,23 +4,23 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     #region params
-    
-        private float _speed;
-        private int _score;
-        private int _lifePoints;
 
-        private bool _hasShield;
-        private ColorTarget _shieldColour;
-        private int _shieldLifePoints;
+    private float _speed;
+    private int _score;
+    private int _lifePoints;
 
-        private ProjectileType _projectileType;
-        private ColorTarget _projectileColour;
-        private float _fireRate;
+    private bool _hasShield;
+    private ColorTarget _shieldColour;
+    private int _shieldLifePoints;
+
+    private ProjectileType _projectileType;
+    private ColorTarget _projectileColour;
+    private float _fireRate;
 
     #endregion
 
     private MeshRenderer _renderer;
-    
+
     private bool _ready = false;
 
     private float _fireTimer;
@@ -28,8 +28,9 @@ public class Enemy : MonoBehaviour
     public void Initialize(EnemyType enemyType)
     {
         _renderer = GetComponent<MeshRenderer>();
+        print(enemyType.projectileColour + " - " + (int)enemyType.projectileColour);
         _renderer.material = enemyType.colourMaterials[(int)enemyType.projectileColour];
-        
+
         _speed = enemyType.speed;
         _score = enemyType.score;
         _lifePoints = enemyType.lifePoints;
@@ -57,16 +58,16 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Bound"))
+        if (other.gameObject.CompareTag("Bound"))
             Destroy(gameObject);
 
         if (other.gameObject.CompareTag("PlayerProjectile"))
         {
             PlayerProjectile playerProjectile = other.gameObject.GetComponent<PlayerProjectile>();
             int damage = playerProjectile.GetDamage(_hasShield, _shieldColour);
-            if(damage != 0) 
+            if (damage != 0)
                 TakeHit(damage);
-            
+
             Destroy(other.gameObject);
         }
     }
@@ -80,7 +81,7 @@ public class Enemy : MonoBehaviour
     private void Firing()
     {
         _fireTimer -= Time.deltaTime;
-        if(_fireTimer <= 0)
+        if (_fireTimer <= 0)
             Fire();
     }
 
@@ -98,12 +99,12 @@ public class Enemy : MonoBehaviour
         if (_hasShield)
         {
             _shieldLifePoints -= damage;
-            if(_shieldLifePoints <= 0)
+            if (_shieldLifePoints <= 0)
                 LoseShield();
         }
         else
         {
-            _lifePoints-= damage;
+            _lifePoints -= damage;
             if (_lifePoints <= 0)
                 Die();
         }
@@ -113,7 +114,7 @@ public class Enemy : MonoBehaviour
     {
         _hasShield = false;
     }
-    
+
     private void Die()
     {
         Destroy(gameObject);

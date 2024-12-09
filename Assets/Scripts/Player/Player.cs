@@ -74,18 +74,16 @@ public class Player : MonoBehaviour
     /// Takes damage
     /// </summary>
     /// <param name="amount"></param>
-    void OnTakeDamage(int amount, ColorTarget color)
+    void OnTakeDamage(int amount)
     {
-        if (!Alive || Color == color) return;
+        if (!Alive) return;
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
         GameGUI.instance.SetPlayerHealth(GUIID, currentHealth);
 
         if (currentHealth == 0)
         {
-            Alive = false;
-            // Dead
-            gameObject.SetActive(false);
+            Die();
         }
     }
 
@@ -162,31 +160,21 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyProjectile"))
         {
             EnemyProjectile enemyProjectile = other.gameObject.GetComponent<EnemyProjectile>();
-            
+
             int inkRecharge = enemyProjectile.GetInkToRecharge(Color);
-            if(inkRecharge == 0)
-                TakeHit();
+            if (inkRecharge == 0)
+                OnTakeDamage(1);
             else
-                RechargeInk(inkRecharge);
-            
+                AddMana(inkRecharge);
+
             Destroy(other.gameObject);
         }
-    }
-
-    private void TakeHit()
-    {
-        currentHealth--;
-        if(currentHealth <= 0)
-            Die();
-    }
-
-    private void RechargeInk(int amount)
-    {
-        
     }
 
     private void Die()
     {
         //TODO implement player death logic
+        Alive = false;
+        gameObject.SetActive(false);
     }
 }

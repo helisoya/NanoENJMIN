@@ -5,24 +5,25 @@ public class EnemyProjectile : MonoBehaviour
 {
     #region params
 
-        private ColorTarget _colour;
+    private ColorTarget _colour;
 
-        private float _speed;
-        private int _inkRecharge;
+    private float _speed;
+    private int _inkRecharge;
 
-        private Vector3 _direction;
+    private Vector3 _direction;
 
     #endregion
 
     private MeshRenderer _renderer;
 
     private bool _ready = false;
-    
+
     public void Initialize(ProjectileType projectileType, ColorTarget colour, Vector3 direction)
     {
         _renderer = GetComponent<MeshRenderer>();
+        print(colour + " " + (int)colour);
         _renderer.material = projectileType.colourMaterials[(int)colour];
-        
+
         _colour = colour;
 
         _speed = projectileType.speed;
@@ -43,7 +44,7 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Bound"))
+        if (other.gameObject.CompareTag("Bound"))
             Destroy(gameObject);
     }
 
@@ -55,9 +56,10 @@ public class EnemyProjectile : MonoBehaviour
 
     public int GetInkToRecharge(ColorTarget playerColour)
     {
+        print(playerColour + " - " + _colour);
         if (playerColour != _colour)
             return 0;
-        
+
         return _inkRecharge;
     }
 }
