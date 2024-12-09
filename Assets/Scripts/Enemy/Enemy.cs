@@ -1,5 +1,7 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Splines;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,11 +25,16 @@ public class Enemy : MonoBehaviour
     private GameObject _shield;
     private MeshRenderer _shieldRenderer;
 
+    private SplineContainer _spline;
+    private float3 _splineRelativePosition;
+
     private bool _ready = false;
+    private bool _completedSpline = false;
 
     private float _fireTimer;
+    private float _splineTraveledDistance;
 
-    public void Initialize(EnemyTypeSO enemyTypeSo)
+    public void Initialize(EnemyTypeSO enemyTypeSo, SplineContainer spline, Vector3 splineRelativePosition)
     {
         //Params
         _colour = enemyTypeSo.colour;
@@ -53,6 +60,9 @@ public class Enemy : MonoBehaviour
         _projectileTypeSo = enemyTypeSo.projectileTypeSo;
         _fireRate = enemyTypeSo.fireRate;
         _fireTimer = _fireRate;
+
+        _spline = spline;
+        _splineRelativePosition = splineRelativePosition;
 
         _ready = true;
     }
@@ -85,8 +95,20 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        Vector3 movement = transform.forward * (_speed * Time.deltaTime);
-        transform.Translate(movement, Space.World);
+        /*Vector3 movement = transform.forward * (_speed * Time.deltaTime);
+        transform.Translate(movement, Space.World);*/
+
+        if (!_completedSpline)
+        {
+            _splineTraveledDistance += Time.deltaTime * _speed;
+            float _splineProgression = _splineTraveledDistance / _spline.Spline.GetLength();
+            transform.position = _spline.Spline.EvaluatePosition(_splineProgression) + _splineRelativePosition;
+            if (_splineProgression >= 1f)
+            {
+                _completedSpline = true;
+                OnSplineCompleted();
+            }
+        }
     }
 
     private void Firing()
@@ -130,5 +152,10 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void OnSplineCompleted()
+    {
+        
     }
 }

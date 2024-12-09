@@ -34,6 +34,6 @@ public class EnemySpawner : MonoBehaviour
     private void CreateEnemy(EnemyTypeSO enemyTypeSo, Vector3 spawnPosition, Quaternion spawnRotation)
     {
         GameObject spawnedEnemy = Instantiate(enemyTypeSo.prefab, spawnPosition, spawnRotation);
-        spawnedEnemy.AddComponent<Enemy>().Initialize(enemyTypeSo);
+        spawnedEnemy.AddComponent<Enemy>().Initialize(enemyTypeSo, _spline, transform.position);
     }
 }
