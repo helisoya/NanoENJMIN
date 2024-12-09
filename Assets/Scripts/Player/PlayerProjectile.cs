@@ -22,7 +22,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         this.parent = parent;
         this.color = color;
-        projectileRender.material = GameManager.instance.GetPlayerMaterial(((int)color) - 1);
+        projectileRender.material = GameManager.instance.GetPlayerMaterial(color);
     }
 
     /// <summary>

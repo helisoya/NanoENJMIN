@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         Alive = true;
         Color = (ColorTarget)(ID + 1);
-        playerRenderer.material = GameManager.instance.GetPlayerMaterial(ID);
+        playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
     }
 
     void Update()

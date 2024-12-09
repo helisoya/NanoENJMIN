@@ -80,12 +80,12 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets a player's material
+    /// Gets a ColorTarget's material
     /// </summary>
-    /// <param name="idx">The player's ID</param>
-    /// <returns>The player's material</returns>
-    public Material GetPlayerMaterial(int idx)
+    /// <param name="color">The ColorTarget</param>
+    /// <returns>The ColorTarget's material</returns>
+    public Material GetPlayerMaterial(ColorTarget color)
     {
-        return playerMaterials[idx];
+        return playerMaterials[(int)color];
     }
 }
