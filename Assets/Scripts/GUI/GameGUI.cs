@@ -25,7 +25,7 @@ public class GameGUI : MonoBehaviour
 
     [Header("General")]
     [SerializeField] private GameObject gameplayScreen;
-    [SerializeField] private TextMeshProUGUI timer;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private EventSystem eventSystem;
 
     [Header("End Screen")]
@@ -78,14 +78,6 @@ public class GameGUI : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Sets the timer's value
-    /// </summary>
-    /// <param name="remainingSeconds">The remaining timer</param>
-    public void SetTimerValue(int remainingSeconds)
-    {
-        timer.text = remainingSeconds + " seconds";
-    }
 
     /// <summary>
     /// Opens the ready up screen
@@ -155,6 +147,15 @@ public class GameGUI : MonoBehaviour
     public void SetPlayerHealth(int playerID, int health)
     {
         playersGUI[playerID].SetPlayerHealth(health);
+    }
+
+    /// <summary>
+    /// Sets the score text
+    /// </summary>
+    /// <param name="score">The score to show</param>
+    public void SetScore(int score)
+    {
+        scoreText.text = score.ToString();
     }
 
 

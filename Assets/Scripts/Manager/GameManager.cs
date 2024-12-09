@@ -35,6 +35,19 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Shows the total score on screen
+    /// </summary>
+    public void ShowTotalScore()
+    {
+        int total = 0;
+        foreach (Player player in players)
+        {
+            total += player.Score;
+        }
+        GameGUI.instance.SetScore(total);
+    }
+
+    /// <summary>
     /// Registers a new player
     /// </summary>
     /// <param name="player">The new player</param>
