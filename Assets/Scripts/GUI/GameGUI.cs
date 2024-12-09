@@ -28,10 +28,21 @@ public class GameGUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private EventSystem eventSystem;
 
+    [Header("Lose Screen")]
+    [SerializeField] private GameObject loseScreen;
+    [SerializeField] private TextMeshProUGUI loseScoreText;
+
     [Header("End Screen")]
     [SerializeField] private GameObject endScreen;
+    [SerializeField] private TextMeshProUGUI endScoreText;
     [SerializeField] private TMP_InputField endNameInputField;
     [SerializeField] private PlayerScore[] scores;
+
+    [Header("Leaderboard")]
+    [SerializeField] private GameObject leaderboardScreen;
+    [SerializeField] private Transform leaderboardRoot;
+    [SerializeField] private LeaderboardEntryGUI leaderboardEntryPrefab;
+
 
     [Header("Pause Screen")]
     [SerializeField] private GameObject pauseScreen;
@@ -61,10 +72,13 @@ public class GameGUI : MonoBehaviour
         gameplayScreen.SetActive(false);
         endScreen.SetActive(true);
 
+        int total = 0;
+
         for (int i = 0; i < scores.Length; i++)
         {
             if (i < players.Count)
             {
+                total += players[i].Score;
                 scores[i].SetScore(players[i].Score);
                 scores[i].SetColor(playerColors[players[i].ID]);
             }
@@ -73,6 +87,8 @@ public class GameGUI : MonoBehaviour
                 scores[i].gameObject.SetActive(false);
             }
         }
+
+        endScoreText.text = "Score : " + total;
     }
 
 
@@ -164,7 +180,44 @@ public class GameGUI : MonoBehaviour
         // Quit
         if (!string.IsNullOrEmpty(endNameInputField.text))
         {
-            GameManager.instance.SaveScoreAndQuit(endNameInputField.text);
+            GameManager.instance.SaveScore(endNameInputField.text);
+            OpenLeaderboard();
         }
+    }
+
+    void OpenLeaderboard()
+    {
+        endScreen.SetActive(false);
+        leaderboardScreen.SetActive(true);
+
+        List<LeaderboardEntry> entries = LeaderboardManager.instance.leaderboard.entries;
+
+        foreach (LeaderboardEntry entry in entries)
+        {
+            Instantiate(leaderboardEntryPrefab, leaderboardRoot).Init(entry.entryName, entry.player1Score, entry.player2Score);
+        }
+
+
+        leaderboardRoot.GetComponent<RectTransform>().sizeDelta = new Vector2(
+            leaderboardRoot.GetComponent<RectTransform>().sizeDelta.x,
+            (leaderboardEntryPrefab.GetComponent<RectTransform>().sizeDelta.y + 5) * entries.Count
+        );
+    }
+
+    public void OpenDeathScreen(int finalScore)
+    {
+        gameplayScreen.SetActive(false);
+        loseScreen.SetActive(true);
+        loseScoreText.text = "Score : " + finalScore;
+    }
+
+    public void Click_Quit()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Click_Retry()
+    {
+        SceneManager.LoadScene("Game");
     }
 }

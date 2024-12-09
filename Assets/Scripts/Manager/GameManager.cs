@@ -36,27 +36,35 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Shows the total score on screen
+    /// Computes the total score
     /// </summary>
-    public void ShowTotalScore()
+    /// <returns>The total score</returns>
+    public int GetTotalScore()
     {
         int total = 0;
         foreach (Player player in players)
         {
             total += player.Score;
         }
-        GameGUI.instance.SetScore(total);
+        return total;
     }
 
-    public void SaveScoreAndQuit(string entryName)
+    /// <summary>
+    /// Shows the total score on screen
+    /// </summary>
+    public void ShowTotalScore()
+    {
+
+        GameGUI.instance.SetScore(GetTotalScore());
+    }
+
+    public void SaveScore(string entryName)
     {
         LeaderboardManager.instance.AddEntry(
             entryName,
             players.Count >= 1 ? players[0].Score : 0,
             players.Count >= 2 ? players[1].Score : 0
         );
-
-        SceneManager.LoadScene("MainMenu");
     }
 
     /// <summary>
@@ -106,7 +114,7 @@ public class GameManager : MonoBehaviour
             {
                 InGame = false;
                 readyUps.Clear();
-                GameGUI.instance.OpenEndScreen(players);
+                GameGUI.instance.OpenDeathScreen(GetTotalScore());
             }
         }
     }
