@@ -34,6 +34,8 @@ public class PlayerMovements : MonoBehaviour
     /// </summary>
     public void Dash()
     {
+        if (dashing) return;
+
         dashStart = Time.time;
         dashing = true;
     }
