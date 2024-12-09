@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Infos")]
     [SerializeField] private Player player;
     [SerializeField] private float fireRate = 0.3f;
-    [SerializeField] private GameObject prefabProjectile;
+    [SerializeField] private PlayerProjectile prefabProjectile;
     private float lastAttack;
     private bool pressedFire;
 
@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
         {
             lastAttack = Time.time;
             player.AddMana(-1);
-            Instantiate(prefabProjectile, transform.position, Quaternion.identity).SendMessage("OnSpawn", player.Color);
+            Instantiate(prefabProjectile, transform.position, Quaternion.identity).OnSpawn(player.Color, player);
         }
     }
 }
