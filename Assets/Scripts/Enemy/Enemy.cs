@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     #region params
 
     private ColorTarget _colour;
-    
+
     private float _speed;
     private int _score;
     private int _lifePoints;
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     {
         //Params
         _colour = enemyType.colour;
-        
+
         _speed = enemyType.speed;
         _score = enemyType.score;
         _lifePoints = enemyType.lifePoints;
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
             PlayerProjectile playerProjectile = other.gameObject.GetComponent<PlayerProjectile>();
             int damage = playerProjectile.GetDamage(_hasShield, _colour);
             if (damage != 0)
-                TakeHit(damage);
+                TakeHit(damage, playerProjectile.GetParent());
 
             Destroy(other.gameObject);
         }
@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour
         _fireTimer = _fireRate;
     }
 
-    private void TakeHit(int damage)
+    private void TakeHit(int damage, Player from)
     {
         if (_hasShield)
         {
@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
         {
             _lifePoints -= damage;
             if (_lifePoints <= 0)
-                Die();
+                Die(from);
         }
     }
 
@@ -127,8 +127,9 @@ public class Enemy : MonoBehaviour
         _hasShield = false;
     }
 
-    private void Die()
+    private void Die(Player killer)
     {
+        killer.AddScore(_score);
         Destroy(gameObject);
     }
 }

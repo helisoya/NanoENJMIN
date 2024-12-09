@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager instance;
 
     [SerializeField] private List<EnemyType> _enemyTypes;
-    
+
     [SerializeField] private List<GameObject> _enemySpawnPoints;
 
     [SerializeField] private float _spawnRate;
@@ -32,6 +32,8 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.instance.InGame) return;
+
         _spawnTimer -= Time.deltaTime;
         if (_spawnTimer <= 0)
         {
@@ -44,9 +46,9 @@ public class EnemyManager : MonoBehaviour
         print("doing spawning");
         GameObject spawnPoint = _enemySpawnPoints[Random.Range(0, _enemySpawnPoints.Count)];
         EnemyType spawnEnemyType = _enemyTypes[Random.Range(0, _enemyTypes.Count)];
-        
+
         CreateEnemy(spawnEnemyType, spawnPoint.transform.position, spawnPoint.transform.rotation);
-        
+
         _spawnTimer = _spawnRate;
     }
 

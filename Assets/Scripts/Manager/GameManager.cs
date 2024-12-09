@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// The color targets
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
     [Header("Players")]
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private Material[] playerMaterials;
+    [SerializeField] private PlayerInputManager inputManager;
 
     public static GameManager instance;
 
@@ -35,16 +38,35 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Shows the total score on screen
+    /// Computes the total score
     /// </summary>
-    public void ShowTotalScore()
+    /// <returns>The total score</returns>
+    public int GetTotalScore()
     {
         int total = 0;
         foreach (Player player in players)
         {
             total += player.Score;
         }
-        GameGUI.instance.SetScore(total);
+        return total;
+    }
+
+    /// <summary>
+    /// Shows the total score on screen
+    /// </summary>
+    public void ShowTotalScore()
+    {
+
+        GameGUI.instance.SetScore(GetTotalScore());
+    }
+
+    public void SaveScore(string entryName)
+    {
+        LeaderboardManager.instance.AddEntry(
+            entryName,
+            players.Count >= 1 ? players[0].Score : 0,
+            players.Count >= 2 ? players[1].Score : 0
+        );
     }
 
     /// <summary>
@@ -74,7 +96,28 @@ public class GameManager : MonoBehaviour
             if (readyUps.Count >= players.Count)
             {
                 InGame = true;
+                readyUps.Clear();
+                inputManager.DisableJoining();
                 GameGUI.instance.OpenGamePlayScreen();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Register that a player is dead
+    /// </summary>
+    /// <param name="ID">The player's ID</param>
+    public void KillPlayer(int ID)
+    {
+        if (!readyUps.Contains(ID))
+        {
+            readyUps.Add(ID);
+
+            if (readyUps.Count >= players.Count)
+            {
+                InGame = false;
+                readyUps.Clear();
+                GameGUI.instance.OpenDeathScreen(GetTotalScore());
             }
         }
     }

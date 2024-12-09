@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+
         pad = playerInput.GetDevice<Gamepad>();
         if (pad != null) pad.SetMotorSpeeds(0f, 0f);
 
@@ -144,6 +145,7 @@ public class Player : MonoBehaviour
             else
             {
                 // UI Pause
+                GameGUI.instance.TogglePauseMenu();
             }
         }
     }
@@ -173,8 +175,8 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        //TODO implement player death logic
         Alive = false;
-        gameObject.SetActive(false);
+        transform.position = new Vector3(0, -9999, 0);
+        GameManager.instance.KillPlayer(ID);
     }
 }
