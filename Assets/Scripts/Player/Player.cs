@@ -88,6 +88,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds score to the player
+    /// </summary>
+    /// <param name="amount">The score amount to add</param>
+    public void AddScore(int amount)
+    {
+        Score += amount;
+        GameManager.instance.ShowTotalScore();
+    }
+
 
     /// <summary>
     /// Adds mana to the player
