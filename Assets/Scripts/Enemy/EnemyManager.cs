@@ -15,6 +15,8 @@ public class EnemyManager : MonoBehaviour
 
     private float _spawnTimer;
 
+    public Action<int> onChangeWave;
+
     private void Awake()
     {
         if (instance == null)
@@ -52,5 +54,10 @@ public class EnemyManager : MonoBehaviour
     {
         GameObject spawnedEnemy = Instantiate(enemyType.prefab, spawnPosition, spawnRotation);
         spawnedEnemy.AddComponent<Enemy>().Initialize(enemyType);
+    }
+
+    public void ChangeWave(int waveIndex)
+    {
+        onChangeWave.Invoke(waveIndex);
     }
 }
