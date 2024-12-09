@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     private bool _hasShield;
     private int _shieldLifePoints;
 
+    private bool _canFire;
     private ProjectileType _projectileType;
     private float _fireRate;
 
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
         }
 
         //Projectile params
+        _canFire = enemyType.canFire;
         _projectileType = enemyType.projectileType;
         _fireRate = enemyType.fireRate;
         _fireTimer = _fireRate;
@@ -60,7 +62,8 @@ public class Enemy : MonoBehaviour
         if (_ready)
         {
             Move();
-            Firing();
+            if(_canFire)
+                Firing();
         }
     }
 
