@@ -13,7 +13,8 @@ public class EnemyType : ScriptableObject
     [HideInInspector]public bool hasShield;
     [HideInInspector]public Material shieldMaterial;
     [HideInInspector]public int shieldLifePoints;
-    
+
+    [HideInInspector] public bool canFire;
     [HideInInspector]public ProjectileType projectileType;
     [HideInInspector]public float fireRate;
 }
