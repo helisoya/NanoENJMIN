@@ -8,7 +8,7 @@ public class EnemyProjectile : MonoBehaviour
     private ColorTarget _colour;
 
     private float _speed;
-    private int _inkRecharge;
+    private float _inkRecharge;
 
     private Vector3 _direction;
 
@@ -53,7 +53,7 @@ public class EnemyProjectile : MonoBehaviour
         transform.Translate(movement, Space.World);
     }
 
-    public int GetInkToRecharge(ColorTarget playerColour)
+    public float GetInkToRecharge(ColorTarget playerColour)
     {
         if (playerColour != _colour)
             return 0;

@@ -9,5 +9,5 @@ public class ProjectileType : ScriptableObject
     
     public float speed;
 
-    public int inkRecharge;
+    public float inkRecharge;
 }
