@@ -51,6 +51,8 @@ public class EnemyProjectile : MonoBehaviour
     {
         Vector3 movement = _direction * (_speed * Time.deltaTime);
         transform.Translate(movement, Space.World);
+
+        if (transform.position.x <= -30) Destroy(gameObject);
     }
 
     public float GetInkToRecharge(ColorTarget playerColour)
