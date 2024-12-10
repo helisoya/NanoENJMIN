@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -12,16 +13,20 @@ public class Player : MonoBehaviour
     public int ID { get; private set; }
     public int GUIID { get; private set; }
     public bool Alive { get; private set; }
-    public bool HasMana { get { return currentMana >= 1; } }
+    public float Mana { get { return currentMana; } }
     public int Score { get; private set; }
     public ColorTarget Color { get; private set; }
 
     [Header("Infos")]
-    [SerializeField] private int maxHealth;
-    [SerializeField] private float maxMana;
-    [SerializeField] private float manaFillSpeed;
+    [SerializeField] private int maxHealth = 3;
+    [SerializeField] private float maxMana = 15;
+    [SerializeField] private float manaFillSpeed = 0.2f;
+    [SerializeField] private float invincibilityLength = 4f;
     private float currentMana;
     private int currentHealth;
+    private float invincibilityStart;
+    private bool isInvincible;
+
 
     [Header("Components")]
     [SerializeField] private PlayerMovements movements;
@@ -31,6 +36,12 @@ public class Player : MonoBehaviour
 
     [Header("Collisions")]
     [SerializeField] private PlayerInput playerInput;
+
+    [Header("Audios")]
+    [SerializeField] private AudioClip[] inkAbsortionClips;
+    [SerializeField] private AudioClip[] hitClips;
+    [SerializeField] private AudioClip[] deathClips;
+
     private Gamepad pad;
 
 
@@ -49,6 +60,7 @@ public class Player : MonoBehaviour
         currentMana = maxMana;
         currentHealth = maxHealth;
         Alive = true;
+        isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
     }
@@ -58,6 +70,11 @@ public class Player : MonoBehaviour
         if (currentMana < maxMana)
         {
             AddMana(manaFillSpeed * Time.deltaTime);
+        }
+
+        if (isInvincible && Time.time - invincibilityStart >= invincibilityLength)
+        {
+            isInvincible = false;
         }
     }
 
@@ -77,14 +94,25 @@ public class Player : MonoBehaviour
     /// <param name="amount"></param>
     void OnTakeDamage(int amount)
     {
-        if (!Alive) return;
+        if (!Alive || isInvincible)
+        {
+            AudioManager.instance.PlaySFX2D(hitClips[UnityEngine.Random.Range(0, hitClips.Length)]);
+            return;
+        }
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
         GameGUI.instance.SetPlayerHealth(GUIID, currentHealth);
 
         if (currentHealth == 0)
         {
+            AudioManager.instance.PlaySFX2D(deathClips[UnityEngine.Random.Range(0, deathClips.Length)]);
             Die();
+        }
+        else
+        {
+            AudioManager.instance.PlaySFX2D(hitClips[UnityEngine.Random.Range(0, hitClips.Length)]);
+            invincibilityStart = Time.time;
+            isInvincible = true;
         }
     }
 
@@ -130,7 +158,7 @@ public class Player : MonoBehaviour
     {
         if (Alive && input.isPressed && GameManager.instance.InGame)
         {
-            movements.Dash();
+            //movements.Dash();
         }
     }
 
@@ -165,9 +193,14 @@ public class Player : MonoBehaviour
 
             float inkRecharge = enemyProjectile.GetInkToRecharge(Color);
             if (inkRecharge == 0f)
+            {
                 OnTakeDamage(1);
+            }
             else
+            {
+                AudioManager.instance.PlaySFX2D(inkAbsortionClips[UnityEngine.Random.Range(0, inkAbsortionClips.Length)]);
                 AddMana(inkRecharge);
+            }
 
             Destroy(other.gameObject);
         }

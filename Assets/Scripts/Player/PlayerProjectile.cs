@@ -10,6 +10,7 @@ public class PlayerProjectile : MonoBehaviour
     [Header("Infos")]
     [SerializeField] private float speed = 5;
     [SerializeField] private Renderer projectileRender;
+    [SerializeField] private int damage = 1;
     private ColorTarget color;
     private Player parent;
 
@@ -47,7 +48,7 @@ public class PlayerProjectile : MonoBehaviour
                 return 0;
         }
 
-        return 1;
+        return damage;
     }
 
     void Update()
