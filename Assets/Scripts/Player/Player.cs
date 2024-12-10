@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public int ID { get; private set; }
     public int GUIID { get; private set; }
     public bool Alive { get; private set; }
-    public bool HasMana { get { return currentMana >= 1; } }
+    public float Mana { get { return currentMana; } }
     public int Score { get; private set; }
     public ColorTarget Color { get; private set; }
 
