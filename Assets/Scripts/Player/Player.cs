@@ -212,4 +212,9 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0, -9999, 0);
         GameManager.instance.KillPlayer(ID);
     }
+
+    public Vector3 GetVelocity()
+    {
+        return movements.GetVelocity();
+    }
 }
