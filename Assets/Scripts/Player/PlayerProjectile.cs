@@ -54,6 +54,6 @@ public class PlayerProjectile : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (transform.position.x >= 30) Destroy(gameObject);
+        if (transform.position.x >= 21.2f) Destroy(gameObject);
     }
 }
