@@ -36,6 +36,12 @@ public class Player : MonoBehaviour
 
     [Header("Collisions")]
     [SerializeField] private PlayerInput playerInput;
+
+    [Header("Audios")]
+    [SerializeField] private AudioClip[] inkAbsortionClips;
+    [SerializeField] private AudioClip[] hitClips;
+    [SerializeField] private AudioClip[] deathClips;
+
     private Gamepad pad;
 
 
@@ -88,17 +94,23 @@ public class Player : MonoBehaviour
     /// <param name="amount"></param>
     void OnTakeDamage(int amount)
     {
-        if (!Alive || isInvincible) return;
+        if (!Alive || isInvincible)
+        {
+            AudioManager.instance.PlaySFX2D(hitClips[UnityEngine.Random.Range(0, hitClips.Length)]);
+            return;
+        }
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
         GameGUI.instance.SetPlayerHealth(GUIID, currentHealth);
 
         if (currentHealth == 0)
         {
+            AudioManager.instance.PlaySFX2D(deathClips[UnityEngine.Random.Range(0, deathClips.Length)]);
             Die();
         }
         else
         {
+            AudioManager.instance.PlaySFX2D(hitClips[UnityEngine.Random.Range(0, hitClips.Length)]);
             invincibilityStart = Time.time;
             isInvincible = true;
         }
@@ -181,9 +193,14 @@ public class Player : MonoBehaviour
 
             float inkRecharge = enemyProjectile.GetInkToRecharge(Color);
             if (inkRecharge == 0f)
+            {
                 OnTakeDamage(1);
+            }
             else
+            {
+                AudioManager.instance.PlaySFX2D(inkAbsortionClips[UnityEngine.Random.Range(0, inkAbsortionClips.Length)]);
                 AddMana(inkRecharge);
+            }
 
             Destroy(other.gameObject);
         }
