@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 193ef03170345c64589c625c5df4993f, type: 3}
-  m_Name: Wave_NoShoot 1
+  m_Name: Wave_NoShoot_DiagUp_3
   m_EditorClassIdentifier: 
   waveSpawnerSetups:
-  - spawnerIndex: 0
-    pattern: {fileID: 11400000, guid: f7be71aa5d5fa9841a27e9b3ba7d88f9, type: 2}
-  - spawnerIndex: 1
-    pattern: {fileID: 11400000, guid: f7be71aa5d5fa9841a27e9b3ba7d88f9, type: 2}
+  - spawnerIndex: 9
+    pattern: {fileID: 11400000, guid: 0df0572682fe1064f91d3e0e899f4e0f, type: 2}
