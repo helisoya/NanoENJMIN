@@ -9,9 +9,9 @@ public class LeaderboardEntryGUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI usernameText;
     [SerializeField] private TextMeshProUGUI totalScoreText;
 
-    public void Init(string username, int score1, int score2)
+    public void Init(string username, int score)
     {
         usernameText.text = username;
-        totalScoreText.text = (score1 + score2).ToString();
+        totalScoreText.text = score.ToString();
     }
 }
