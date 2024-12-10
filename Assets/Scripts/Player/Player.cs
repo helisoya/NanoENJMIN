@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
     {
         if (Alive && input.isPressed && GameManager.instance.InGame)
         {
-            movements.Dash();
+            //movements.Dash();
         }
     }
 
