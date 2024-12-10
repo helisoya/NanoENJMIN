@@ -1,20 +1,27 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
 
-    [SerializeField] private List<EnemySpawner> _spawners;
+    private List<EnemySpawner> _spawners;
     
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            _spawners = new();
+            foreach (Transform child in transform)
+            {
+                _spawners.Add(child.GetComponent<EnemySpawner>());
+            }
+        }
         else
+        {
             Destroy(this);
+        }
     }
 
     public void SpawnWave(WaveSO wave)
