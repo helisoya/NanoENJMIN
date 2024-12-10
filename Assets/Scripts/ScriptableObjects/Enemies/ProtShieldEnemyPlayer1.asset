@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af34d4357b5f1ef4690309c8eeee63fe, type: 3}
   m_Name: ProtShieldEnemyPlayer1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8231886605894457948, guid: e1e4e33f0ba3c1a47823dd04516b96eb, type: 3}
+  prefab: {fileID: 6742168279788613008, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
   colour: 1
   speed: 1.5
   score: 1
@@ -21,5 +21,5 @@ MonoBehaviour:
   shieldMaterial: {fileID: 0}
   shieldLifePoints: 0
   canFire: 1
-  projectileType: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
+  projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
   fireRate: 0.8

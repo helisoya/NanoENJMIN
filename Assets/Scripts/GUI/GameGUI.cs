@@ -106,7 +106,7 @@ public class GameGUI : MonoBehaviour
 
         foreach (PlayerReadyUp readyUp in playerReadyUps)
         {
-            readyUp.gameObject.SetActive(false);
+            readyUp.SetPlayerActive(false);
             readyUp.SetReadyUpCheckActive(false);
         }
     }
@@ -137,7 +137,7 @@ public class GameGUI : MonoBehaviour
     public int AddNewPlayerGUI(int ID)
     {
         int GUIID = playersGUI.Count;
-        playerReadyUps[ID].gameObject.SetActive(true);
+        playerReadyUps[ID].SetPlayerActive(true);
         playerReadyUps[ID].SetPlayerColor(playerColors[ID]);
         PlayerGUI player = Instantiate(prefabPlayerGUI, playersGUIRoots[GUIID]);
         player.SetHealthOnLeft(ID % 2 == 0);
