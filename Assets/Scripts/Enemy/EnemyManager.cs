@@ -8,10 +8,6 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager instance;
 
     [SerializeField] private List<EnemySpawner> _spawners;
-
-    //TEST
-    [SerializeField] private List<WaveSO> _waves;
-    [SerializeField] private int _waveIndex;
     
     private void Awake()
     {
