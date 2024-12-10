@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -17,11 +18,15 @@ public class Player : MonoBehaviour
     public ColorTarget Color { get; private set; }
 
     [Header("Infos")]
-    [SerializeField] private int maxHealth;
-    [SerializeField] private float maxMana;
-    [SerializeField] private float manaFillSpeed;
+    [SerializeField] private int maxHealth = 3;
+    [SerializeField] private float maxMana = 15;
+    [SerializeField] private float manaFillSpeed = 0.2f;
+    [SerializeField] private float invincibilityLength = 4f;
     private float currentMana;
     private int currentHealth;
+    private float invincibilityStart;
+    private bool isInvincible;
+
 
     [Header("Components")]
     [SerializeField] private PlayerMovements movements;
@@ -49,6 +54,7 @@ public class Player : MonoBehaviour
         currentMana = maxMana;
         currentHealth = maxHealth;
         Alive = true;
+        isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
     }
@@ -58,6 +64,11 @@ public class Player : MonoBehaviour
         if (currentMana < maxMana)
         {
             AddMana(manaFillSpeed * Time.deltaTime);
+        }
+
+        if (isInvincible && Time.time - invincibilityStart >= invincibilityLength)
+        {
+            isInvincible = false;
         }
     }
 
@@ -77,7 +88,7 @@ public class Player : MonoBehaviour
     /// <param name="amount"></param>
     void OnTakeDamage(int amount)
     {
-        if (!Alive) return;
+        if (!Alive || isInvincible) return;
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
         GameGUI.instance.SetPlayerHealth(GUIID, currentHealth);
@@ -85,6 +96,11 @@ public class Player : MonoBehaviour
         if (currentHealth == 0)
         {
             Die();
+        }
+        else
+        {
+            invincibilityStart = Time.time;
+            isInvincible = true;
         }
     }
 

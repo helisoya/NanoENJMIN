@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         _speed = enemyType.speed;
         _score = enemyType.score;
         _lifePoints = enemyType.lifePoints;
-        
+
         //Shield params
         _shield = transform.GetChild(0).gameObject;
         _hasShield = enemyType.hasShield;
@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
         if (_ready)
         {
             Move();
-            if(_canFire)
+            if (_canFire)
                 Firing();
         }
     }
@@ -80,6 +80,14 @@ public class Enemy : MonoBehaviour
                 TakeHit(damage, playerProjectile.GetParent());
 
             Destroy(other.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.rigidbody.SendMessage("OnTakeDamage", 1);
         }
     }
 

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3650043358166233185}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   maxHealth: 3
   maxMana: 30
   manaFillSpeed: 0.6
+  invincibilityLength: 2
   movements: {fileID: 7197915407237680396}
   attack: {fileID: 3650043358166233185}
   animator: {fileID: 0}
@@ -215,7 +216,7 @@ GameObject:
   - component: {fileID: 8952503599592223462}
   m_Layer: 3
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
