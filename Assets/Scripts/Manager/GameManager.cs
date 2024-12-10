@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Dan.Main;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -56,17 +57,23 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ShowTotalScore()
     {
-
         GameGUI.instance.SetScore(GetTotalScore());
     }
 
     public void SaveScore(string entryName)
     {
-        LeaderboardManager.instance.AddEntry(
-            entryName,
-            players.Count >= 1 ? players[0].Score : 0,
-            players.Count >= 2 ? players[1].Score : 0
-        );
+        Leaderboards.NanoPoulpeLeaderboard.ResetPlayer(() =>
+        {
+            Leaderboards.NanoPoulpeLeaderboard.UploadNewEntry(
+                entryName,
+                GetTotalScore(),
+                (msg) =>
+                {
+                    Leaderboards.NanoPoulpeLeaderboard.ResetPlayer();
+                    GameGUI.instance.OpenLeaderboard();
+                }
+            );
+        });
     }
 
     /// <summary>

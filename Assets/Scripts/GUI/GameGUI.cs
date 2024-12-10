@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Dan.Main;
+using Dan.Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -177,11 +179,25 @@ public class GameGUI : MonoBehaviour
     /// <summary>
     /// Opens the leaderboard
     /// </summary>
-    void OpenLeaderboard()
+    public void OpenLeaderboard()
     {
         endScreen.SetActive(false);
         leaderboardScreen.SetActive(true);
 
+        Leaderboards.NanoPoulpeLeaderboard.GetEntries((msg) =>
+        {
+            foreach (Entry entry in msg)
+            {
+                Instantiate(leaderboardEntryPrefab, leaderboardRoot).Init(entry.Username, entry.Score);
+            }
+
+            leaderboardRoot.GetComponent<RectTransform>().sizeDelta = new Vector2(
+                leaderboardRoot.GetComponent<RectTransform>().sizeDelta.x,
+                (leaderboardEntryPrefab.GetComponent<RectTransform>().sizeDelta.y + 5) * msg.Length
+            );
+        });
+
+        /*
         List<LeaderboardEntry> entries = LeaderboardManager.instance.leaderboard.entries;
 
         foreach (LeaderboardEntry entry in entries)
@@ -194,6 +210,7 @@ public class GameGUI : MonoBehaviour
             leaderboardRoot.GetComponent<RectTransform>().sizeDelta.x,
             (leaderboardEntryPrefab.GetComponent<RectTransform>().sizeDelta.y + 5) * entries.Count
         );
+        */
     }
 
     /// <summary>
@@ -213,7 +230,6 @@ public class GameGUI : MonoBehaviour
         if (!string.IsNullOrEmpty(endNameInputField.text))
         {
             GameManager.instance.SaveScore(endNameInputField.text);
-            OpenLeaderboard();
         }
     }
 

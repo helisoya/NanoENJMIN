@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     #region params
 
     private ColorTarget _colour;
-    
+
     private float _speed;
     private int _score;
     private int _lifePoints;
@@ -38,11 +38,11 @@ public class Enemy : MonoBehaviour
     {
         //Params
         _colour = enemyTypeSo.colour;
-        
+
         _speed = enemyTypeSo.speed;
         _score = enemyTypeSo.score;
         _lifePoints = enemyTypeSo.lifePoints;
-        
+
         //Shield params
         _shield = transform.GetChild(0).gameObject;
         _hasShield = enemyTypeSo.hasShield;
@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
         if (_ready)
         {
             Move();
-            if(_canFire)
+            if (_canFire)
                 Firing();
         }
     }
@@ -90,6 +90,14 @@ public class Enemy : MonoBehaviour
                 TakeHit(damage);
 
             Destroy(other.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.rigidbody.SendMessage("OnTakeDamage", 1);
         }
     }
 
@@ -156,6 +164,6 @@ public class Enemy : MonoBehaviour
 
     private void OnSplineCompleted()
     {
-        
+
     }
 }
