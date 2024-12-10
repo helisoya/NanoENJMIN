@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
         int enemiesSpawned = 0;
         while (enemiesSpawned < pattern.enemies.Count)
         {
-            CreateEnemy(pattern.enemies[enemiesSpawned], _spline.Spline.EvaluatePosition(0f), Quaternion.LookRotation(-transform.right));
+            CreateEnemy(pattern.enemies[enemiesSpawned], (Vector3) _spline.Spline.EvaluatePosition(0f) + transform.position, Quaternion.LookRotation(-transform.right));
             enemiesSpawned++;
             yield return new WaitForSeconds(pattern.spawnRate);
         }
