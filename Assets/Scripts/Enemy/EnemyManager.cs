@@ -35,7 +35,6 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (WaveSpawnerSetup waveSpawner in wave.waveSpawnerSetups)
         {
-            print("doing tings");
             _spawners[waveSpawner.spawnerIndex].SpawnPattern(waveSpawner.pattern);
         }
     }
