@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Wave3
   m_EditorClassIdentifier: 
   waveSpawnerSetups:
-  - spawnerIndex: 2
-    pattern: {fileID: 11400000, guid: f8137aa3ad7ae7f4fa93cad8d699929e, type: 2}
+  - spawnerIndex: 0
+    pattern: {fileID: 11400000, guid: b30cbb525aa59e04a802043022b4ddd4, type: 2}

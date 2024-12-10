@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 193ef03170345c64589c625c5df4993f, type: 3}
-  m_Name: Wave1
+  m_Name: Wave7
   m_EditorClassIdentifier: 
   waveSpawnerSetups:
-  - spawnerIndex: 2
-    pattern: {fileID: 11400000, guid: b30cbb525aa59e04a802043022b4ddd4, type: 2}
+  - spawnerIndex: 4
+    pattern: {fileID: 11400000, guid: 6a6703926a4c93b40a91644d05d547a1, type: 2}
+  - spawnerIndex: 6
+    pattern: {fileID: 11400000, guid: bec3f980192baa845966376d55e1798f, type: 2}
