@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
-    [CanBeNull]private Player _targetPlayer;
+    [CanBeNull] private Player _targetPlayer;
     
     private GameObject _shield;
     private MeshRenderer _shieldRenderer;
@@ -83,7 +83,15 @@ public class Enemy : MonoBehaviour
         _spline = spline;
         _splineRelativePosition = splineRelativePosition;
 
-        //_targetPlayer = GameManager.instance.GetPlayerFromColour(_colour);
+        switch (_colour)
+        {
+            case ColorTarget.YELLOW:
+                _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.PURPLE);
+                break;
+            case ColorTarget.PURPLE:
+                _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.YELLOW);
+                break;
+        }
 
         _ready = true;
     }
@@ -94,7 +102,7 @@ public class Enemy : MonoBehaviour
         {
             Move();
             
-            if(_targetingMode ==  TargetingMode.Locked || _targetingMode == TargetingMode.PredictedLocked)
+            if(_targetingMode ==  TargetingMode.Locked || _targetingMode == TargetingMode.PredictedLocked || !_canFire)
                 Rotate();
             
             if(_canFire)
@@ -126,15 +134,23 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        if (!_completedSpline)
+        if (!_canFire)
         {
-            _splineTraveledDistance += Time.deltaTime * _speed;
-            float splineProgression = _splineTraveledDistance / _spline.Spline.GetLength();
-            transform.position = _spline.Spline.EvaluatePosition(splineProgression) + _splineRelativePosition;
-            if (splineProgression >= 1f)
+            //Should always be looking at player
+            transform.position += transform.forward * (Time.deltaTime * _speed);
+        }
+        else
+        {
+            if (!_completedSpline)
             {
-                _completedSpline = true;
-                OnSplineCompleted();
+                _splineTraveledDistance += Time.deltaTime * _speed;
+                float splineProgression = _splineTraveledDistance / _spline.Spline.GetLength();
+                transform.position = _spline.Spline.EvaluatePosition(splineProgression) + _splineRelativePosition;
+                if (splineProgression >= 1f)
+                {
+                    _completedSpline = true;
+                    OnSplineCompleted();
+                }
             }
         }
     }
