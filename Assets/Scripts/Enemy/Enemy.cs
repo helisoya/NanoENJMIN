@@ -229,6 +229,6 @@ public class Enemy : MonoBehaviour
 
     private void OnSplineCompleted()
     {
-        
+        Destroy(gameObject);
     }
 }
