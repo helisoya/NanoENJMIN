@@ -122,4 +122,17 @@ public class GameManager : MonoBehaviour
     {
         return playerMaterials[(int)color];
     }
+
+    public Player GetPlayerFromColour(ColorTarget colour)
+    {
+        foreach (Player player in players)
+        {
+            if (player.Color == colour)
+            {
+                return player;
+            }
+        }
+
+        return null;
+    }
 }

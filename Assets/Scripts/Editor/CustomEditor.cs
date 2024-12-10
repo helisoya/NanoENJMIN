@@ -1,10 +1,13 @@
-using UnityEditor;
-using UnityEngine;
+
+using System;
 
 namespace Editor
 {
+    using UnityEditor;
+    using UnityEngine;
+    
     [CustomEditor(typeof(EnemyTypeSO))]
-    public class EnemyTypeCustomEditor : UnityEditor.Editor
+    public class EnemyTypeCustomEditor : Editor
     {
         public override void OnInspectorGUI()
         {
@@ -14,6 +17,7 @@ namespace Editor
             DrawShield(enemyType);
             
             DrawProjectile(enemyType);
+
             serializedObject.ApplyModifiedProperties();
         }
 
@@ -40,9 +44,82 @@ namespace Editor
             {
                 enemyTypeSo.projectileTypeSo =
                     (ProjectileTypeSO)EditorGUILayout.ObjectField("Projectile Type", enemyTypeSo.projectileTypeSo, typeof(ProjectileTypeSO), false);
+
+                enemyTypeSo.targetingType =
+                    (TargetingType)EditorGUILayout.EnumPopup("Targeting Type", enemyTypeSo.targetingType);
+
+                enemyTypeSo.fireAngleRange = EditorGUILayout.FloatField("Fire Angle Range", enemyTypeSo.fireAngleRange);
+                
                 enemyTypeSo.fireRate =
                     EditorGUILayout.FloatField("Fire Rate", enemyTypeSo.fireRate);
             }
         }
     }
+
+    
+#if UNITY_EDITOR
+    [CustomEditor(typeof(CustomPatternTest))]
+    public class GridHolderEditor : Editor
+    {
+        SerializedProperty grid;
+        SerializedProperty array;
+ 
+        int length;
+ 
+        private void OnEnable()
+        {
+            grid = serializedObject.FindProperty("grid");
+            length = Enum.GetValues(typeof(Elements)).Length;
+        }
+ 
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
+ 
+            CustomPatternTest script = (CustomPatternTest)target;
+ 
+            DrawGrid();
+ 
+            if (GUILayout.Button("Reset"))
+                script.ResetGrid();
+ 
+            serializedObject.ApplyModifiedProperties();
+        }
+ 
+        private void DrawGrid()
+        {
+            try
+            {
+                GUILayout.BeginVertical();
+                for (int i = 0; i < CustomPatternTest.size; i++)
+                {
+                    GUILayout.BeginHorizontal();
+                    array = grid.GetArrayElementAtIndex(i).FindPropertyRelative("values");
+                    for (int j = 0; j < CustomPatternTest.size; j++)
+                    {
+                        var value = array.GetArrayElementAtIndex(j);
+                        Elements element = (Elements)value.intValue;
+                        if (GUILayout.Button(element.ToString(), GUILayout.MaxWidth(100), GUILayout.MaxHeight(50)))
+                        {
+                            value.intValue = NextIndex(value.intValue);
+                        }
+                    }
+                    GUILayout.EndHorizontal();
+                }
+                GUILayout.EndVertical();
+ 
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogWarning(e);
+            }
+        }
+ 
+        private int NextIndex(int index)
+        {
+            int result = ++index % length;
+            return result;
+        }
+    }
+#endif
 }

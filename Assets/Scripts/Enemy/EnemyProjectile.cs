@@ -10,15 +10,13 @@ public class EnemyProjectile : MonoBehaviour
     private float _speed;
     private float _inkRecharge;
 
-    private Vector3 _direction;
-
     #endregion
 
     private MeshRenderer _renderer;
 
     private bool _ready = false;
 
-    public void Initialize(ProjectileTypeSO projectileTypeSo, ColorTarget colour, Vector3 direction)
+    public void Initialize(ProjectileTypeSO projectileTypeSo, ColorTarget colour)
     {
         _renderer = GetComponent<MeshRenderer>();
         _renderer.material = projectileTypeSo.colourMaterials[(int)colour];
@@ -27,8 +25,6 @@ public class EnemyProjectile : MonoBehaviour
 
         _speed = projectileTypeSo.speed;
         _inkRecharge = projectileTypeSo.inkRecharge;
-
-        _direction = direction;
 
         _ready = true;
     }
@@ -49,7 +45,7 @@ public class EnemyProjectile : MonoBehaviour
 
     private void Move()
     {
-        Vector3 movement = _direction * (_speed * Time.deltaTime);
+        Vector3 movement = transform.forward * (_speed * Time.deltaTime);
         transform.Translate(movement, Space.World);
     }
 
