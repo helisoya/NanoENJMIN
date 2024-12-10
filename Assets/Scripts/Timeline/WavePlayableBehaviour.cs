@@ -15,4 +15,9 @@ public class WavePlayableBehaviour : PlayableBehaviour
         EnemyManager.instance.SpawnWave(wave);
         _isProcessed = true;
     }
+
+    public override void OnBehaviourPause(Playable playable, FrameData info)
+    {
+        _isProcessed = false;
+    }
 }
