@@ -1,12 +1,14 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Splines;
 
 public class Enemy : MonoBehaviour
 {
     #region params
 
     private ColorTarget _colour;
-
+    
     private float _speed;
     private int _score;
     private int _lifePoints;
@@ -15,7 +17,7 @@ public class Enemy : MonoBehaviour
     private int _shieldLifePoints;
 
     private bool _canFire;
-    private ProjectileType _projectileType;
+    private ProjectileTypeSO _projectileTypeSo;
     private float _fireRate;
 
     #endregion
@@ -23,36 +25,44 @@ public class Enemy : MonoBehaviour
     private GameObject _shield;
     private MeshRenderer _shieldRenderer;
 
+    private SplineContainer _spline;
+    private float3 _splineRelativePosition;
+
     private bool _ready = false;
+    private bool _completedSpline = false;
 
     private float _fireTimer;
+    private float _splineTraveledDistance;
 
-    public void Initialize(EnemyType enemyType)
+    public void Initialize(EnemyTypeSO enemyTypeSo, SplineContainer spline, Vector3 splineRelativePosition)
     {
         //Params
-        _colour = enemyType.colour;
-
-        _speed = enemyType.speed;
-        _score = enemyType.score;
-        _lifePoints = enemyType.lifePoints;
+        _colour = enemyTypeSo.colour;
+        
+        _speed = enemyTypeSo.speed;
+        _score = enemyTypeSo.score;
+        _lifePoints = enemyTypeSo.lifePoints;
         
         //Shield params
         _shield = transform.GetChild(0).gameObject;
-        _hasShield = enemyType.hasShield;
+        _hasShield = enemyTypeSo.hasShield;
         _shield.SetActive(_hasShield);
         if (_hasShield)
         {
             _shieldRenderer = _shield.GetComponent<MeshRenderer>();
-            _shieldRenderer.material = enemyType.shieldMaterial;
+            _shieldRenderer.material = enemyTypeSo.shieldMaterial;
 
-            _shieldLifePoints = enemyType.shieldLifePoints;
+            _shieldLifePoints = enemyTypeSo.shieldLifePoints;
         }
 
         //Projectile params
-        _canFire = enemyType.canFire;
-        _projectileType = enemyType.projectileType;
-        _fireRate = enemyType.fireRate;
+        _canFire = enemyTypeSo.canFire;
+        _projectileTypeSo = enemyTypeSo.projectileTypeSo;
+        _fireRate = enemyTypeSo.fireRate;
         _fireTimer = _fireRate;
+
+        _spline = spline;
+        _splineRelativePosition = splineRelativePosition;
 
         _ready = true;
     }
@@ -77,7 +87,7 @@ public class Enemy : MonoBehaviour
             PlayerProjectile playerProjectile = other.gameObject.GetComponent<PlayerProjectile>();
             int damage = playerProjectile.GetDamage(_hasShield, _colour);
             if (damage != 0)
-                TakeHit(damage, playerProjectile.GetParent());
+                TakeHit(damage);
 
             Destroy(other.gameObject);
         }
@@ -85,8 +95,20 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        Vector3 movement = transform.forward * (_speed * Time.deltaTime);
-        transform.Translate(movement, Space.World);
+        /*Vector3 movement = transform.forward * (_speed * Time.deltaTime);
+        transform.Translate(movement, Space.World);*/
+
+        if (!_completedSpline)
+        {
+            _splineTraveledDistance += Time.deltaTime * _speed;
+            float _splineProgression = _splineTraveledDistance / _spline.Spline.GetLength();
+            transform.position = _spline.Spline.EvaluatePosition(_splineProgression) + _splineRelativePosition;
+            if (_splineProgression >= 1f)
+            {
+                _completedSpline = true;
+                OnSplineCompleted();
+            }
+        }
     }
 
     private void Firing()
@@ -99,13 +121,13 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         //Projetile Spawning
-        GameObject spawnedProjectile = Instantiate(_projectileType.prefab, transform.position, transform.rotation);
-        spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileType, _colour, transform.forward);
+        GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, transform.rotation);
+        spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour, transform.forward);
 
         _fireTimer = _fireRate;
     }
 
-    private void TakeHit(int damage, Player from)
+    private void TakeHit(int damage)
     {
         if (_hasShield)
         {
@@ -117,7 +139,7 @@ public class Enemy : MonoBehaviour
         {
             _lifePoints -= damage;
             if (_lifePoints <= 0)
-                Die(from);
+                Die();
         }
     }
 
@@ -127,9 +149,13 @@ public class Enemy : MonoBehaviour
         _hasShield = false;
     }
 
-    private void Die(Player killer)
+    private void Die()
     {
-        killer.AddScore(_score);
         Destroy(gameObject);
+    }
+
+    private void OnSplineCompleted()
+    {
+        
     }
 }

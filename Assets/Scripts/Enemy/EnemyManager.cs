@@ -7,16 +7,12 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
 
-    [SerializeField] private List<EnemyType> _enemyTypes;
+    [SerializeField] private List<EnemySpawner> _spawners;
 
-    [SerializeField] private List<GameObject> _enemySpawnPoints;
-
-    [SerializeField] private float _spawnRate;
-
-    private float _spawnTimer;
-
-    public Action<int> onChangeWave;
-
+    //TEST
+    [SerializeField] private List<WaveSO> _waves;
+    [SerializeField] private int _waveIndex;
+    
     private void Awake()
     {
         if (instance == null)
@@ -25,41 +21,21 @@ public class EnemyManager : MonoBehaviour
             Destroy(this);
     }
 
-    private void Start()
-    {
-        _spawnTimer = _spawnRate;
-    }
-
     private void Update()
     {
-        if (!GameManager.instance.InGame) return;
-
-        _spawnTimer -= Time.deltaTime;
-        if (_spawnTimer <= 0)
+        //TEST
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Spawn();
+            SpawnWave(_waves[_waveIndex]);
         }
     }
+    
 
-    private void Spawn()
+    public void SpawnWave(WaveSO wave)
     {
-        print("doing spawning");
-        GameObject spawnPoint = _enemySpawnPoints[Random.Range(0, _enemySpawnPoints.Count)];
-        EnemyType spawnEnemyType = _enemyTypes[Random.Range(0, _enemyTypes.Count)];
-
-        CreateEnemy(spawnEnemyType, spawnPoint.transform.position, spawnPoint.transform.rotation);
-
-        _spawnTimer = _spawnRate;
-    }
-
-    private void CreateEnemy(EnemyType enemyType, Vector3 spawnPosition, Quaternion spawnRotation)
-    {
-        GameObject spawnedEnemy = Instantiate(enemyType.prefab, spawnPosition, spawnRotation);
-        spawnedEnemy.AddComponent<Enemy>().Initialize(enemyType);
-    }
-
-    public void ChangeWave(int waveIndex)
-    {
-        onChangeWave.Invoke(waveIndex);
+        foreach (WaveSpawnerSetup waveSpawner in wave.waveSpawnerSetups)
+        {
+            _spawners[waveSpawner.spawnerIndex].SpawnPattern(waveSpawner.pattern);
+        }
     }
 }

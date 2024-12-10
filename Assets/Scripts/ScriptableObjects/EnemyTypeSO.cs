@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "EnemyType", menuName = "Scriptable Objects/EnemyType")]
-public class EnemyType : ScriptableObject
+public class EnemyTypeSO : ScriptableObject
 {
     public GameObject prefab;
     public ColorTarget colour;
@@ -15,6 +16,6 @@ public class EnemyType : ScriptableObject
     [HideInInspector]public int shieldLifePoints;
 
     [HideInInspector] public bool canFire;
-    [HideInInspector]public ProjectileType projectileType;
+    [FormerlySerializedAs("projectileType")] [HideInInspector]public ProjectileTypeSO projectileTypeSo;
     [HideInInspector]public float fireRate;
 }

@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Editor
 {
-    [CustomEditor(typeof(EnemyType))]
+    [CustomEditor(typeof(EnemyTypeSO))]
     public class EnemyTypeCustomEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            var enemyType = (EnemyType)target;
+            var enemyType = (EnemyTypeSO)target;
             
             DrawShield(enemyType);
             
@@ -17,31 +17,31 @@ namespace Editor
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void DrawShield(EnemyType enemyType)
+        private void DrawShield(EnemyTypeSO enemyTypeSo)
         {
             EditorGUILayout.Separator();
-            enemyType.hasShield = EditorGUILayout.Toggle("Has Shield", enemyType.hasShield);
+            enemyTypeSo.hasShield = EditorGUILayout.Toggle("Has Shield", enemyTypeSo.hasShield);
 
-            if (enemyType.hasShield)
+            if (enemyTypeSo.hasShield)
             {
-                enemyType.shieldMaterial = (Material)EditorGUILayout.ObjectField("Shield Material", enemyType.shieldMaterial, typeof(Material), false);
+                enemyTypeSo.shieldMaterial = (Material)EditorGUILayout.ObjectField("Shield Material", enemyTypeSo.shieldMaterial, typeof(Material), false);
                 
-                enemyType.shieldLifePoints =
-                    EditorGUILayout.IntField("Shield Life Points", enemyType.shieldLifePoints);
+                enemyTypeSo.shieldLifePoints =
+                    EditorGUILayout.IntField("Shield Life Points", enemyTypeSo.shieldLifePoints);
             }
         }
 
-        private void DrawProjectile(EnemyType enemyType)
+        private void DrawProjectile(EnemyTypeSO enemyTypeSo)
         {
             EditorGUILayout.Separator();
-            enemyType.canFire = EditorGUILayout.Toggle("Can Fire", enemyType.canFire);
+            enemyTypeSo.canFire = EditorGUILayout.Toggle("Can Fire", enemyTypeSo.canFire);
 
-            if (enemyType.canFire)
+            if (enemyTypeSo.canFire)
             {
-                enemyType.projectileType =
-                    (ProjectileType)EditorGUILayout.ObjectField("Projectile Type", enemyType.projectileType, typeof(ProjectileType), false);
-                enemyType.fireRate =
-                    EditorGUILayout.FloatField("Fire Rate", enemyType.fireRate);
+                enemyTypeSo.projectileTypeSo =
+                    (ProjectileTypeSO)EditorGUILayout.ObjectField("Projectile Type", enemyTypeSo.projectileTypeSo, typeof(ProjectileTypeSO), false);
+                enemyTypeSo.fireRate =
+                    EditorGUILayout.FloatField("Fire Rate", enemyTypeSo.fireRate);
             }
         }
     }

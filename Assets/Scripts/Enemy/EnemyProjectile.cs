@@ -18,15 +18,15 @@ public class EnemyProjectile : MonoBehaviour
 
     private bool _ready = false;
 
-    public void Initialize(ProjectileType projectileType, ColorTarget colour, Vector3 direction)
+    public void Initialize(ProjectileTypeSO projectileTypeSo, ColorTarget colour, Vector3 direction)
     {
         _renderer = GetComponent<MeshRenderer>();
-        _renderer.material = projectileType.colourMaterials[(int)colour];
+        _renderer.material = projectileTypeSo.colourMaterials[(int)colour];
 
         _colour = colour;
 
-        _speed = projectileType.speed;
-        _inkRecharge = projectileType.inkRecharge;
+        _speed = projectileTypeSo.speed;
+        _inkRecharge = projectileTypeSo.inkRecharge;
 
         _direction = direction;
 
