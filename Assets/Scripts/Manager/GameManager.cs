@@ -60,22 +60,6 @@ public class GameManager : MonoBehaviour
         GameGUI.instance.SetScore(GetTotalScore());
     }
 
-    public void SaveScore(string entryName)
-    {
-        Leaderboards.NanoPoulpeLeaderboard.ResetPlayer(() =>
-        {
-            Leaderboards.NanoPoulpeLeaderboard.UploadNewEntry(
-                entryName,
-                GetTotalScore(),
-                (msg) =>
-                {
-                    Leaderboards.NanoPoulpeLeaderboard.ResetPlayer();
-                    GameGUI.instance.OpenLeaderboard();
-                }
-            );
-        });
-    }
-
     /// <summary>
     /// Registers a new player
     /// </summary>
@@ -126,7 +110,7 @@ public class GameManager : MonoBehaviour
             {
                 InGame = false;
                 readyUps.Clear();
-                GameGUI.instance.OpenDeathScreen(GetTotalScore());
+                GameGUI.instance.OpenEndScreen(players, false);
             }
         }
     }
@@ -139,5 +123,18 @@ public class GameManager : MonoBehaviour
     public Material GetPlayerMaterial(ColorTarget color)
     {
         return playerMaterials[(int)color];
+    }
+
+    public Player GetPlayerFromColour(ColorTarget colour)
+    {
+        foreach (Player player in players)
+        {
+            if (player.Color == colour)
+            {
+                return player;
+            }
+        }
+
+        return null;
     }
 }

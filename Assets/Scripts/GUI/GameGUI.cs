@@ -30,20 +30,17 @@ public class GameGUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private EventSystem eventSystem;
 
-    [Header("Lose Screen")]
-    [SerializeField] private GameObject loseScreen;
-    [SerializeField] private TextMeshProUGUI loseScoreText;
-
     [Header("End Screen")]
     [SerializeField] private GameObject endScreen;
     [SerializeField] private TextMeshProUGUI endScoreText;
     [SerializeField] private TMP_InputField endNameInputField;
     [SerializeField] private PlayerScore[] scores;
-
-    [Header("Leaderboard")]
-    [SerializeField] private GameObject leaderboardScreen;
     [SerializeField] private Transform leaderboardRoot;
     [SerializeField] private LeaderboardEntryGUI leaderboardEntryPrefab;
+    [SerializeField] private GameObject winOnlyWidgets;
+    [SerializeField] private GameObject leaderboardDataSender;
+    [SerializeField] private TextMeshProUGUI endScreenTitle;
+    private int totalScoreForEndScreen;
 
 
     [Header("Pause Screen")]
@@ -71,18 +68,19 @@ public class GameGUI : MonoBehaviour
     /// Opens the end screen
     /// </summary>
     /// <param name="players">The players</param>
-    public void OpenEndScreen(List<Player> players)
+    /// <param name="hasWon">Have the players won ?</param>
+    public void OpenEndScreen(List<Player> players, bool hasWon)
     {
         gameplayScreen.SetActive(false);
         endScreen.SetActive(true);
 
-        int total = 0;
+        totalScoreForEndScreen = 0;
 
         for (int i = 0; i < scores.Length; i++)
         {
             if (i < players.Count)
             {
-                total += players[i].Score;
+                totalScoreForEndScreen += players[i].Score;
                 scores[i].SetScore(players[i].Score);
                 scores[i].SetColor(playerColors[players[i].ID]);
             }
@@ -92,7 +90,15 @@ public class GameGUI : MonoBehaviour
             }
         }
 
-        endScoreText.text = "Score : " + total;
+        endScoreText.text = "Score : " + totalScoreForEndScreen;
+
+        leaderboardDataSender.SetActive(hasWon);
+        winOnlyWidgets.SetActive(hasWon);
+
+        endScreenTitle.text = hasWon ? "You won !" : "Game over";
+
+        if (hasWon) RefreshLeaderboard();
+
     }
 
 
@@ -106,7 +112,7 @@ public class GameGUI : MonoBehaviour
 
         foreach (PlayerReadyUp readyUp in playerReadyUps)
         {
-            readyUp.gameObject.SetActive(false);
+            readyUp.SetPlayerActive(false);
             readyUp.SetReadyUpCheckActive(false);
         }
     }
@@ -137,7 +143,7 @@ public class GameGUI : MonoBehaviour
     public int AddNewPlayerGUI(int ID)
     {
         int GUIID = playersGUI.Count;
-        playerReadyUps[ID].gameObject.SetActive(true);
+        playerReadyUps[ID].SetPlayerActive(true);
         playerReadyUps[ID].SetPlayerColor(playerColors[ID]);
         PlayerGUI player = Instantiate(prefabPlayerGUI, playersGUIRoots[GUIID]);
         player.SetHealthOnLeft(ID % 2 == 0);
@@ -177,15 +183,17 @@ public class GameGUI : MonoBehaviour
 
 
     /// <summary>
-    /// Opens the leaderboard
+    /// Refreshes the leaderboard
     /// </summary>
-    public void OpenLeaderboard()
+    public void RefreshLeaderboard()
     {
-        endScreen.SetActive(false);
-        leaderboardScreen.SetActive(true);
-
         Leaderboards.NanoPoulpeLeaderboard.GetEntries((msg) =>
         {
+            foreach (Transform child in leaderboardRoot)
+            {
+                Destroy(child.gameObject);
+            }
+
             foreach (Entry entry in msg)
             {
                 Instantiate(leaderboardEntryPrefab, leaderboardRoot).Init(entry.Username, entry.Score);
@@ -213,23 +221,25 @@ public class GameGUI : MonoBehaviour
         */
     }
 
-    /// <summary>
-    /// Opens the death screen
-    /// </summary>
-    /// <param name="finalScore">The final score</param>
-    public void OpenDeathScreen(int finalScore)
-    {
-        gameplayScreen.SetActive(false);
-        loseScreen.SetActive(true);
-        loseScoreText.text = "Score : " + finalScore;
-    }
-
-    public void Click_ToLeaderboard()
+    public void Click_SendData()
     {
         // Quit
         if (!string.IsNullOrEmpty(endNameInputField.text))
         {
-            GameManager.instance.SaveScore(endNameInputField.text);
+            leaderboardDataSender.SetActive(false);
+
+            Leaderboards.NanoPoulpeLeaderboard.ResetPlayer(() =>
+                {
+                    Leaderboards.NanoPoulpeLeaderboard.UploadNewEntry(
+                        endNameInputField.text,
+                        totalScoreForEndScreen,
+                        (msg) =>
+                        {
+                            Leaderboards.NanoPoulpeLeaderboard.ResetPlayer();
+                            RefreshLeaderboard();
+                        }
+                    );
+                });
         }
     }
 

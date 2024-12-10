@@ -1,14 +1,16 @@
 using System;
+using JetBrains.Annotations;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     #region params
 
     private ColorTarget _colour;
-
+    
     private float _speed;
     private int _score;
     private int _lifePoints;
@@ -18,10 +20,14 @@ public class Enemy : MonoBehaviour
 
     private bool _canFire;
     private ProjectileTypeSO _projectileTypeSo;
+    private TargetingType _targetingType;
+    private float _fireAngleRange;
     private float _fireRate;
 
     #endregion
 
+    [CanBeNull]private Player _targetPlayer;
+    
     private GameObject _shield;
     private MeshRenderer _shieldRenderer;
 
@@ -38,11 +44,11 @@ public class Enemy : MonoBehaviour
     {
         //Params
         _colour = enemyTypeSo.colour;
-
+        
         _speed = enemyTypeSo.speed;
         _score = enemyTypeSo.score;
         _lifePoints = enemyTypeSo.lifePoints;
-
+        
         //Shield params
         _shield = transform.GetChild(0).gameObject;
         _hasShield = enemyTypeSo.hasShield;
@@ -57,12 +63,19 @@ public class Enemy : MonoBehaviour
 
         //Projectile params
         _canFire = enemyTypeSo.canFire;
-        _projectileTypeSo = enemyTypeSo.projectileTypeSo;
-        _fireRate = enemyTypeSo.fireRate;
-        _fireTimer = _fireRate;
+        if (_canFire)
+        {
+            _projectileTypeSo = enemyTypeSo.projectileTypeSo;
+            _targetingType = enemyTypeSo.targetingType;
+            _fireAngleRange = enemyTypeSo.fireAngleRange;
+            _fireRate = enemyTypeSo.fireRate;
+            _fireTimer = _fireRate;
+        }
 
         _spline = spline;
         _splineRelativePosition = splineRelativePosition;
+
+        //_targetPlayer = GameManager.instance.GetPlayerFromColour(_colour);
 
         _ready = true;
     }
@@ -72,7 +85,11 @@ public class Enemy : MonoBehaviour
         if (_ready)
         {
             Move();
-            if (_canFire)
+            
+            if(_targetingType ==  TargetingType.Locked || _targetingType == TargetingType.PredictedLocked)
+                Rotate();
+            
+            if(_canFire)
                 Firing();
         }
     }
@@ -93,25 +110,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void Rotate()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.rigidbody.SendMessage("OnTakeDamage", 1);
-        }
+        if(_targetPlayer)
+            transform.LookAt(_targetPlayer.transform.position);
     }
 
     private void Move()
     {
-        /*Vector3 movement = transform.forward * (_speed * Time.deltaTime);
-        transform.Translate(movement, Space.World);*/
-
         if (!_completedSpline)
         {
             _splineTraveledDistance += Time.deltaTime * _speed;
-            float _splineProgression = _splineTraveledDistance / _spline.Spline.GetLength();
-            transform.position = _spline.Spline.EvaluatePosition(_splineProgression) + _splineRelativePosition;
-            if (_splineProgression >= 1f)
+            float splineProgression = _splineTraveledDistance / _spline.Spline.GetLength();
+            transform.position = _spline.Spline.EvaluatePosition(splineProgression) + _splineRelativePosition;
+            if (splineProgression >= 1f)
             {
                 _completedSpline = true;
                 OnSplineCompleted();
@@ -123,18 +135,71 @@ public class Enemy : MonoBehaviour
     {
         _fireTimer -= Time.deltaTime;
         if (_fireTimer <= 0)
-            Fire();
+        {
+            switch (_targetingType)
+            {
+                case TargetingType.None:
+                    Fire();
+                    break;
+                case TargetingType.Locked:
+                    FireTargeted();
+                    break;
+                case TargetingType.PredictedLocked:
+                    FirePredictedTargeted();
+                    break;
+            }
+        }
     }
 
     private void Fire()
     {
         //Projetile Spawning
-        GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, transform.rotation);
-        spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour, transform.forward);
-
+        Quaternion randomRotation = Quaternion.Euler(transform.rotation.eulerAngles.x + RandomAngle(),
+            transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, randomRotation);
+        spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
         _fireTimer = _fireRate;
     }
 
+    private void FireTargeted()
+    {
+        if (_targetPlayer)
+        {
+            Vector3 direction = Vector3.Normalize(_targetPlayer.transform.position - transform.position);
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            Quaternion randomRotation = Quaternion.Euler(targetRotation.eulerAngles.x + RandomAngle(),
+                targetRotation.eulerAngles.y, targetRotation.eulerAngles.z);
+            
+                GameObject spawnedProjectile =
+                Instantiate(_projectileTypeSo.prefab, transform.position, randomRotation);
+            spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
+
+            _fireTimer = _fireRate;
+        }
+    }
+
+    private void FirePredictedTargeted()
+    {
+        if (_targetPlayer)
+        {
+            Vector3 direction = Vector3.Normalize(_targetPlayer.transform.position + _targetPlayer.GetVelocity() - transform.position);
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            Quaternion randomRotation = Quaternion.Euler(targetRotation.eulerAngles.x + RandomAngle(),
+                targetRotation.eulerAngles.y, targetRotation.eulerAngles.z);
+            
+            GameObject spawnedProjectile =
+                Instantiate(_projectileTypeSo.prefab, transform.position, randomRotation);
+            spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
+
+            _fireTimer = _fireRate;
+        }
+    }
+
+    private float RandomAngle()
+    {
+        return Random.Range(-(_fireAngleRange / 2), _fireAngleRange / 2);
+    }
+ 
     private void TakeHit(int damage)
     {
         if (_hasShield)
@@ -164,6 +229,6 @@ public class Enemy : MonoBehaviour
 
     private void OnSplineCompleted()
     {
-
+        
     }
 }

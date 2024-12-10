@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af34d4357b5f1ef4690309c8eeee63fe, type: 3}
-  m_Name: Enemy_Shield_P2
+  m_Name: ProtShieldEnemyPlayer2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8231886605894457948, guid: e1e4e33f0ba3c1a47823dd04516b96eb, type: 3}
+  prefab: {fileID: 690488188108307976, guid: a558bcc310a514842abd1a06f97490d4, type: 3}
   colour: 2
-  speed: 4
+  speed: 1.5
   score: 1
-  lifePoints: 3
-  hasShield: 1
-  shieldMaterial: {fileID: 2100000, guid: 583363d9a177c3642a76124ee76133ab, type: 2}
-  shieldLifePoints: 3
+  lifePoints: 5
+  hasShield: 0
+  shieldMaterial: {fileID: 0}
+  shieldLifePoints: 0
   canFire: 1
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
-  fireRate: 2
+  fireRate: 0.8
