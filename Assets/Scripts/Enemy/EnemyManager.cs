@@ -8,10 +8,6 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager instance;
 
     [SerializeField] private List<EnemySpawner> _spawners;
-
-    //TEST
-    [SerializeField] private List<WaveSO> _waves;
-    [SerializeField] private int _waveIndex;
     
     private void Awake()
     {
@@ -20,16 +16,6 @@ public class EnemyManager : MonoBehaviour
         else
             Destroy(this);
     }
-
-    private void Update()
-    {
-        //TEST
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnWave(_waves[_waveIndex]);
-        }
-    }
-    
 
     public void SpawnWave(WaveSO wave)
     {

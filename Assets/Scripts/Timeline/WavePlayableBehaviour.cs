@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.Playables;
 
 public class WavePlayableBehaviour : PlayableBehaviour
@@ -14,7 +13,6 @@ public class WavePlayableBehaviour : PlayableBehaviour
             return;
         }
         EnemyManager.instance.SpawnWave(wave);
-        Debug.Log($"Spawning wave {wave.name}");
         _isProcessed = true;
     }
 }
