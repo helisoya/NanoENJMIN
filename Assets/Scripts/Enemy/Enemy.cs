@@ -101,9 +101,9 @@ public class Enemy : MonoBehaviour
         if (!_completedSpline)
         {
             _splineTraveledDistance += Time.deltaTime * _speed;
-            float _splineProgression = _splineTraveledDistance / _spline.Spline.GetLength();
-            transform.position = _spline.Spline.EvaluatePosition(_splineProgression) + _splineRelativePosition;
-            if (_splineProgression >= 1f)
+            float splineProgression = _splineTraveledDistance / _spline.Spline.GetLength();
+            transform.position = _spline.Spline.EvaluatePosition(splineProgression) + _splineRelativePosition;
+            if (splineProgression >= 1f)
             {
                 _completedSpline = true;
                 OnSplineCompleted();
