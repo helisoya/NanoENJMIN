@@ -29,6 +29,11 @@ public class PlayerMovements : MonoBehaviour
         this.velocity = velocity;
     }
 
+    public Vector3 GetVelocity()
+    {
+        return rb.linearVelocity;
+    }
+
     /// <summary>
     /// Starts a dash
     /// </summary>

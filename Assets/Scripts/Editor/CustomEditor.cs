@@ -44,6 +44,12 @@ namespace Editor
             {
                 enemyTypeSo.projectileTypeSo =
                     (ProjectileTypeSO)EditorGUILayout.ObjectField("Projectile Type", enemyTypeSo.projectileTypeSo, typeof(ProjectileTypeSO), false);
+
+                enemyTypeSo.targetingType =
+                    (TargetingType)EditorGUILayout.EnumPopup("Targeting Type", enemyTypeSo.targetingType);
+
+                enemyTypeSo.fireAngleRange = EditorGUILayout.FloatField("Fire Angle Range", enemyTypeSo.fireAngleRange);
+                
                 enemyTypeSo.fireRate =
                     EditorGUILayout.FloatField("Fire Rate", enemyTypeSo.fireRate);
             }

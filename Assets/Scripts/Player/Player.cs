@@ -177,4 +177,9 @@ public class Player : MonoBehaviour
         Alive = false;
         gameObject.SetActive(false);
     }
+
+    public Vector3 GetVelocity()
+    {
+        return movements.GetVelocity();
+    }
 }
