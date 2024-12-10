@@ -360,9 +360,6 @@ MonoBehaviour:
   - {fileID: 875000321}
   _waves:
   - {fileID: 11400000, guid: da37632ae12986e4b9acc0fcbf5a86c8, type: 2}
-  - {fileID: 11400000, guid: da37632ae12986e4b9acc0fcbf5a86c8, type: 2}
-  - {fileID: 11400000, guid: da37632ae12986e4b9acc0fcbf5a86c8, type: 2}
-  - {fileID: 11400000, guid: da37632ae12986e4b9acc0fcbf5a86c8, type: 2}
   _waveIndex: 0
 --- !u!1 &875000320
 GameObject:

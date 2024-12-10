@@ -20,9 +20,13 @@ public class Enemy : MonoBehaviour
 
     private bool _canFire;
     private ProjectileTypeSO _projectileTypeSo;
-    private TargetingType _targetingType;
+    private TargetingMode _targetingMode;
+    private FireMode _fireMode;
     private float _fireAngleRange;
     private float _fireRate;
+
+    private int _nbBurstProjectiles;
+    private float _burstProjectileAngleSpacing;
 
     #endregion
 
@@ -66,10 +70,14 @@ public class Enemy : MonoBehaviour
         if (_canFire)
         {
             _projectileTypeSo = enemyTypeSo.projectileTypeSo;
-            _targetingType = enemyTypeSo.targetingType;
+            _fireMode = enemyTypeSo.fireMode;
+            _targetingMode = enemyTypeSo.targetingMode;
             _fireAngleRange = enemyTypeSo.fireAngleRange;
             _fireRate = enemyTypeSo.fireRate;
             _fireTimer = _fireRate;
+
+            _nbBurstProjectiles = enemyTypeSo.nbBurstProjectiles;
+            _burstProjectileAngleSpacing = enemyTypeSo.burstProjectileAngleSpacing;
         }
 
         _spline = spline;
@@ -86,7 +94,7 @@ public class Enemy : MonoBehaviour
         {
             Move();
             
-            if(_targetingType ==  TargetingType.Locked || _targetingType == TargetingType.PredictedLocked)
+            if(_targetingMode ==  TargetingMode.Locked || _targetingMode == TargetingMode.PredictedLocked)
                 Rotate();
             
             if(_canFire)
@@ -136,63 +144,68 @@ public class Enemy : MonoBehaviour
         _fireTimer -= Time.deltaTime;
         if (_fireTimer <= 0)
         {
-            switch (_targetingType)
+            switch (_fireMode)
             {
-                case TargetingType.None:
-                    Fire();
+                case FireMode.Single:
+                    FireSingle();
                     break;
-                case TargetingType.Locked:
-                    FireTargeted();
-                    break;
-                case TargetingType.PredictedLocked:
-                    FirePredictedTargeted();
+                case FireMode.Burst:
+                    FireBurst();
                     break;
             }
         }
     }
-
-    private void Fire()
+    
+    private void FireSingle()
     {
-        //Projetile Spawning
-        Quaternion randomRotation = Quaternion.Euler(transform.rotation.eulerAngles.x + RandomAngle(),
-            transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-        GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, randomRotation);
+        Quaternion spawnRotation = GetRotatationFromTargetMode(_targetingMode);
+        
+        GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, spawnRotation);
         spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
+        
         _fireTimer = _fireRate;
     }
 
-    private void FireTargeted()
+    private void FireBurst()
     {
-        if (_targetPlayer)
-        {
-            Vector3 direction = Vector3.Normalize(_targetPlayer.transform.position - transform.position);
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            Quaternion randomRotation = Quaternion.Euler(targetRotation.eulerAngles.x + RandomAngle(),
-                targetRotation.eulerAngles.y, targetRotation.eulerAngles.z);
-            
-                GameObject spawnedProjectile =
-                Instantiate(_projectileTypeSo.prefab, transform.position, randomRotation);
-            spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
+        Quaternion baseSpawnRotation = GetRotatationFromTargetMode(_targetingMode);
+        Quaternion spawnRotation;
 
-            _fireTimer = _fireRate;
+        for (int i = -_nbBurstProjectiles; i <= _nbBurstProjectiles; i++)
+        {
+            spawnRotation = Quaternion.Euler(baseSpawnRotation.eulerAngles.x + (_burstProjectileAngleSpacing * i), baseSpawnRotation.eulerAngles.y, baseSpawnRotation.eulerAngles.z);
+            GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, spawnRotation);
+            spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
         }
+        
+        _fireTimer = _fireRate;
     }
 
-    private void FirePredictedTargeted()
+    private Quaternion GetRotatationFromTargetMode(TargetingMode targetingMode)
     {
-        if (_targetPlayer)
+        Vector3 direction;
+        Quaternion targetRotation;
+        switch (targetingMode)
         {
-            Vector3 direction = Vector3.Normalize(_targetPlayer.transform.position + _targetPlayer.GetVelocity() - transform.position);
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            Quaternion randomRotation = Quaternion.Euler(targetRotation.eulerAngles.x + RandomAngle(),
-                targetRotation.eulerAngles.y, targetRotation.eulerAngles.z);
+            case TargetingMode.None:
+                return Quaternion.Euler(transform.rotation.eulerAngles.x + RandomAngle(),
+                    transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             
-            GameObject spawnedProjectile =
-                Instantiate(_projectileTypeSo.prefab, transform.position, randomRotation);
-            spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
-
-            _fireTimer = _fireRate;
+            case TargetingMode.Locked:
+                direction = Vector3.Normalize(_targetPlayer.transform.position - transform.position);
+                targetRotation = Quaternion.LookRotation(direction);
+                return Quaternion.Euler(targetRotation.eulerAngles.x + RandomAngle(),
+                    targetRotation.eulerAngles.y, targetRotation.eulerAngles.z);
+            
+            case TargetingMode.PredictedLocked:
+                direction = Vector3.Normalize(_targetPlayer.transform.position + _targetPlayer.GetVelocity() - transform.position);
+                targetRotation = Quaternion.LookRotation(direction);
+                return Quaternion.Euler(targetRotation.eulerAngles.x + RandomAngle(),
+                    targetRotation.eulerAngles.y, targetRotation.eulerAngles.z);
         }
+
+        Debug.LogError("No rotation found for targeting mode");
+        return Quaternion.identity;
     }
 
     private float RandomAngle()
