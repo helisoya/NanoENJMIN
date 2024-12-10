@@ -227,6 +227,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 613ab438d2a51824eabe9c4b3a9cc348, type: 3}
   - {fileID: 8300000, guid: 01b5f0a92eb7c3140a7dab0ddea06687, type: 3}
   - {fileID: 8300000, guid: dd8608626ddedb04d858307462d72ae3, type: 3}
+  manaCost: 2.15
 --- !u!1 &6551086449102331491
 GameObject:
   m_ObjectHideFlags: 0
