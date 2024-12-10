@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af34d4357b5f1ef4690309c8eeee63fe, type: 3}
-  m_Name: ProtShieldEnemyPlayer2
+  m_Name: Enemy_Shield_P2
   m_EditorClassIdentifier: 
   prefab: {fileID: 690488188108307976, guid: a558bcc310a514842abd1a06f97490d4, type: 3}
   colour: 2
@@ -22,4 +22,6 @@ MonoBehaviour:
   shieldLifePoints: 0
   canFire: 1
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
+  targetingType: 0
+  fireAngleRange: 0
   fireRate: 0.8
