@@ -224,7 +224,7 @@ public class GameGUI : MonoBehaviour
 
     public void Click_Retry()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Click_Continue()

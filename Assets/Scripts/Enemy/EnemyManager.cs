@@ -21,16 +21,6 @@ public class EnemyManager : MonoBehaviour
             Destroy(this);
     }
 
-    private void Update()
-    {
-        //TEST
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnWave(_waves[_waveIndex]);
-        }
-    }
-    
-
     public void SpawnWave(WaveSO wave)
     {
         foreach (WaveSpawnerSetup waveSpawner in wave.waveSpawnerSetups)

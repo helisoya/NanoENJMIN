@@ -32,7 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1285310861473409750}
   m_Father: {fileID: 0}
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  maxMana: 30
-  manaFillSpeed: 0.6
+  maxMana: 100
+  manaFillSpeed: 0
   movements: {fileID: 7197915407237680396}
   attack: {fileID: 3650043358166233185}
   animator: {fileID: 0}
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3190169125713043025}
-  fireRate: 0.2
+  fireRate: 0.1
   prefabProjectile: {fileID: 2313566190322523393, guid: 182c9a25ca9dfcd469def9f2ec2bb5c4, type: 3}
 --- !u!1 &6551086449102331491
 GameObject:
@@ -230,8 +230,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7996877622426009516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

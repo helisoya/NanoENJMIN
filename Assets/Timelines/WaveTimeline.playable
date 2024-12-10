@@ -1,5 +1,41 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8402004871100756052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a16748d9461eae46a725db9776d5390, type: 3}
+  m_Name: Markers
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects: []
+--- !u!114 &-5263804014158800695
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96be9cbb6dee43245afaa2f439f12a41, type: 3}
+  m_Name: WavePlayableAsset
+  m_EditorClassIdentifier: 
+  wave: {fileID: 11400000, guid: 8e6a6ca751fee71489798bfc28e38dbf, type: 2}
 --- !u!114 &-5056017376323937495
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be9cbb6dee43245afaa2f439f12a41, type: 3}
   m_Name: WavePlayableAsset
   m_EditorClassIdentifier: 
-  wave: {fileID: 11400000, guid: 3d99bd31d4b42ae43bdb0d4e7442cfd5, type: 2}
+  wave: {fileID: 11400000, guid: d7478e6ae6564714ab7339058dc18f7e, type: 2}
 --- !u!114 &-4586446796048725729
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25,7 +61,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be9cbb6dee43245afaa2f439f12a41, type: 3}
   m_Name: WavePlayableAsset
   m_EditorClassIdentifier: 
-  wave: {fileID: 11400000, guid: 5caf052f5741cfe4aaac91feb079d212, type: 2}
+  wave: {fileID: 11400000, guid: 8063239741b1439439f659cc29ec2cc6, type: 2}
+--- !u!114 &-231375214512585589
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96be9cbb6dee43245afaa2f439f12a41, type: 3}
+  m_Name: WavePlayableAsset
+  m_EditorClassIdentifier: 
+  wave: {fileID: 11400000, guid: 119664b78fd6a944e8c748eff42d79ab, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,12 +90,13 @@ MonoBehaviour:
   m_Version: 0
   m_Tracks:
   - {fileID: 5267396193888784221}
+  - {fileID: 6877868111459585824}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1
   m_DurationMode: 0
-  m_MarkerTrack: {fileID: 0}
+  m_MarkerTrack: {fileID: -8402004871100756052}
 --- !u!114 &5267396193888784221
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,10 +119,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 1.25
+    m_Start: 1
     m_ClipIn: 0
     m_Asset: {fileID: -4586446796048725729}
-    m_Duration: 1.65
+    m_Duration: 1
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5267396193888784221}
     m_EaseInDuration: 0
@@ -138,10 +188,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Wave1
   - m_Version: 1
-    m_Start: 4.65
+    m_Start: 6
     m_ClipIn: 0
     m_Asset: {fileID: -5056017376323937495}
-    m_Duration: 1.5166666666666662
+    m_Duration: 1
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5267396193888784221}
     m_EaseInDuration: 0
@@ -206,5 +256,148 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: Wave2
+  - m_Version: 1
+    m_Start: 14
+    m_ClipIn: 0
+    m_Asset: {fileID: -231375214512585589}
+    m_Duration: 1
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 5267396193888784221}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Wave3
+  m_Markers:
+    m_Objects: []
+--- !u!114 &6877868111459585824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82cd92ffc29383742932b27ca414c80f, type: 3}
+  m_Name: Playable Track (1)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 14
+    m_ClipIn: 0
+    m_Asset: {fileID: -5263804014158800695}
+    m_Duration: 1
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6877868111459585824}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Wave4
   m_Markers:
     m_Objects: []
