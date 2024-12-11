@@ -301,6 +301,8 @@ public class Player : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        yield return new WaitForSeconds(invincibilityLength);
+
         bubbleMovement.Play();
         takingDamage = false;
         _bodyCollider.enabled = true;
