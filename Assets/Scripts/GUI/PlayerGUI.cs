@@ -9,7 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerGUI : MonoBehaviour
 {
-    [SerializeField] private Image[] healthBar;
+    [SerializeField] private Animator[] healthBar;
     [SerializeField] private Image manaFill;
     [SerializeField] private Image manaBg;
     private Sprite spriteAlive;
@@ -45,7 +45,11 @@ public class PlayerGUI : MonoBehaviour
     {
         for (int i = healthBar.Length - 1; i >= 0; i--)
         {
-            healthBar[i].sprite = i < health ? spriteAlive : spriteDead;
+            //healthBar[i].sprite = i < health ? spriteAlive : spriteDead;
+            if(i >= health)
+            {
+                healthBar[i].SetTrigger("Death");
+            }
         }
     }
 
