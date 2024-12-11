@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af34d4357b5f1ef4690309c8eeee63fe, type: 3}
-  m_Name: Enemy_P1_Shield_P1_MidLife
+  m_Name: Enemy_P1_Burst_Shield_P1
   m_EditorClassIdentifier: 
   prefab: {fileID: 6742168279788613008, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
   colour: 1
@@ -21,10 +21,10 @@ MonoBehaviour:
   shieldMaterial: {fileID: 2100000, guid: 35af0afa3aff7514abe623e0563d989d, type: 2}
   shieldLifePoints: 2
   canFire: 1
-  fireMode: 0
+  fireMode: 1
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
   targetingMode: 0
   fireAngleRange: 0
-  fireRate: 0.8
-  nbBurstProjectiles: 0
-  burstProjectileAngleSpacing: 0
+  fireRate: 2
+  nbBurstProjectiles: 2
+  burstProjectileAngleSpacing: 15
