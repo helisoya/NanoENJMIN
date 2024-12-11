@@ -18,6 +18,7 @@ MonoBehaviour:
   score: 1
   lifePoints: 3
   hasShield: 1
+  shieldColour: 2
   shieldMaterial: {fileID: 2100000, guid: 35af0afa3aff7514abe623e0563d989d, type: 2}
   shieldLifePoints: 2
   canFire: 1

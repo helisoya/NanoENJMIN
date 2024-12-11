@@ -18,13 +18,14 @@ MonoBehaviour:
   score: 1
   lifePoints: 3
   hasShield: 1
+  shieldColour: 2
   shieldMaterial: {fileID: 2100000, guid: 583363d9a177c3642a76124ee76133ab, type: 2}
   shieldLifePoints: 2
-  canFire: 0
+  canFire: 1
   fireMode: 0
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
   targetingMode: 0
   fireAngleRange: 0
-  fireRate: 0.8
+  fireRate: 1.5
   nbBurstProjectiles: 0
   burstProjectileAngleSpacing: 0

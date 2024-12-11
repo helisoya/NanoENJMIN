@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24d08e11443439e468bceb2dccf7f203, type: 3}
-  m_Name: Pattern_Enemies_5_P2
+  m_Name: Pattern_Enemies_3_P1_HighLife_HighRate
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 11400000, guid: f37a259a1f292994482ba83731a9e796, type: 2}
-  - {fileID: 11400000, guid: f37a259a1f292994482ba83731a9e796, type: 2}
-  - {fileID: 11400000, guid: f37a259a1f292994482ba83731a9e796, type: 2}
-  - {fileID: 11400000, guid: f37a259a1f292994482ba83731a9e796, type: 2}
-  - {fileID: 11400000, guid: f37a259a1f292994482ba83731a9e796, type: 2}
+  - {fileID: 11400000, guid: 18981ae096669e042a9e884148139466, type: 2}
+  - {fileID: 11400000, guid: 18981ae096669e042a9e884148139466, type: 2}
+  - {fileID: 11400000, guid: 18981ae096669e042a9e884148139466, type: 2}
   spawnRate: 1

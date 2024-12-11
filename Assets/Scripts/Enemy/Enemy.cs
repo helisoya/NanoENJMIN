@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     private bool _hasShield;
     private int _shieldLifePoints;
+    private ColorTarget _shieldColour;
 
     private bool _canFire;
     private FireMode _fireMode;
@@ -56,6 +57,7 @@ public class Enemy : MonoBehaviour
         //Shield params
         _shield = transform.GetChild(0).gameObject;
         _hasShield = enemyTypeSo.hasShield;
+        _shieldColour = enemyTypeSo.shieldColour;
         _shield.SetActive(_hasShield);
         if (_hasShield)
         {
@@ -78,20 +80,21 @@ public class Enemy : MonoBehaviour
 
             _nbBurstProjectiles = enemyTypeSo.nbBurstProjectiles;
             _burstProjectileAngleSpacing = enemyTypeSo.burstProjectileAngleSpacing;
+
+            switch (_colour)
+            {
+                case ColorTarget.YELLOW:
+                    _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.PURPLE);
+                    break;
+                case ColorTarget.PURPLE:
+                    _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.YELLOW);
+                    break;
+            }
         }
 
         _spline = spline;
         _splineRelativePosition = splineRelativePosition;
 
-        switch (_colour)
-        {
-            case ColorTarget.YELLOW:
-                _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.PURPLE);
-                break;
-            case ColorTarget.PURPLE:
-                _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.YELLOW);
-                break;
-        }
 
         _ready = true;
     }
@@ -118,7 +121,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerProjectile"))
         {
             PlayerProjectile playerProjectile = other.gameObject.GetComponent<PlayerProjectile>();
-            int damage = playerProjectile.GetDamage(_hasShield, _colour);
+            int damage = playerProjectile.GetDamage(_hasShield, _shieldColour);
             if (damage != 0)
                 TakeHit(damage, playerProjectile.GetParent());
             else EnemyManager.instance.PlayShieldNoDmgClip();
