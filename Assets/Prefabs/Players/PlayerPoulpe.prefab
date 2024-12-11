@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 2767707473171916277}
   - component: {fileID: 3650043358166233185}
   m_Layer: 3
-  m_Name: PlayerPoulpeCom
+  m_Name: PlayerPoulpe
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,6 +282,7 @@ MonoBehaviour:
   playerRenderer: {fileID: 229903242975269442}
   _bodyModel: {fileID: 2479793791921661018}
   _animator: {fileID: 2803935618796434054}
+  _playerAnimHandler: {fileID: 4998611209254269979}
   playerInput: {fileID: 7006348633870953166}
   inkAbsortionClips:
   - {fileID: 8300000, guid: c7f85fbaa3ea3574e8d66ce35dd0e23f, type: 3}
@@ -385,15 +386,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d904302c0f73cc4b90e4d74aa1498e8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d904302c0f73cc4b90e4d74aa1498e8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d904302c0f73cc4b90e4d74aa1498e8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d904302c0f73cc4b90e4d74aa1498e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -701,6 +702,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d904302c0f73cc4b90e4d74aa1498e8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2803935618796434054}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d904302c0f73cc4b90e4d74aa1498e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4998611209254269979}
   m_SourcePrefab: {fileID: 100100000, guid: 1d904302c0f73cc4b90e4d74aa1498e8, type: 3}
 --- !u!137 &229903242975269442 stripped
 SkinnedMeshRenderer:
@@ -756,6 +760,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4998611209254269979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479793791921661018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e2349a9abb85e43a67a9c8d05a0800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!4 &2963984264829730528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d904302c0f73cc4b90e4d74aa1498e8, type: 3}

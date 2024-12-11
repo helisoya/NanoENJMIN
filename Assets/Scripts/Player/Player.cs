@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,6 +27,9 @@ public class Player : MonoBehaviour
     private int currentHealth;
     private float invincibilityStart;
     private bool isInvincible;
+    private bool takingDamage;
+
+    private Quaternion _bodyModelStartRot;
 
 
     [Header("Components")]
@@ -34,6 +38,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Renderer playerRenderer;
     [SerializeField] private GameObject _bodyModel;
     [SerializeField] private Animator _animator;
+    [SerializeField] private PlayerAnimHandler _playerAnimHandler;
 
     [Header("Collisions")]
     [SerializeField] private PlayerInput playerInput;
@@ -53,6 +58,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        _playerAnimHandler._player = this;
 
         pad = playerInput.GetDevice<Gamepad>();
         if (pad != null) pad.SetMotorSpeeds(0f, 0f);
@@ -69,6 +75,8 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
+
+        _bodyModelStartRot = _bodyModel.transform.rotation;
     }
 
     void Update()
@@ -100,6 +108,9 @@ public class Player : MonoBehaviour
     /// <param name="amount"></param>
     public void OnTakeDamage(int amount)
     {
+        if (takingDamage)
+            return;
+        
         if (!Alive || isInvincible)
         {
             AudioManager.instance.PlaySFX2D(hitClips[UnityEngine.Random.Range(0, hitClips.Length)]);
@@ -108,7 +119,12 @@ public class Player : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
         GameGUI.instance.SetPlayerHealth(GUIID, currentHealth);
-
+        
+        _animator.SetTrigger("Die");
+        takingDamage = true;
+        movements.SetVelocity(Vector2.zero);
+        attack.SetCanAttack(false);
+        
         if (currentHealth == 0)
         {
             AudioManager.instance.PlaySFX2D(deathClips[UnityEngine.Random.Range(0, deathClips.Length)]);
@@ -139,14 +155,17 @@ public class Player : MonoBehaviour
     /// <param name="amount">The amount of mana to add</param>
     public void AddMana(float amount)
     {
-        currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
-        GameGUI.instance.SetPlayerManaFill(GUIID, currentMana / maxMana);
+        if (!takingDamage)
+        {
+            currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
+            GameGUI.instance.SetPlayerManaFill(GUIID, currentMana / maxMana);
+        }
     }
 
 
     void OnMove(InputValue input)
     {
-        if (Alive && GameManager.instance.InGame)
+        if (Alive && GameManager.instance.InGame && !takingDamage)
         {
             movements.SetVelocity(input.Get<Vector2>());
             float angle = 90f - (45f * input.Get<Vector2>().y);
@@ -156,7 +175,7 @@ public class Player : MonoBehaviour
 
     void OnShoot(InputValue input)
     {
-        if (Alive && GameManager.instance.InGame)
+        if (Alive && GameManager.instance.InGame && !takingDamage)
         {
             attack.SetCanAttack(input.isPressed);
         }
@@ -164,7 +183,7 @@ public class Player : MonoBehaviour
 
     void OnDash(InputValue input)
     {
-        if (Alive && input.isPressed && GameManager.instance.InGame)
+        if (Alive && input.isPressed && GameManager.instance.InGame && !takingDamage)
         {
             //movements.Dash();
         }
@@ -197,6 +216,7 @@ public class Player : MonoBehaviour
     /// <param name="inkRecharge">How many ink should be recharged</param>
     public void Recharge(float inkRecharge)
     {
+        
         AudioManager.instance.PlaySFX2D(inkAbsortionClips[UnityEngine.Random.Range(0, inkAbsortionClips.Length)]);
         AddMana(inkRecharge);
     }
@@ -234,5 +254,35 @@ public class Player : MonoBehaviour
     public Vector3 GetVelocity()
     {
         return movements.GetVelocity();
+    }
+
+    public void OnEndDeathAnim()
+    {
+        if(Alive)
+            GameManager.instance.RespawnPlayer(this);
+    }
+
+    public void ResetBodyRotation()
+    {
+        _bodyModel.transform.rotation = _bodyModelStartRot;
+    }
+    public void Respawned(Vector3 destinationPosition)
+    {
+        StartCoroutine(RespawnCoroutine(destinationPosition));
+    }
+
+    private IEnumerator RespawnCoroutine(Vector3 destination)
+    {
+        float distance = Vector3.Distance(transform.position, destination);
+        while (distance > 0.5f)
+        {
+            Vector3 movement = transform.right * (Time.deltaTime * 10f);
+            transform.Translate(movement);
+            distance = Vector3.Distance(transform.position, destination);
+            yield return new WaitForEndOfFrame();
+        }
+
+        takingDamage = false;
+        yield return null;
     }
 }

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Players")]
     [SerializeField] private Transform[] spawnPositions;
+    [SerializeField] private Transform[] respawnPositions;
     [SerializeField] private Material[] playerMaterials;
     [SerializeField] private PlayerInputManager inputManager;
 
@@ -39,6 +40,13 @@ public class GameManager : MonoBehaviour
         InGame = false;
         players = new List<Player>();
         readyUps = new List<int>();
+    }
+
+    public void RespawnPlayer(Player player)
+    {
+        player.transform.position = respawnPositions[player.ID].position;
+        player.ResetBodyRotation();
+        player.Respawned(spawnPositions[player.ID].position);
     }
 
     /// <summary>
