@@ -39,8 +39,12 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _bodyModel;
     [SerializeField] private Animator _animator;
     [SerializeField] private PlayerAnimHandler _playerAnimHandler;
+    [SerializeField] private ParticleSystem bubbleMovement;
 
     private Collider _bodyCollider;
+
+    private float inputY;
+    private float smoothRefVel;
 
     [Header("Collisions")]
     [SerializeField] private PlayerInput playerInput;
@@ -55,6 +59,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float absortionVFXLength = 1f;
     private float absortionStart;
     private bool absortionVSFX = false;
+    private ParticleSystem _hitPlayerParticles;
 
     private Gamepad pad;
 
@@ -84,6 +89,7 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
+        _hitPlayerParticles = GameManager.instance.GetHitParticles(Color);
         absortionObj.GetComponent<Renderer>().material.SetColor("_Color", ID == 0 ? UnityEngine.Color.yellow : new Color(0.8f, 0, 0.8f));
 
         _bodyModelStartRot = _bodyModel.transform.rotation;
@@ -105,6 +111,15 @@ public class Player : MonoBehaviour
         {
             absortionVSFX = false;
             absortionObj.SetActive(false);
+        }
+
+        if (!takingDamage)
+        {
+            float angle = 90f - (45f * inputY);
+            //_bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x, _bodyModel.transform.rotation.eulerAngles.y, angle);
+            _bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x,
+                _bodyModel.transform.rotation.eulerAngles.y,
+                Mathf.SmoothDampAngle(_bodyModel.transform.rotation.eulerAngles.z, angle, ref smoothRefVel, 0.1f));
         }
     }
 
@@ -135,6 +150,9 @@ public class Player : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
         GameGUI.instance.SetPlayerHealth(GUIID, currentHealth);
+
+        // particles spawn
+        Instantiate(_hitPlayerParticles, transform.position, Quaternion.identity);
 
         _animator.SetTrigger("Die");
         takingDamage = true;
@@ -184,8 +202,11 @@ public class Player : MonoBehaviour
         if (Alive && GameManager.instance.InGame && !takingDamage)
         {
             movements.SetVelocity(input.Get<Vector2>());
-            float angle = 90f - (45f * input.Get<Vector2>().y);
-            _bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x, _bodyModel.transform.rotation.eulerAngles.y, angle);
+            inputY = input.Get<Vector2>().y;
+            //float angle = 90f - (45f * input.Get<Vector2>().y);
+            //_bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x, _bodyModel.transform.rotation.eulerAngles.y, angle);
+            //_bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x, _bodyModel.transform.rotation.eulerAngles.y, Mathf.SmoothDampAngle(_bodyModel.transform.rotation.eulerAngles.z, angle, ref smoothRefVel,0.01f));
+
         }
     }
 
@@ -269,6 +290,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator RespawnCoroutine(Vector3 destination)
     {
+        bubbleMovement.Stop();
         _bodyCollider.enabled = false;
         float distance = Vector3.Distance(transform.position, destination);
         while (distance > 0.5f)
@@ -279,6 +301,7 @@ public class Player : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        bubbleMovement.Play();
         takingDamage = false;
         _bodyCollider.enabled = true;
         yield return null;

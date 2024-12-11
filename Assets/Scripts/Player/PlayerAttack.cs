@@ -11,8 +11,17 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private PlayerProjectile prefabProjectile;
     [SerializeField] private AudioClip[] fireClips;
     [SerializeField] private float manaCost = 1f;
+    [SerializeField] private Transform shootParticlesPos;
+
+    private ParticleSystem _shootParticles;
     private float lastAttack;
     private bool pressedFire;
+
+    private void Start()
+    {
+
+        _shootParticles = Instantiate(GameManager.instance.GetShootParticles(player.Color), shootParticlesPos.position, Quaternion.identity, shootParticlesPos);
+    }
 
 
     /// <summary>
@@ -32,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
             lastAttack = Time.time;
             player.AddMana(-manaCost);
             Instantiate(prefabProjectile, transform.position, Quaternion.identity).OnSpawn(player.Color, player);
+            _shootParticles.Play();
         }
     }
 }
