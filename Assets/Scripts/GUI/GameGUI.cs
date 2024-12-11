@@ -22,13 +22,13 @@ public class GameGUI : MonoBehaviour
     [Header("Players")]
     [SerializeField] private PlayerGUI prefabPlayerGUI;
     [SerializeField] private Transform[] playersGUIRoots;
+    [SerializeField] private PlayerGUISprites[] playerGUISprites;
     [SerializeField] private Color[] playerColors;
     private List<PlayerGUI> playersGUI;
 
     [Header("General")]
     [SerializeField] private GameObject gameplayScreen;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private EventSystem eventSystem;
 
     [Header("End Screen")]
     [SerializeField] private GameObject endScreen;
@@ -47,6 +47,22 @@ public class GameGUI : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private SettingsMenu settings;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] buttonClips;
+    [SerializeField] private AudioClip winClip;
+    [SerializeField] private AudioClip loseClip;
+
+    [Header("Event System")]
+    [SerializeField] private EventSystem eventSystem;
+    [SerializeField] private GameObject pauseObj;
+    [SerializeField] private GameObject pauseAfterSettingsObj;
+    [SerializeField] private GameObject endObj;
+    [SerializeField] private GameObject settingsObj;
+    [SerializeField] private float stopReceivingInputsFor = 0.25f;
+    private float stopStart;
+
+    public bool InMenu { get { return pauseScreen.activeInHierarchy; } }
+
     void Awake()
     {
         instance = this;
@@ -55,13 +71,27 @@ public class GameGUI : MonoBehaviour
     }
 
     /// <summary>
+    /// Plays a button clip
+    /// </summary>
+    private void PlayButtonClip()
+    {
+        AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
+    }
+
+    /// <summary>
     /// Toggle the pause menu
     /// </summary>
     public void TogglePauseMenu()
     {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
+        PlayButtonClip();
         pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
         Time.timeScale = pauseScreen.activeInHierarchy ? 0 : 1;
         if (!pauseScreen.activeInHierarchy) settings.Close();
+        else eventSystem.SetSelectedGameObject(pauseObj);
     }
 
     /// <summary>
@@ -96,6 +126,11 @@ public class GameGUI : MonoBehaviour
         winOnlyWidgets.SetActive(hasWon);
 
         endScreenTitle.text = hasWon ? "You won !" : "Game over";
+
+        eventSystem.SetSelectedGameObject(endObj);
+        AudioManager.instance.StopBGM();
+        if (hasWon) AudioManager.instance.StopAMB();
+        AudioManager.instance.PlaySFX2D(hasWon ? winClip : loseClip);
 
         if (hasWon) RefreshLeaderboard();
 
@@ -132,6 +167,7 @@ public class GameGUI : MonoBehaviour
     /// <param name="ID">The player's ID</param>
     public void ReadyUpPlayer(int ID)
     {
+        PlayButtonClip();
         playerReadyUps[ID].SetReadyUpCheckActive(true);
     }
 
@@ -146,9 +182,10 @@ public class GameGUI : MonoBehaviour
         playerReadyUps[ID].SetPlayerActive(true);
         playerReadyUps[ID].SetPlayerColor(playerColors[ID]);
         PlayerGUI player = Instantiate(prefabPlayerGUI, playersGUIRoots[GUIID]);
-        player.SetHealthOnLeft(ID % 2 == 0);
+        player.SetSprites(playerGUISprites[GUIID]);
         player.SetManaColor(playerColors[ID]);
         playersGUI.Add(player);
+        PlayButtonClip();
         return GUIID;
     }
 
@@ -204,26 +241,12 @@ public class GameGUI : MonoBehaviour
                 (leaderboardEntryPrefab.GetComponent<RectTransform>().sizeDelta.y + 5) * msg.Length
             );
         });
-
-        /*
-        List<LeaderboardEntry> entries = LeaderboardManager.instance.leaderboard.entries;
-
-        foreach (LeaderboardEntry entry in entries)
-        {
-            Instantiate(leaderboardEntryPrefab, leaderboardRoot).Init(entry.entryName, entry.player1Score, entry.player2Score);
-        }
-
-
-        leaderboardRoot.GetComponent<RectTransform>().sizeDelta = new Vector2(
-            leaderboardRoot.GetComponent<RectTransform>().sizeDelta.x,
-            (leaderboardEntryPrefab.GetComponent<RectTransform>().sizeDelta.y + 5) * entries.Count
-        );
-        */
     }
 
     public void Click_SendData()
     {
         // Quit
+        PlayButtonClip();
         if (!string.IsNullOrEmpty(endNameInputField.text))
         {
             leaderboardDataSender.SetActive(false);
@@ -245,12 +268,21 @@ public class GameGUI : MonoBehaviour
 
     public void Click_Quit()
     {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
+        PlayButtonClip();
         Transition.LoadSceneWithTransition("MainMenu");
-        //SceneManager.LoadScene("MainMenu");
     }
 
     public void Click_Retry()
     {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
+        PlayButtonClip();
         Transition.LoadSceneWithTransition(SceneManager.GetActiveScene().buildIndex);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -262,6 +294,33 @@ public class GameGUI : MonoBehaviour
 
     public void Click_Settings()
     {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
+        PlayButtonClip();
         settings.Open();
+        eventSystem.SetSelectedGameObject(settingsObj);
     }
+
+    public void Click_CloseSettings()
+    {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
+        PlayButtonClip();
+        settings.Close();
+        eventSystem.SetSelectedGameObject(pauseAfterSettingsObj);
+    }
+}
+
+
+[System.Serializable]
+public class PlayerGUISprites
+{
+    public Sprite aliveSprite;
+    public Sprite deadSprite;
+    public Sprite manaFill;
+    public Sprite manaBg;
 }

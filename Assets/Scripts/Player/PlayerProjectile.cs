@@ -9,8 +9,12 @@ public class PlayerProjectile : MonoBehaviour
 {
     [Header("Infos")]
     [SerializeField] private float speed = 5;
-    [SerializeField] private Renderer projectileRender;
     [SerializeField] private int damage = 1;
+
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private float destroyAfter;
+    private bool isDestroyed = false;
     private ColorTarget color;
     private Player parent;
 
@@ -23,7 +27,8 @@ public class PlayerProjectile : MonoBehaviour
     {
         this.parent = parent;
         this.color = color;
-        projectileRender.material = GameManager.instance.GetPlayerMaterial(color);
+        this.isDestroyed = false;
+        animator.runtimeAnimatorController = GameManager.instance.GetPlayerBulletController(color);
     }
 
     /// <summary>
@@ -35,6 +40,15 @@ public class PlayerProjectile : MonoBehaviour
         return parent;
     }
 
+    /// <summary>
+    /// Destroyes the projectile
+    /// </summary>
+    public void DestroyProjectile()
+    {
+        animator.SetTrigger("Destroy");
+        Destroy(gameObject, destroyAfter);
+    }
+
     void OnTriggerEnter(Collider collider)
     {
         print(collider);
@@ -42,6 +56,8 @@ public class PlayerProjectile : MonoBehaviour
 
     public int GetDamage(bool hasShield, ColorTarget targetColour)
     {
+        if (isDestroyed) return 0;
+
         if (hasShield)
         {
             if (targetColour != color)
@@ -53,6 +69,8 @@ public class PlayerProjectile : MonoBehaviour
 
     void Update()
     {
+        if (isDestroyed) return;
+
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
         if (transform.position.x >= 21.2f) Destroy(gameObject);

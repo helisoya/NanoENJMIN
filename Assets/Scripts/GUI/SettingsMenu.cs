@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
@@ -15,7 +16,6 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private Slider sliderMaster;
     [SerializeField] private Slider sliderSFX;
     [SerializeField] private Slider sliderBGM;
-
 
     /// <summary>
     /// Opens the settings menu

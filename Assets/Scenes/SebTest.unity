@@ -355,12 +355,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046cfda1b7736fa43afec2e8b5bf975c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawners:
-  - {fileID: 1994040098}
-  - {fileID: 875000321}
-  _waves:
-  - {fileID: 11400000, guid: da37632ae12986e4b9acc0fcbf5a86c8, type: 2}
-  _waveIndex: 0
+  deathclips: []
+  hitClips: []
+  shieldBreakClip: []
+  shieldHitClip: []
+  shieldNoDmgClip: []
+  shotClip: []
 --- !u!1 &875000320
 GameObject:
   m_ObjectHideFlags: 0

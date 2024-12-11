@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Dan.Main;
@@ -20,7 +21,9 @@ public class GameManager : MonoBehaviour
 {
     [Header("Players")]
     [SerializeField] private Transform[] spawnPositions;
+    [SerializeField] private Transform[] respawnPositions;
     [SerializeField] private Material[] playerMaterials;
+    [SerializeField] private RuntimeAnimatorController[] playerBulletControllers;
     [SerializeField] private PlayerInputManager inputManager;
 
     public static GameManager instance;
@@ -29,6 +32,8 @@ public class GameManager : MonoBehaviour
     public bool InGame { get; private set; }
     private List<int> readyUps;
 
+    public Action onGameStarted;
+
 
     void Awake()
     {
@@ -36,6 +41,13 @@ public class GameManager : MonoBehaviour
         InGame = false;
         players = new List<Player>();
         readyUps = new List<int>();
+    }
+
+    public void RespawnPlayer(Player player)
+    {
+        player.transform.position = respawnPositions[player.ID].position;
+        player.ResetBodyRotation();
+        player.Respawned(spawnPositions[player.ID].position);
     }
 
     /// <summary>
@@ -91,6 +103,7 @@ public class GameManager : MonoBehaviour
                 inputManager.DisableJoining();
                 GameGUI.instance.OpenGamePlayScreen();
                 AudioManager.instance.EnableBGM(0);
+                onGameStarted.Invoke();
                 // Start the timeline
                 TimelineManager.instance.Play();
             }
@@ -124,6 +137,11 @@ public class GameManager : MonoBehaviour
     public Material GetPlayerMaterial(ColorTarget color)
     {
         return playerMaterials[(int)color];
+    }
+
+    public RuntimeAnimatorController GetPlayerBulletController(ColorTarget color)
+    {
+        return playerBulletControllers[(int)color];
     }
 
     public Player GetPlayerFromColour(ColorTarget colour)
