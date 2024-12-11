@@ -78,20 +78,21 @@ public class Enemy : MonoBehaviour
 
             _nbBurstProjectiles = enemyTypeSo.nbBurstProjectiles;
             _burstProjectileAngleSpacing = enemyTypeSo.burstProjectileAngleSpacing;
+
+            switch (_colour)
+            {
+                case ColorTarget.YELLOW:
+                    _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.PURPLE);
+                    break;
+                case ColorTarget.PURPLE:
+                    _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.YELLOW);
+                    break;
+            }
         }
 
         _spline = spline;
         _splineRelativePosition = splineRelativePosition;
 
-        switch (_colour)
-        {
-            case ColorTarget.YELLOW:
-                _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.PURPLE);
-                break;
-            case ColorTarget.PURPLE:
-                _targetPlayer = GameManager.instance.GetPlayerFromColour(ColorTarget.YELLOW);
-                break;
-        }
 
         _ready = true;
     }
