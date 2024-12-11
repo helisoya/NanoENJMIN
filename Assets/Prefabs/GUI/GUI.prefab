@@ -436,6 +436,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1b37059e0ebd3b04581465bcf28ab741, type: 3}
   - {fileID: 8300000, guid: 9c88aea607682ac42838c8c3b064b757, type: 3}
   - {fileID: 8300000, guid: 8af813229f7f04645940de5143000dc1, type: 3}
+  winClip: {fileID: 8300000, guid: fe4382816b666614a97e5f51c5af99ea, type: 3}
+  loseClip: {fileID: 8300000, guid: ec671bce92a261c4ba338d87ffbe8f13, type: 3}
   eventSystem: {fileID: 2855289708485479570}
   pauseObj: {fileID: 3661598891008251493}
   pauseAfterSettingsObj: {fileID: 5217683641205516163}

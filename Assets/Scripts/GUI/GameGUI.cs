@@ -49,6 +49,8 @@ public class GameGUI : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioClip[] buttonClips;
+    [SerializeField] private AudioClip winClip;
+    [SerializeField] private AudioClip loseClip;
 
     [Header("Event System")]
     [SerializeField] private EventSystem eventSystem;
@@ -126,6 +128,9 @@ public class GameGUI : MonoBehaviour
         endScreenTitle.text = hasWon ? "You won !" : "Game over";
 
         eventSystem.SetSelectedGameObject(endObj);
+        AudioManager.instance.StopBGM();
+        if (hasWon) AudioManager.instance.StopAMB();
+        AudioManager.instance.PlaySFX2D(hasWon ? winClip : loseClip);
 
         if (hasWon) RefreshLeaderboard();
 
@@ -236,21 +241,6 @@ public class GameGUI : MonoBehaviour
                 (leaderboardEntryPrefab.GetComponent<RectTransform>().sizeDelta.y + 5) * msg.Length
             );
         });
-
-        /*
-        List<LeaderboardEntry> entries = LeaderboardManager.instance.leaderboard.entries;
-
-        foreach (LeaderboardEntry entry in entries)
-        {
-            Instantiate(leaderboardEntryPrefab, leaderboardRoot).Init(entry.entryName, entry.player1Score, entry.player2Score);
-        }
-
-
-        leaderboardRoot.GetComponent<RectTransform>().sizeDelta = new Vector2(
-            leaderboardRoot.GetComponent<RectTransform>().sizeDelta.x,
-            (leaderboardEntryPrefab.GetComponent<RectTransform>().sizeDelta.y + 5) * entries.Count
-        );
-        */
     }
 
     public void Click_SendData()

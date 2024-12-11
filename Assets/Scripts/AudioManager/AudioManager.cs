@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float bgmTransitionSpeed = 1f;
     [SerializeField] private AudioSource[] bgms;
     [SerializeField] private AudioSource sfx2DSource;
+    [SerializeField] private AudioSource ambSource;
 
     public static AudioManager instance { get; private set; }
 
@@ -20,12 +21,24 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
 
-    void Update()
+
+    /// <summary>
+    /// Stops the AMB
+    /// </summary>
+    public void StopAMB()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad0)) EnableBGM(0);
-        if (Input.GetKeyDown(KeyCode.Keypad1)) EnableBGM(1);
-        if (Input.GetKeyDown(KeyCode.Keypad2)) EnableBGM(2);
-        if (Input.GetKeyDown(KeyCode.Keypad3)) EnableBGM(3);
+        ambSource.volume = 0f;
+    }
+
+    /// <summary>
+    /// Stops the BGM
+    /// </summary>
+    public void StopBGM()
+    {
+        for (int i = 0; i < bgms.Length; i++)
+        {
+            bgms[i].volume = 0f;
+        }
     }
 
     /// <summary>
