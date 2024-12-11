@@ -48,6 +48,12 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip[] hitClips;
     [SerializeField] private AudioClip[] deathClips;
 
+    [Header("Absortion")]
+    [SerializeField] private GameObject absortionObj;
+    [SerializeField] private float absortionVFXLength = 1f;
+    private float absortionStart;
+    private bool absortionVSFX = false;
+
     private Gamepad pad;
 
 
@@ -75,6 +81,7 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
+        absortionObj.GetComponent<Renderer>().material.SetColor("_Color", ID == 0 ? UnityEngine.Color.yellow : new Color(0.8f, 0, 0.8f));
 
         _bodyModelStartRot = _bodyModel.transform.rotation;
     }
@@ -89,6 +96,12 @@ public class Player : MonoBehaviour
         if (isInvincible && Time.time - invincibilityStart >= invincibilityLength)
         {
             isInvincible = false;
+        }
+
+        if (absortionVSFX && Time.time - absortionStart >= absortionVFXLength)
+        {
+            absortionVSFX = false;
+            absortionObj.SetActive(false);
         }
     }
 
@@ -110,7 +123,7 @@ public class Player : MonoBehaviour
     {
         if (takingDamage)
             return;
-        
+
         if (!Alive || isInvincible)
         {
             AudioManager.instance.PlaySFX2D(hitClips[UnityEngine.Random.Range(0, hitClips.Length)]);
@@ -119,12 +132,12 @@ public class Player : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
         GameGUI.instance.SetPlayerHealth(GUIID, currentHealth);
-        
+
         _animator.SetTrigger("Die");
         takingDamage = true;
         movements.SetVelocity(Vector2.zero);
         attack.SetCanAttack(false);
-        
+
         if (currentHealth == 0)
         {
             AudioManager.instance.PlaySFX2D(deathClips[UnityEngine.Random.Range(0, deathClips.Length)]);
@@ -216,33 +229,13 @@ public class Player : MonoBehaviour
     /// <param name="inkRecharge">How many ink should be recharged</param>
     public void Recharge(float inkRecharge)
     {
-        
+        absortionVSFX = true;
+        absortionStart = Time.time;
+        absortionObj.SetActive(true);
+
         AudioManager.instance.PlaySFX2D(inkAbsortionClips[UnityEngine.Random.Range(0, inkAbsortionClips.Length)]);
         AddMana(inkRecharge);
     }
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("EnemyProjectile"))
-        {
-            EnemyProjectile enemyProjectile = other.gameObject.GetComponent<EnemyProjectile>();
-
-            float inkRecharge = enemyProjectile.GetInkToRecharge(Color);
-            if (inkRecharge == 0f)
-            {
-                OnTakeDamage(1);
-            }
-            else
-            {
-                AudioManager.instance.PlaySFX2D(inkAbsortionClips[UnityEngine.Random.Range(0, inkAbsortionClips.Length)]);
-                AddMana(inkRecharge);
-            }
-
-            Destroy(other.gameObject);
-        }
-    }
-    */
 
     private void Die()
     {
@@ -258,7 +251,7 @@ public class Player : MonoBehaviour
 
     public void OnEndDeathAnim()
     {
-        if(Alive)
+        if (Alive)
             GameManager.instance.RespawnPlayer(this);
     }
 
