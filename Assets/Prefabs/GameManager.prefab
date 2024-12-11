@@ -67,6 +67,10 @@ MonoBehaviour:
   - {fileID: 8602483486391717104, guid: 2e21d6356447fd94182a315304c3b5a2, type: 3}
   - {fileID: 8707908812118196303, guid: 20d2c2e49b8468746b7a82a4ffbfa8dc, type: 3}
   - {fileID: 8602483486391717104, guid: 2e21d6356447fd94182a315304c3b5a2, type: 3}
+  hitPlayerParticles:
+  - {fileID: 5046965506579514053, guid: d82e1e96b1f1e1c428233427141f437c, type: 3}
+  - {fileID: 5853932427388616115, guid: 9ebea5275e097974baf2d472da2be302, type: 3}
+  - {fileID: 5046965506579514053, guid: d82e1e96b1f1e1c428233427141f437c, type: 3}
   inputManager: {fileID: 0}
 --- !u!1 &1393477124912235749
 GameObject:
