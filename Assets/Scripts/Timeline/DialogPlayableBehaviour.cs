@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class WavePlayableBehaviour : PlayableBehaviour
+public class DialogPlayableBehaviour : PlayableBehaviour
 {
-    public WaveSO wave;
+    public string dialogText;
 
     private bool _isProcessed;
     
@@ -17,8 +17,9 @@ public class WavePlayableBehaviour : PlayableBehaviour
         {
             return;
         }
-        EnemyManager.instance.SpawnWave(wave);
+
         _isProcessed = true;
+        TimelineManager.instance.ShowDialog(dialogText);
     }
 
     public override void OnBehaviourPause(Playable playable, FrameData info)
@@ -32,5 +33,6 @@ public class WavePlayableBehaviour : PlayableBehaviour
             return;
         }
         _isProcessed = false;
+        TimelineManager.instance.HideDialog();
     }
 }
