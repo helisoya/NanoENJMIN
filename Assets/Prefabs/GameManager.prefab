@@ -63,6 +63,10 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 32a30f0009ce4c842869f8a4e85f2819, type: 2}
   - {fileID: 9100000, guid: 32a30f0009ce4c842869f8a4e85f2819, type: 2}
   - {fileID: 22100000, guid: 9cc547f08ec33ae4da6520f52aa5d7af, type: 2}
+  shootPlayerParticles:
+  - {fileID: 8602483486391717104, guid: 2e21d6356447fd94182a315304c3b5a2, type: 3}
+  - {fileID: 8707908812118196303, guid: 20d2c2e49b8468746b7a82a4ffbfa8dc, type: 3}
+  - {fileID: 8602483486391717104, guid: 2e21d6356447fd94182a315304c3b5a2, type: 3}
   inputManager: {fileID: 0}
 --- !u!1 &1393477124912235749
 GameObject:
