@@ -10,9 +10,39 @@ namespace Editor
     [CustomEditor(typeof(EnemyTypeSO))]
     public class EnemyTypeCustomEditor : Editor
     {
+        private SerializedProperty _hasShieldProperty;
+        private SerializedProperty _shieldMaterialProperty;
+        private SerializedProperty _shieldLifePointsProperty;
+        private SerializedProperty _canFireProperty;
+        private SerializedProperty _fireModeProperty;
+        private SerializedProperty _projectileTypeSoProperty;
+        private SerializedProperty _nbBurstProjectilesProperty;
+        private SerializedProperty _burstProjectileAngleSpacingProperty;
+        private SerializedProperty _targetingModeProperty;
+        private SerializedProperty _fireAngleRangeProperty;
+        private SerializedProperty _fireRateProperty;
+        
+        private void OnEnable()
+        {
+            _hasShieldProperty = serializedObject.FindProperty("hasShield");
+            _shieldMaterialProperty = serializedObject.FindProperty("shieldMaterial");
+            _shieldLifePointsProperty = serializedObject.FindProperty("shieldLifePoints");
+            _canFireProperty = serializedObject.FindProperty("canFire");
+            _fireModeProperty = serializedObject.FindProperty("fireMode");
+            _projectileTypeSoProperty = serializedObject.FindProperty("projectileTypeSo");
+            _nbBurstProjectilesProperty = serializedObject.FindProperty("nbBurstProjectiles");
+            _burstProjectileAngleSpacingProperty = serializedObject.FindProperty("burstProjectileAngleSpacing");
+            _targetingModeProperty = serializedObject.FindProperty("targetingMode");
+            _fireAngleRangeProperty = serializedObject.FindProperty("fireAngleRange");
+            _fireRateProperty = serializedObject.FindProperty("fireRate");
+        }
+
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
+            
+            serializedObject.Update();
+            
             var enemyType = (EnemyTypeSO)target;
             
             DrawShield(enemyType);
@@ -25,47 +55,41 @@ namespace Editor
         private void DrawShield(EnemyTypeSO enemyTypeSo)
         {
             EditorGUILayout.Separator();
-            enemyTypeSo.hasShield = EditorGUILayout.Toggle("Has Shield", enemyTypeSo.hasShield);
+            EditorGUILayout.PropertyField(_hasShieldProperty, new GUIContent("Has Shield"));
 
             if (enemyTypeSo.hasShield)
             {
-                enemyTypeSo.shieldMaterial = (Material)EditorGUILayout.ObjectField("Shield Material", enemyTypeSo.shieldMaterial, typeof(Material), false);
+                EditorGUILayout.PropertyField(_shieldMaterialProperty, new GUIContent("Shield Material"));
                 
-                enemyTypeSo.shieldLifePoints =
-                    EditorGUILayout.IntField("Shield Life Points", enemyTypeSo.shieldLifePoints);
+                EditorGUILayout.PropertyField(_shieldLifePointsProperty, new GUIContent("Shield Life Points"));
             }
         }
 
         private void DrawProjectile(EnemyTypeSO enemyTypeSo)
         {
             EditorGUILayout.Separator();
-            enemyTypeSo.canFire = EditorGUILayout.Toggle("Can Fire", enemyTypeSo.canFire);
+            EditorGUILayout.PropertyField(_canFireProperty, new GUIContent("Can Fire"));
 
             if (enemyTypeSo.canFire)
             {
-                enemyTypeSo.fireMode = (FireMode)EditorGUILayout.EnumPopup("Fire Mode", enemyTypeSo.fireMode);
+                EditorGUILayout.PropertyField(_fireModeProperty, new GUIContent("Fire Mode"));
 
-                enemyTypeSo.projectileTypeSo = (ProjectileTypeSO)EditorGUILayout.ObjectField("Projectile Type", enemyTypeSo.projectileTypeSo, typeof(ProjectileTypeSO), false);
+                EditorGUILayout.PropertyField(_projectileTypeSoProperty, new GUIContent("Projectile Type"));
                     
                 if (enemyTypeSo.fireMode == FireMode.Homing)
                     return;
                 
                 if (enemyTypeSo.fireMode == FireMode.Burst)
                 { 
-                    enemyTypeSo.nbBurstProjectiles = 
-                        EditorGUILayout.IntField("Nb Projectiles", enemyTypeSo.nbBurstProjectiles);
-                    enemyTypeSo.burstProjectileAngleSpacing =
-                        EditorGUILayout.FloatField("Angle Spacing", enemyTypeSo.burstProjectileAngleSpacing);
+                    EditorGUILayout.PropertyField(_nbBurstProjectilesProperty, new GUIContent("Nb Projectiles"));
+                    EditorGUILayout.PropertyField(_burstProjectileAngleSpacingProperty, new GUIContent("Angle Spacing"));
                 }
 
-                enemyTypeSo.targetingMode =
-                    (TargetingMode)EditorGUILayout.EnumPopup("Targeting Type", enemyTypeSo.targetingMode);
+                EditorGUILayout.PropertyField(_targetingModeProperty, new GUIContent("Targeting Type"));
 
-                enemyTypeSo.fireAngleRange =
-                    EditorGUILayout.FloatField("Fire Angle Range", enemyTypeSo.fireAngleRange);
+                EditorGUILayout.PropertyField(_fireAngleRangeProperty, new GUIContent("Fire Angle Range"));
 
-                enemyTypeSo.fireRate =
-                    EditorGUILayout.FloatField("Fire Rate", enemyTypeSo.fireRate);
+                EditorGUILayout.PropertyField(_fireRateProperty, new GUIContent("Fire Rate"));
             }
         }
     }
