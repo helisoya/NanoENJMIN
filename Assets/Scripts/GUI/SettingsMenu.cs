@@ -16,6 +16,8 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private Slider sliderSFX;
     [SerializeField] private Slider sliderBGM;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] buttonClips;
 
     /// <summary>
     /// Opens the settings menu
@@ -40,6 +42,7 @@ public class SettingsMenu : MonoBehaviour
     /// </summary>
     public void Close()
     {
+        AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
         root.SetActive(false);
     }
 
