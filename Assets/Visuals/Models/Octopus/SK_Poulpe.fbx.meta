@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc61c0f4b2f68fe42b703eb277660019
+guid: 1d904302c0f73cc4b90e4d74aa1498e8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -94,6 +94,35 @@ ModelImporter:
       internalID: -4449717305648701825
       firstFrame: 0
       lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Death.001
+      takeName: Armature|Death.001
+      internalID: -2142118036446059745
+      firstFrame: 0
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
