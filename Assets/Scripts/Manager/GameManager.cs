@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
                 readyUps.Clear();
                 inputManager.DisableJoining();
                 GameGUI.instance.OpenGamePlayScreen();
+                AudioManager.instance.EnableBGM(0);
                 // Start the timeline
                 TimelineManager.instance.Play();
             }
