@@ -59,6 +59,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d2210df6b8e0a684e8a3a9b359602de0, type: 2}
   - {fileID: 2100000, guid: 5f837c7a58341ee46983337c70200be7, type: 2}
   - {fileID: 2100000, guid: 8966a19a532efa146a477e3245894dfc, type: 2}
+  playerWeaponMaterials:
+  - {fileID: 2100000, guid: d2210df6b8e0a684e8a3a9b359602de0, type: 2}
+  - {fileID: 2100000, guid: 988cc5dbeaef5464a809705a38ea48b4, type: 2}
+  - {fileID: 2100000, guid: 822885677a8fb9842940f8583b40a1d2, type: 2}
   playerBulletControllers:
   - {fileID: 9100000, guid: 32a30f0009ce4c842869f8a4e85f2819, type: 2}
   - {fileID: 9100000, guid: 32a30f0009ce4c842869f8a4e85f2819, type: 2}

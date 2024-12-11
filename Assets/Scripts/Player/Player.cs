@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -40,6 +41,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private PlayerAnimHandler _playerAnimHandler;
     [SerializeField] private ParticleSystem bubbleMovement;
+
+    [SerializeField] private List<GameObject> _colorWeapons;
 
     private Collider _bodyCollider;
 
@@ -89,6 +92,7 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
+        _colorWeapons[(int)Color].SetActive(true);
         _hitPlayerParticles = GameManager.instance.GetHitParticles(Color);
         absortionObj.GetComponent<Renderer>().material.SetColor("_Color", ID == 0 ? UnityEngine.Color.yellow : new Color(0.8f, 0, 0.8f));
 
