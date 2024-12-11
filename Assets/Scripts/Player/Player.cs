@@ -292,6 +292,7 @@ public class Player : MonoBehaviour
     {
         bubbleMovement.Stop();
         _bodyCollider.enabled = false;
+        
         float distance = Vector3.Distance(transform.position, destination);
         while (distance > 0.5f)
         {
@@ -300,12 +301,12 @@ public class Player : MonoBehaviour
             distance = Vector3.Distance(transform.position, destination);
             yield return new WaitForEndOfFrame();
         }
-
-        yield return new WaitForSeconds(invincibilityLength);
+        
+        isInvincible = true;
+        invincibilityStart = Time.time;
 
         bubbleMovement.Play();
         takingDamage = false;
         _bodyCollider.enabled = true;
-        yield return null;
     }
 }
