@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
-        _colorWeapons[(int)Color].SetActive(true);
+        _colorWeapons[(int)Color - 1].SetActive(true);
         _hitPlayerParticles = GameManager.instance.GetHitParticles(Color);
         absortionObj.GetComponent<Renderer>().material.SetColor("_Color", ID == 0 ? UnityEngine.Color.yellow : new Color(0.8f, 0, 0.8f));
 

@@ -321,8 +321,8 @@ MonoBehaviour:
   _playerAnimHandler: {fileID: 4998611209254269979}
   bubbleMovement: {fileID: 7893661890168703194}
   _colorWeapons:
-  - {fileID: 5661597787996666545}
   - {fileID: 7451746150734204844}
+  - {fileID: 5661597787996666545}
   playerInput: {fileID: 7006348633870953166}
   inkAbsortionClips:
   - {fileID: 8300000, guid: c7f85fbaa3ea3574e8d66ce35dd0e23f, type: 3}
