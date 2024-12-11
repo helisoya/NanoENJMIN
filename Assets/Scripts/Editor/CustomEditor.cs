@@ -42,30 +42,31 @@ namespace Editor
 
             if (enemyTypeSo.canFire)
             {
-                enemyTypeSo.projectileTypeSo =
-                    (ProjectileTypeSO)EditorGUILayout.ObjectField("Projectile Type", enemyTypeSo.projectileTypeSo, typeof(ProjectileTypeSO), false);
+                enemyTypeSo.fireMode = (FireMode)EditorGUILayout.EnumPopup("Fire Mode", enemyTypeSo.fireMode);
 
-                if (enemyTypeSo.projectileTypeSo)
-                {
-                    enemyTypeSo.fireMode = (FireMode)EditorGUILayout.EnumPopup("Fire Mode", enemyTypeSo.fireMode);
+                enemyTypeSo.projectileTypeSo = (ProjectileTypeSO)EditorGUILayout.ObjectField("Projectile Type", enemyTypeSo.projectileTypeSo, typeof(ProjectileTypeSO), false);
+                    
+                enemyTypeSo.fireMode = (FireMode)EditorGUILayout.EnumPopup("Fire Mode", enemyTypeSo.fireMode);
 
-                    if (enemyTypeSo.fireMode == FireMode.Burst)
-                    {
-                        enemyTypeSo.nbBurstProjectiles =
-                            EditorGUILayout.IntField("Nb Projectiles", enemyTypeSo.nbBurstProjectiles);
-                        enemyTypeSo.burstProjectileAngleSpacing =
-                            EditorGUILayout.FloatField("Angle Spacing", enemyTypeSo.burstProjectileAngleSpacing);
-                    }
-
-                    enemyTypeSo.targetingMode =
-                        (TargetingMode)EditorGUILayout.EnumPopup("Targeting Type", enemyTypeSo.targetingMode);
-
-                    enemyTypeSo.fireAngleRange =
-                        EditorGUILayout.FloatField("Fire Angle Range", enemyTypeSo.fireAngleRange);
-
-                    enemyTypeSo.fireRate =
-                        EditorGUILayout.FloatField("Fire Rate", enemyTypeSo.fireRate);
+                if (enemyTypeSo.fireMode == FireMode.Homing)
+                    return;
+                
+                if (enemyTypeSo.fireMode == FireMode.Burst)
+                { 
+                    enemyTypeSo.nbBurstProjectiles = 
+                        EditorGUILayout.IntField("Nb Projectiles", enemyTypeSo.nbBurstProjectiles);
+                    enemyTypeSo.burstProjectileAngleSpacing =
+                        EditorGUILayout.FloatField("Angle Spacing", enemyTypeSo.burstProjectileAngleSpacing);
                 }
+
+                enemyTypeSo.targetingMode =
+                    (TargetingMode)EditorGUILayout.EnumPopup("Targeting Type", enemyTypeSo.targetingMode);
+
+                enemyTypeSo.fireAngleRange =
+                    EditorGUILayout.FloatField("Fire Angle Range", enemyTypeSo.fireAngleRange);
+
+                enemyTypeSo.fireRate =
+                    EditorGUILayout.FloatField("Fire Rate", enemyTypeSo.fireRate);
             }
         }
     }

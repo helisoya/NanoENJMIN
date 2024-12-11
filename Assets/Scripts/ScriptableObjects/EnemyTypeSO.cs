@@ -6,7 +6,8 @@ using UnityEngine.Serialization;
 public enum FireMode
 {
     Single,
-    Burst
+    Burst,
+    Homing
 }
 public enum TargetingMode
 {
@@ -28,8 +29,8 @@ public class EnemyTypeSO : ScriptableObject
     [HideInInspector]public int shieldLifePoints;
 
     [HideInInspector] public bool canFire;
-    [HideInInspector] public ProjectileTypeSO projectileTypeSo;
     [HideInInspector] public FireMode fireMode;
+    [HideInInspector] public ProjectileTypeSO projectileTypeSo;
     [FormerlySerializedAs("targetingType")] [HideInInspector] public TargetingMode targetingMode;
     [HideInInspector] public float fireAngleRange;
     [HideInInspector] public float fireRate;

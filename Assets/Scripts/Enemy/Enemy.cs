@@ -19,9 +19,9 @@ public class Enemy : MonoBehaviour
     private int _shieldLifePoints;
 
     private bool _canFire;
+    private FireMode _fireMode;
     private ProjectileTypeSO _projectileTypeSo;
     private TargetingMode _targetingMode;
-    private FireMode _fireMode;
     private float _fireAngleRange;
     private float _fireRate;
 
@@ -134,7 +134,7 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        if (!_canFire)
+        if (_fireMode == FireMode.Homing)
         {
             //Should always be looking at player
             transform.position += transform.forward * (Time.deltaTime * _speed);
