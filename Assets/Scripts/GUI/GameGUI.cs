@@ -47,6 +47,9 @@ public class GameGUI : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private SettingsMenu settings;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] buttonClips;
+
     void Awake()
     {
         instance = this;
@@ -55,10 +58,19 @@ public class GameGUI : MonoBehaviour
     }
 
     /// <summary>
+    /// Plays a button clip
+    /// </summary>
+    private void PlayButtonClip()
+    {
+        AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
+    }
+
+    /// <summary>
     /// Toggle the pause menu
     /// </summary>
     public void TogglePauseMenu()
     {
+        PlayButtonClip();
         pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
         Time.timeScale = pauseScreen.activeInHierarchy ? 0 : 1;
         if (!pauseScreen.activeInHierarchy) settings.Close();
@@ -132,6 +144,7 @@ public class GameGUI : MonoBehaviour
     /// <param name="ID">The player's ID</param>
     public void ReadyUpPlayer(int ID)
     {
+        PlayButtonClip();
         playerReadyUps[ID].SetReadyUpCheckActive(true);
     }
 
@@ -149,6 +162,7 @@ public class GameGUI : MonoBehaviour
         player.SetHealthOnLeft(ID % 2 == 0);
         player.SetManaColor(playerColors[ID]);
         playersGUI.Add(player);
+        PlayButtonClip();
         return GUIID;
     }
 
@@ -224,6 +238,7 @@ public class GameGUI : MonoBehaviour
     public void Click_SendData()
     {
         // Quit
+        PlayButtonClip();
         if (!string.IsNullOrEmpty(endNameInputField.text))
         {
             leaderboardDataSender.SetActive(false);
@@ -245,12 +260,13 @@ public class GameGUI : MonoBehaviour
 
     public void Click_Quit()
     {
+        PlayButtonClip();
         Transition.LoadSceneWithTransition("MainMenu");
-        //SceneManager.LoadScene("MainMenu");
     }
 
     public void Click_Retry()
     {
+        PlayButtonClip();
         Transition.LoadSceneWithTransition(SceneManager.GetActiveScene().buildIndex);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -262,6 +278,7 @@ public class GameGUI : MonoBehaviour
 
     public void Click_Settings()
     {
+        PlayButtonClip();
         settings.Open();
     }
 }

@@ -415,6 +415,19 @@ MonoBehaviour:
   endScreenTitle: {fileID: 5128709415731352662}
   pauseScreen: {fileID: 4121930070786168363}
   settings: {fileID: 2295845316553760379}
+  buttonClips:
+  - {fileID: 8300000, guid: bb4b1233f37d34b44bcdf53f1d8e71f7, type: 3}
+  - {fileID: 8300000, guid: 4511b16e7bdadec4cbd5300e5aa9a83d, type: 3}
+  - {fileID: 8300000, guid: 163eae4b9aa8e824699000a90ad0b43b, type: 3}
+  - {fileID: 8300000, guid: c042617071c7d204588320bf0a2ae1bb, type: 3}
+  - {fileID: 8300000, guid: 12fabe5a554560647bd796cb74c137ab, type: 3}
+  - {fileID: 8300000, guid: 95845932e8c58444f990cf935492574a, type: 3}
+  - {fileID: 8300000, guid: b3d4be8e5d357e440ae6e99078377afc, type: 3}
+  - {fileID: 8300000, guid: 91ae39fc1de6d474f975b90e1fcc5e8f, type: 3}
+  - {fileID: 8300000, guid: 574fd5de1ae9a7d42ae5852db29d01ab, type: 3}
+  - {fileID: 8300000, guid: 1b37059e0ebd3b04581465bcf28ab741, type: 3}
+  - {fileID: 8300000, guid: 9c88aea607682ac42838c8c3b064b757, type: 3}
+  - {fileID: 8300000, guid: 8af813229f7f04645940de5143000dc1, type: 3}
 --- !u!1 &261768907808812583
 GameObject:
   m_ObjectHideFlags: 0
