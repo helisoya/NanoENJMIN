@@ -11,6 +11,7 @@ namespace Editor
     public class EnemyTypeCustomEditor : Editor
     {
         private SerializedProperty _hasShieldProperty;
+        private SerializedProperty _shieldColourProperty;
         private SerializedProperty _shieldMaterialProperty;
         private SerializedProperty _shieldLifePointsProperty;
         private SerializedProperty _canFireProperty;
@@ -25,6 +26,7 @@ namespace Editor
         private void OnEnable()
         {
             _hasShieldProperty = serializedObject.FindProperty("hasShield");
+            _shieldColourProperty = serializedObject.FindProperty("shieldColour");
             _shieldMaterialProperty = serializedObject.FindProperty("shieldMaterial");
             _shieldLifePointsProperty = serializedObject.FindProperty("shieldLifePoints");
             _canFireProperty = serializedObject.FindProperty("canFire");
@@ -59,6 +61,8 @@ namespace Editor
 
             if (enemyTypeSo.hasShield)
             {
+                EditorGUILayout.PropertyField(_shieldColourProperty, new GUIContent("Shield Colour"));
+                
                 EditorGUILayout.PropertyField(_shieldMaterialProperty, new GUIContent("Shield Material"));
                 
                 EditorGUILayout.PropertyField(_shieldLifePointsProperty, new GUIContent("Shield Life Points"));

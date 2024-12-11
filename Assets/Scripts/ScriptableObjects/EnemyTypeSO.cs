@@ -25,6 +25,7 @@ public class EnemyTypeSO : ScriptableObject
     public int lifePoints;
 
     [HideInInspector]public bool hasShield;
+    [HideInInspector]public ColorTarget shieldColour;
     [HideInInspector]public Material shieldMaterial;
     [HideInInspector]public int shieldLifePoints;
 
