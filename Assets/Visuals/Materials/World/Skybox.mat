@@ -86,7 +86,7 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AtmosphereThickness: 0
+    - _AtmosphereThickness: 0.34
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -99,7 +99,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Exposure: 0.2
+    - _Exposure: 0.51
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -123,8 +123,8 @@ Material:
     - _BaseColor: {r: 0.3046279, g: 0.6401297, b: 0.8113208, a: 1}
     - _Color: {r: 0.30462787, g: 0.6401297, b: 0.8113207, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.18734777, g: 0.52715486, b: 0.6754716, a: 1}
-    - _SkyTint: {r: 0.32588822, g: 0.7019771, b: 0.78867924, a: 1}
+    - _GroundColor: {r: 0.2320754, g: 0.7646681, b: 1, a: 1}
+    - _SkyTint: {r: 0.096226394, g: 0.8314998, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

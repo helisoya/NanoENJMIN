@@ -124,6 +124,7 @@ public class Enemy : MonoBehaviour
             int damage = playerProjectile.GetDamage(_hasShield, _shieldColour);
             if (damage != 0)
                 TakeHit(damage, playerProjectile.GetParent());
+            else EnemyManager.instance.PlayShieldNoDmgClip();
 
             Destroy(other.gameObject);
         }
@@ -131,6 +132,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.attachedRigidbody.SendMessage("OnTakeDamage", 1, SendMessageOptions.DontRequireReceiver);
+            TakeHit(3, other.attachedRigidbody.GetComponent<Player>());
         }
     }
 
@@ -177,6 +179,8 @@ public class Enemy : MonoBehaviour
                     FireBurst();
                     break;
             }
+
+            EnemyManager.instance.PlayShotClip();
         }
     }
 
@@ -244,12 +248,14 @@ public class Enemy : MonoBehaviour
             _shieldLifePoints -= damage;
             if (_shieldLifePoints <= 0)
                 LoseShield();
+            else EnemyManager.instance.PlayShieldHitClip();
         }
         else
         {
             _lifePoints -= damage;
             if (_lifePoints <= 0)
                 Die(from);
+            else EnemyManager.instance.PlayHitClip();
         }
     }
 
@@ -257,11 +263,13 @@ public class Enemy : MonoBehaviour
     {
         _shield.SetActive(false);
         _hasShield = false;
+        EnemyManager.instance.PlayShieldBreakClip();
     }
 
     private void Die(Player killer)
     {
         killer.AddScore(_score);
+        EnemyManager.instance.PlayDeathClip();
         Destroy(gameObject);
     }
 
