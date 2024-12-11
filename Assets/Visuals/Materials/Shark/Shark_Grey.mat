@@ -46,7 +46,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
 <<<<<<< HEAD
+<<<<<<< HEAD
         m_Texture: {fileID: 2800000, guid: 33c0ca8979d3da34ebc01433c87c57e3, type: 3}
+=======
+        m_Texture: {fileID: 0}
+>>>>>>> 0abf6de ([ADD] particles in player)
 =======
         m_Texture: {fileID: 0}
 >>>>>>> 0abf6de ([ADD] particles in player)
