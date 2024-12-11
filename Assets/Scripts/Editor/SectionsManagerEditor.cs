@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -39,17 +40,42 @@ namespace Editor
                 SectionsManager manager = (SectionsManager)target;
 
                 List<Transform> childs = new List<Transform>();
-                for (int i = 0; i < objsRoot.childCount; i++)
+                if (objsRoot)
                 {
-                    childs.Add(objsRoot.GetChild(i));
+                    for (int i = 0; i < objsRoot.childCount; i++)
+                    {
+                        childs.Add(objsRoot.GetChild(i));
+                    }
                 }
 
                 foreach (Transform child in childs)
                 {
                     int index = Mathf.CeilToInt(child.transform.position.x / sectionSize);
-                    child.parent = manager.transform.GetChild(index);
+                    Transform parent = manager.transform.GetChild(index);
+                    child.parent = parent;
                 }
+            }
 
+            if (GUILayout.Button("Generate LOD"))
+            {
+                SectionsManager manager = (SectionsManager)target;
+
+                foreach (Transform child in manager.transform)
+                {
+                    LODGroup group = child.GetComponent<LODGroup>();
+                    group.GetLODs()[0].renderers = child.GetComponentsInChildren<Renderer>();
+                }
+            }
+
+            if (GUILayout.Button("Reset LOD"))
+            {
+                SectionsManager manager = (SectionsManager)target;
+
+                foreach (Transform child in manager.transform)
+                {
+                    LODGroup group = child.GetComponent<LODGroup>();
+                    group.GetLODs()[0].renderers = new Renderer[0];
+                }
             }
         }
     }

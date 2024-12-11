@@ -124,6 +124,11 @@ public class Enemy : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.attachedRigidbody.SendMessage("OnTakeDamage", 1, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     private void Rotate()
