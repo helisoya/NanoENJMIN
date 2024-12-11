@@ -245,12 +245,14 @@ public class GameGUI : MonoBehaviour
 
     public void Click_Quit()
     {
-        SceneManager.LoadScene("MainMenu");
+        Transition.LoadSceneWithTransition("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
     }
 
     public void Click_Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Transition.LoadSceneWithTransition(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Click_Continue()
