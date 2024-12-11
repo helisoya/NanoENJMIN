@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf0388b606b0ed428e03f84c6ce61af, type: 3}
   m_Name: Projectile_Enemy_Base
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2286459237064622519, guid: 20ed8bcc26d7dfa4d9417fdba4d8382c, type: 3}
+  prefab: {fileID: 2286459237064622519, guid: a11ea5a65b41e88438b24c1fa0b19c1c, type: 3}
   colourMaterials:
   - {fileID: 2100000, guid: d2210df6b8e0a684e8a3a9b359602de0, type: 2}
-  - {fileID: 2100000, guid: b519c522c20f44f4d9ebf0a6bfa05084, type: 2}
-  - {fileID: 2100000, guid: ff697648b12511c43aebbc8583225df5, type: 2}
+  - {fileID: 2100000, guid: 1a738a7aada31844db2e254a21b7c784, type: 2}
+  - {fileID: 2100000, guid: 4df9c0f9916706c4881c9cd96c2c0492, type: 2}
   speed: 10
   inkRecharge: 5

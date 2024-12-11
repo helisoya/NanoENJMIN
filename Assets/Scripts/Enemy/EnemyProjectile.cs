@@ -18,7 +18,7 @@ public class EnemyProjectile : MonoBehaviour
 
     public void Initialize(ProjectileTypeSO projectileTypeSo, ColorTarget colour)
     {
-        _renderer = GetComponent<MeshRenderer>();
+        _renderer = transform.GetChild(0).GetComponent<MeshRenderer>();
         _renderer.material = projectileTypeSo.colourMaterials[(int)colour];
 
         _colour = colour;
