@@ -18,6 +18,7 @@ MonoBehaviour:
   score: 1
   lifePoints: 5
   hasShield: 0
+  shieldColour: 0
   shieldMaterial: {fileID: 2100000, guid: 35af0afa3aff7514abe623e0563d989d, type: 2}
   shieldLifePoints: 2
   canFire: 1
@@ -25,6 +26,6 @@ MonoBehaviour:
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
   targetingMode: 0
   fireAngleRange: 0
-  fireRate: 0.8
+  fireRate: 1
   nbBurstProjectiles: 0
   burstProjectileAngleSpacing: 0

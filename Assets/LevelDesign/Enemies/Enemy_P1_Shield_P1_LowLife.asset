@@ -20,7 +20,7 @@ MonoBehaviour:
   hasShield: 1
   shieldColour: 1
   shieldMaterial: {fileID: 2100000, guid: 35af0afa3aff7514abe623e0563d989d, type: 2}
-  shieldLifePoints: 2
+  shieldLifePoints: 1
   canFire: 1
   fireMode: 0
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}

@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af34d4357b5f1ef4690309c8eeee63fe, type: 3}
-  m_Name: Enemy_NoShoot_Shield_P2_LowLife
+  m_Name: Enemy_P2_LowLife_HighRate
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1422151104337354219, guid: 7d6c80b3d0218074aac63e21f79a78be, type: 3}
-  colour: 0
+  prefab: {fileID: 690488188108307976, guid: a558bcc310a514842abd1a06f97490d4, type: 3}
+  colour: 2
   speed: 5
   score: 1
   lifePoints: 1
-  hasShield: 1
-  shieldColour: 2
-  shieldMaterial: {fileID: 2100000, guid: 583363d9a177c3642a76124ee76133ab, type: 2}
-  shieldLifePoints: 1
-  canFire: 0
+  hasShield: 0
+  shieldColour: 0
+  shieldMaterial: {fileID: 0}
+  shieldLifePoints: 0
+  canFire: 1
   fireMode: 0
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
   targetingMode: 0
   fireAngleRange: 0
-  fireRate: 0.8
+  fireRate: 1
   nbBurstProjectiles: 0
   burstProjectileAngleSpacing: 0
