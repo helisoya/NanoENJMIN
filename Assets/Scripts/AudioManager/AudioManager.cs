@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -8,7 +9,8 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Infos")]
     [SerializeField] private AudioMixerGroup sfxGroup;
-    [SerializeField] private AudioSource bgmSource;
+    [SerializeField] private float bgmTransitionSpeed = 1f;
+    [SerializeField] private AudioSource[] bgms;
     [SerializeField] private AudioSource sfx2DSource;
 
     public static AudioManager instance { get; private set; }
@@ -18,15 +20,41 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
 
-    /// <summary>
-    /// Plays a background music
-    /// </summary>
-    /// <param name="clip">The music</param>
-    public void PlayBGM(AudioClip clip)
+    void Update()
     {
-        bgmSource.Stop();
-        bgmSource.clip = clip;
-        bgmSource.Play();
+        if (Input.GetKeyDown(KeyCode.Keypad0)) EnableBGM(0);
+        if (Input.GetKeyDown(KeyCode.Keypad1)) EnableBGM(1);
+        if (Input.GetKeyDown(KeyCode.Keypad2)) EnableBGM(2);
+        if (Input.GetKeyDown(KeyCode.Keypad3)) EnableBGM(3);
+    }
+
+    /// <summary>
+    /// Enables a BGM
+    /// </summary>
+    /// <param name="idx">The BGM's index</param>
+    /// <param name="instant">Should the transition be instantanious ?</param>
+    public void EnableBGM(int idx, bool instant = false)
+    {
+        if (bgms.Length <= idx) return;
+
+        if (instant)
+        {
+            bgms[idx].volume = 1f;
+        }
+        else
+        {
+            StartCoroutine(Routine_EnableBGM(idx));
+        }
+    }
+
+    IEnumerator Routine_EnableBGM(int idx)
+    {
+        AudioSource target = bgms[idx];
+        while (target.volume < 1f)
+        {
+            target.volume = Mathf.Clamp(target.volume + Time.deltaTime * bgmTransitionSpeed, 0f, 1f);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     /// <summary>
