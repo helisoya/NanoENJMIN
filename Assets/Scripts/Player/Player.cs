@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
             {
                 GameManager.instance.ReadyUp(ID);
             }
-            else
+            else if (!GameGUI.instance.InMenu)
             {
                 // UI Pause
                 GameGUI.instance.TogglePauseMenu();

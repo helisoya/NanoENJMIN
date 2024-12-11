@@ -52,8 +52,13 @@ public class GameGUI : MonoBehaviour
     [Header("Event System")]
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private GameObject pauseObj;
+    [SerializeField] private GameObject pauseAfterSettingsObj;
     [SerializeField] private GameObject endObj;
     [SerializeField] private GameObject settingsObj;
+    [SerializeField] private float stopReceivingInputsFor = 0.25f;
+    private float stopStart;
+
+    public bool InMenu { get { return pauseScreen.activeInHierarchy; } }
 
     void Awake()
     {
@@ -75,6 +80,10 @@ public class GameGUI : MonoBehaviour
     /// </summary>
     public void TogglePauseMenu()
     {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
         PlayButtonClip();
         pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
         Time.timeScale = pauseScreen.activeInHierarchy ? 0 : 1;
@@ -268,12 +277,20 @@ public class GameGUI : MonoBehaviour
 
     public void Click_Quit()
     {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
         PlayButtonClip();
         Transition.LoadSceneWithTransition("MainMenu");
     }
 
     public void Click_Retry()
     {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
         PlayButtonClip();
         Transition.LoadSceneWithTransition(SceneManager.GetActiveScene().buildIndex);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -286,6 +303,10 @@ public class GameGUI : MonoBehaviour
 
     public void Click_Settings()
     {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
         PlayButtonClip();
         settings.Open();
         eventSystem.SetSelectedGameObject(settingsObj);
@@ -293,8 +314,12 @@ public class GameGUI : MonoBehaviour
 
     public void Click_CloseSettings()
     {
+        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+
+        stopStart = Time.unscaledTime;
+
         PlayButtonClip();
         settings.Close();
-        eventSystem.SetSelectedGameObject(pauseObj);
+        eventSystem.SetSelectedGameObject(pauseAfterSettingsObj);
     }
 }

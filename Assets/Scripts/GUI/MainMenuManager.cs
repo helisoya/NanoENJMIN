@@ -26,6 +26,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject generalObj;
     [SerializeField] private GameObject creditsObj;
     [SerializeField] private GameObject settingsObj;
+    [SerializeField] private GameObject generalAfterSettingsObj;
+    [SerializeField] private GameObject generaleAfterCreditsObj;
 
 
     public void Click_Quit()
@@ -52,7 +54,7 @@ public class MainMenuManager : MonoBehaviour
     {
         AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
         settings.Close();
-        eventSystem.SetSelectedGameObject(generalObj);
+        eventSystem.SetSelectedGameObject(generalAfterSettingsObj);
     }
 
     public void Click_Credits()
@@ -70,6 +72,6 @@ public class MainMenuManager : MonoBehaviour
         creditsRoot.SetActive(false);
         generalRoot.SetActive(true);
 
-        eventSystem.SetSelectedGameObject(generalObj);
+        eventSystem.SetSelectedGameObject(generaleAfterCreditsObj);
     }
 }
