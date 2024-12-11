@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
 
     private Collider _bodyCollider;
 
+    private float inputY;
+    private float smoothRefVel;
+
     [Header("Collisions")]
     [SerializeField] private PlayerInput playerInput;
 
@@ -105,6 +108,15 @@ public class Player : MonoBehaviour
         {
             absortionVSFX = false;
             absortionObj.SetActive(false);
+        }
+
+        if (!takingDamage)
+        {
+            float angle = 90f - (45f * inputY);
+            //_bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x, _bodyModel.transform.rotation.eulerAngles.y, angle);
+            _bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x,
+                _bodyModel.transform.rotation.eulerAngles.y,
+                Mathf.SmoothDampAngle(_bodyModel.transform.rotation.eulerAngles.z, angle, ref smoothRefVel, 0.1f));
         }
     }
 
@@ -184,8 +196,11 @@ public class Player : MonoBehaviour
         if (Alive && GameManager.instance.InGame && !takingDamage)
         {
             movements.SetVelocity(input.Get<Vector2>());
-            float angle = 90f - (45f * input.Get<Vector2>().y);
-            _bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x, _bodyModel.transform.rotation.eulerAngles.y, angle);
+            inputY = input.Get<Vector2>().y;
+            //float angle = 90f - (45f * input.Get<Vector2>().y);
+            //_bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x, _bodyModel.transform.rotation.eulerAngles.y, angle);
+            //_bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x, _bodyModel.transform.rotation.eulerAngles.y, Mathf.SmoothDampAngle(_bodyModel.transform.rotation.eulerAngles.z, angle, ref smoothRefVel,0.01f));
+
         }
     }
 
