@@ -105,11 +105,15 @@ public class Enemy : MonoBehaviour
         {
             Move();
 
-            if (_targetingMode == TargetingMode.Locked || _targetingMode == TargetingMode.PredictedLocked || !_canFire)
+            if (_canFire && (_targetingMode == TargetingMode.Locked || _targetingMode == TargetingMode.PredictedLocked || _fireMode == FireMode.Homing))
+            {
                 Rotate();
+            }
 
             if (_canFire)
+            {
                 Firing();
+            }
         }
     }
 
@@ -139,7 +143,9 @@ public class Enemy : MonoBehaviour
     private void Rotate()
     {
         if (_targetPlayer)
+        {
             transform.LookAt(_targetPlayer.transform.position);
+        }
     }
 
     private void Move()
