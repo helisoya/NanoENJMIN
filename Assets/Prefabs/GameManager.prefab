@@ -59,6 +59,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d2210df6b8e0a684e8a3a9b359602de0, type: 2}
   - {fileID: 2100000, guid: 5f837c7a58341ee46983337c70200be7, type: 2}
   - {fileID: 2100000, guid: 8966a19a532efa146a477e3245894dfc, type: 2}
+  playerBulletControllers:
+  - {fileID: 9100000, guid: 32a30f0009ce4c842869f8a4e85f2819, type: 2}
+  - {fileID: 9100000, guid: 32a30f0009ce4c842869f8a4e85f2819, type: 2}
+  - {fileID: 22100000, guid: 9cc547f08ec33ae4da6520f52aa5d7af, type: 2}
   inputManager: {fileID: 0}
 --- !u!1 &1393477124912235749
 GameObject:
@@ -758,6 +762,7 @@ MonoBehaviour:
   - {fileID: 6285994273828419476}
   - {fileID: 3374984357462887982}
   sfx2DSource: {fileID: 7468532581020315388}
+  ambSource: {fileID: 0}
 --- !u!1 &8458207944201197599
 GameObject:
   m_ObjectHideFlags: 0
