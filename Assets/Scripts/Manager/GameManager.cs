@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private Transform[] respawnPositions;
     [SerializeField] private Material[] playerMaterials;
+    [SerializeField] private ParticleSystem[] shootPlayerParticles;
     [SerializeField] private PlayerInputManager inputManager;
 
     public static GameManager instance;
@@ -136,6 +137,11 @@ public class GameManager : MonoBehaviour
     public Material GetPlayerMaterial(ColorTarget color)
     {
         return playerMaterials[(int)color];
+    }
+
+    public ParticleSystem GetShootParticles(ColorTarget color)
+    {
+        return shootPlayerParticles[(int)color];
     }
 
     public Player GetPlayerFromColour(ColorTarget colour)
