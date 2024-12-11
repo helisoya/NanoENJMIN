@@ -156,6 +156,11 @@ public class GameManager : MonoBehaviour
         return hitPlayerParticles[(int)color];
     }
 
+    public ParticleSystem GetHitParticles(ColorTarget color)
+    {
+        return hitPlayerParticles[(int)color];
+    }
+
     public Player GetPlayerFromColour(ColorTarget colour)
     {
         foreach (Player player in players)
