@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658022111539457396, guid: 20d2c2e49b8468746b7a82a4ffbfa8dc, type: 3}
       propertyPath: m_Name
-      value: Shoot_Player_YELLOW Variant
+      value: Shoot_Player_Particles_PURPLE
       objectReference: {fileID: 0}
     - target: {fileID: 8707908812118196303, guid: 20d2c2e49b8468746b7a82a4ffbfa8dc, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
