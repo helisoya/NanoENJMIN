@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerAttack attack;
     [SerializeField] private Renderer playerRenderer;
     [SerializeField] private GameObject _bodyModel;
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
 
     [Header("Collisions")]
     [SerializeField] private PlayerInput playerInput;
@@ -48,7 +48,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
         GameManager.instance.onGameStarted += OnGameStarted;
     }
 
@@ -151,7 +150,7 @@ public class Player : MonoBehaviour
         {
             movements.SetVelocity(input.Get<Vector2>());
             float angle = 90f - (45f * input.Get<Vector2>().y);
-            _bodyModel.transform.Rotate(Vector3.right, angle);
+            _bodyModel.transform.rotation = Quaternion.Euler(_bodyModel.transform.rotation.eulerAngles.x, _bodyModel.transform.rotation.eulerAngles.y, angle);
         }
     }
 

@@ -52,8 +52,8 @@ MonoBehaviour:
   - {fileID: 5632883873913552055}
   playerMaterials:
   - {fileID: 2100000, guid: d2210df6b8e0a684e8a3a9b359602de0, type: 2}
-  - {fileID: 2100000, guid: 9a311ae54224ac04081fdc195c23657c, type: 2}
-  - {fileID: 2100000, guid: 4d55524310538fa4b90a6c75056c2519, type: 2}
+  - {fileID: 2100000, guid: 5f837c7a58341ee46983337c70200be7, type: 2}
+  - {fileID: 2100000, guid: 8966a19a532efa146a477e3245894dfc, type: 2}
   inputManager: {fileID: 0}
 --- !u!1 &3487178118146695179
 GameObject:
