@@ -177,7 +177,7 @@ public class GameGUI : MonoBehaviour
         playerReadyUps[ID].SetPlayerActive(true);
         playerReadyUps[ID].SetPlayerColor(playerColors[ID]);
         PlayerGUI player = Instantiate(prefabPlayerGUI, playersGUIRoots[GUIID]);
-        player.SetSprites(playerGUISprites[GUIID].aliveSprite, playerGUISprites[GUIID].deadSprite);
+        player.SetSprites(playerGUISprites[GUIID]);
         player.SetManaColor(playerColors[ID]);
         playersGUI.Add(player);
         PlayButtonClip();
@@ -331,4 +331,6 @@ public class PlayerGUISprites
 {
     public Sprite aliveSprite;
     public Sprite deadSprite;
+    public Sprite manaFill;
+    public Sprite manaBg;
 }

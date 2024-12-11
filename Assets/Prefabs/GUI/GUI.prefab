@@ -399,8 +399,12 @@ MonoBehaviour:
   playerGUISprites:
   - aliveSprite: {fileID: 21300000, guid: a18a5daa916302e44ab67da54e549e86, type: 3}
     deadSprite: {fileID: 21300000, guid: 41f2bf0be904c3d43ab36aebb51b672a, type: 3}
+    manaFill: {fileID: 21300000, guid: f19ece8b341409343b00bbb15cc44a2e, type: 3}
+    manaBg: {fileID: 21300000, guid: 0dfbf34c7df3e024ba9b5cc6e5ee77cf, type: 3}
   - aliveSprite: {fileID: 21300000, guid: fb0fa7090a6087b468574568a8617a53, type: 3}
     deadSprite: {fileID: 21300000, guid: a45154076a1e3d44f95d32afcc6c0f68, type: 3}
+    manaFill: {fileID: 21300000, guid: 9b751a35d8e1a084aae4bc1fbeaf4253, type: 3}
+    manaBg: {fileID: 21300000, guid: aabbb729ab567c84db3ca9511c35cf0b, type: 3}
   playerColors:
   - {r: 0.89433956, g: 0.8661946, b: 0.28180128, a: 1}
   - {r: 0.85660374, g: 0.22465639, b: 0.8247022, a: 1}
@@ -3429,7 +3433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8193898035951825550
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4070,17 +4074,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5205924034215596276}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1595506798206179634}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -125, y: 47.5}
-  m_SizeDelta: {x: 250, y: 95}
+  m_AnchoredPosition: {x: -125.00006, y: 94.42001}
+  m_SizeDelta: {x: 250, y: 188.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5217683641205516163
 GameObject:
@@ -5417,8 +5421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 125, y: 47.5}
-  m_SizeDelta: {x: 250, y: 95}
+  m_AnchoredPosition: {x: 125, y: 94.41887}
+  m_SizeDelta: {x: 250, y: 188.8377}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8224528067223528573
 GameObject:

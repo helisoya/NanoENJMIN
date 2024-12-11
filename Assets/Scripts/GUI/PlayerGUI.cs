@@ -11,6 +11,7 @@ public class PlayerGUI : MonoBehaviour
 {
     [SerializeField] private Image[] healthBar;
     [SerializeField] private Image manaFill;
+    [SerializeField] private Image manaBg;
     private Sprite spriteAlive;
     private Sprite spriteDead;
 
@@ -25,10 +26,12 @@ public class PlayerGUI : MonoBehaviour
     /// </summary>
     /// <param name="alive">The sprite for the alive heart</param>
     /// <param name="dead">The sprite for the dead heart</param>
-    public void SetSprites(Sprite alive, Sprite dead)
+    public void SetSprites(PlayerGUISprites sprites)
     {
-        spriteAlive = alive;
-        spriteDead = dead;
+        spriteAlive = sprites.aliveSprite;
+        spriteDead = sprites.deadSprite;
+        manaFill.sprite = sprites.manaFill;
+        manaBg.sprite = sprites.manaBg;
         SetPlayerHealth(50);
     }
 
@@ -42,7 +45,6 @@ public class PlayerGUI : MonoBehaviour
     {
         for (int i = healthBar.Length - 1; i >= 0; i--)
         {
-            print(i);
             healthBar[i].sprite = i < health ? spriteAlive : spriteDead;
         }
     }
