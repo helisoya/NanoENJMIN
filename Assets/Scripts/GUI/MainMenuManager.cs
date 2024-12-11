@@ -23,7 +23,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void Click_Start()
     {
-        SceneManager.LoadScene("Game");
+        Transition.LoadSceneWithTransition("Game");
+        //SceneManager.LoadScene("Game");
     }
 
     public void Click_Settings()
