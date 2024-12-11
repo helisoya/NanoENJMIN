@@ -31,8 +31,9 @@ public class Player : MonoBehaviour
     [Header("Components")]
     [SerializeField] private PlayerMovements movements;
     [SerializeField] private PlayerAttack attack;
-    [SerializeField] private Animator animator;
     [SerializeField] private Renderer playerRenderer;
+    [SerializeField] private GameObject _bodyModel;
+    private Animator _animator;
 
     [Header("Collisions")]
     [SerializeField] private PlayerInput playerInput;
@@ -44,6 +45,12 @@ public class Player : MonoBehaviour
 
     private Gamepad pad;
 
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+        GameManager.instance.onGameStarted += OnGameStarted;
+    }
 
     void Start()
     {
@@ -84,7 +91,7 @@ public class Player : MonoBehaviour
     /// <param name="triggerName">The trigger's name</param>
     public void SetAnimationTrigger(string triggerName)
     {
-        animator.SetTrigger(triggerName);
+        _animator.SetTrigger(triggerName);
     }
 
 
@@ -143,6 +150,8 @@ public class Player : MonoBehaviour
         if (Alive && GameManager.instance.InGame)
         {
             movements.SetVelocity(input.Get<Vector2>());
+            float angle = 90f - (45f * input.Get<Vector2>().y);
+            _bodyModel.transform.Rotate(Vector3.right, angle);
         }
     }
 
@@ -160,6 +169,11 @@ public class Player : MonoBehaviour
         {
             //movements.Dash();
         }
+    }
+
+    private void OnGameStarted()
+    {
+        _animator.SetBool("isMoving", true);
     }
 
     void OnPause(InputValue input)

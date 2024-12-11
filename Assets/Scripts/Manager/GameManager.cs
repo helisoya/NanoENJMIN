@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Dan.Main;
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
     public List<Player> players { get; private set; }
     public bool InGame { get; private set; }
     private List<int> readyUps;
+
+    public Action onGameStarted;
 
 
     void Awake()
@@ -91,6 +94,7 @@ public class GameManager : MonoBehaviour
                 inputManager.DisableJoining();
                 GameGUI.instance.OpenGamePlayScreen();
                 AudioManager.instance.EnableBGM(0);
+                onGameStarted.Invoke();
                 // Start the timeline
                 TimelineManager.instance.Play();
             }
