@@ -9,9 +9,10 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerGUI : MonoBehaviour
 {
-    [SerializeField] private HorizontalLayoutGroup layout;
-    [SerializeField] private GameObject[] healthBar;
+    [SerializeField] private Image[] healthBar;
     [SerializeField] private Image manaFill;
+    private Sprite spriteAlive;
+    private Sprite spriteDead;
 
     void Start()
     {
@@ -20,14 +21,18 @@ public class PlayerGUI : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the health's position
+    /// Sets the GUI's sprites
     /// </summary>
-    /// <param name="value">Health is on the left ?</param>
-    public void SetHealthOnLeft(bool value)
+    /// <param name="alive">The sprite for the alive heart</param>
+    /// <param name="dead">The sprite for the dead heart</param>
+    public void SetSprites(Sprite alive, Sprite dead)
     {
-        layout.childAlignment = value ? TextAnchor.MiddleLeft : TextAnchor.MiddleRight;
-        manaFill.fillOrigin = value ? 0 : 1;
+        spriteAlive = alive;
+        spriteDead = dead;
+        SetPlayerHealth(50);
     }
+
+
 
     /// <summary>
     /// Sets the player's health
@@ -35,9 +40,10 @@ public class PlayerGUI : MonoBehaviour
     /// <param name="health">The player's health</param>
     public void SetPlayerHealth(int health)
     {
-        for (int i = 0; i < healthBar.Length; i++)
+        for (int i = healthBar.Length - 1; i >= 0; i--)
         {
-            healthBar[i].SetActive(i < health);
+            print(i);
+            healthBar[i].sprite = i < health ? spriteAlive : spriteDead;
         }
     }
 

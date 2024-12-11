@@ -22,6 +22,7 @@ public class GameGUI : MonoBehaviour
     [Header("Players")]
     [SerializeField] private PlayerGUI prefabPlayerGUI;
     [SerializeField] private Transform[] playersGUIRoots;
+    [SerializeField] private PlayerGUISprites[] playerGUISprites;
     [SerializeField] private Color[] playerColors;
     private List<PlayerGUI> playersGUI;
 
@@ -176,7 +177,7 @@ public class GameGUI : MonoBehaviour
         playerReadyUps[ID].SetPlayerActive(true);
         playerReadyUps[ID].SetPlayerColor(playerColors[ID]);
         PlayerGUI player = Instantiate(prefabPlayerGUI, playersGUIRoots[GUIID]);
-        player.SetHealthOnLeft(ID % 2 == 0);
+        player.SetSprites(playerGUISprites[GUIID].aliveSprite, playerGUISprites[GUIID].deadSprite);
         player.SetManaColor(playerColors[ID]);
         playersGUI.Add(player);
         PlayButtonClip();
@@ -322,4 +323,12 @@ public class GameGUI : MonoBehaviour
         settings.Close();
         eventSystem.SetSelectedGameObject(pauseAfterSettingsObj);
     }
+}
+
+
+[System.Serializable]
+public class PlayerGUISprites
+{
+    public Sprite aliveSprite;
+    public Sprite deadSprite;
 }

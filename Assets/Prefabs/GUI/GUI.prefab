@@ -396,6 +396,11 @@ MonoBehaviour:
   playersGUIRoots:
   - {fileID: 2241874628500320896}
   - {fileID: 5267047670115834018}
+  playerGUISprites:
+  - aliveSprite: {fileID: 21300000, guid: a18a5daa916302e44ab67da54e549e86, type: 3}
+    deadSprite: {fileID: 21300000, guid: 41f2bf0be904c3d43ab36aebb51b672a, type: 3}
+  - aliveSprite: {fileID: 21300000, guid: fb0fa7090a6087b468574568a8617a53, type: 3}
+    deadSprite: {fileID: 21300000, guid: a45154076a1e3d44f95d32afcc6c0f68, type: 3}
   playerColors:
   - {r: 0.89433956, g: 0.8661946, b: 0.28180128, a: 1}
   - {r: 0.85660374, g: 0.22465639, b: 0.8247022, a: 1}
