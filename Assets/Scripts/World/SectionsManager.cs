@@ -5,18 +5,18 @@ using UnityEngine;
 /// </summary>
 public class SectionsManager : MonoBehaviour
 {
+    [Header("General")]
     [SerializeField] private float speed;
     [SerializeField] private float destroyAtThreshold;
-    [SerializeField] private float sectionSize = 100.12f;
     private Vector3 direction = Vector3.left;
 
     /// <summary>
-    /// Gets the size of a section
+    /// Sets the scroll speed
     /// </summary>
-    /// <returns>A section's size</returns>
-    public float GetSectionSize()
+    /// <param name="speed">The new scroll speed</param>
+    public void SetScrollSpeed(float speed)
     {
-        return sectionSize;
+        this.speed = speed;
     }
 
     void Update()
