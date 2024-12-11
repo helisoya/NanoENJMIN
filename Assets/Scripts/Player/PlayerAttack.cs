@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (pressedFire && player.Mana >= manaCost && Time.time - lastAttack >= fireRate)
+        if (player.Alive && pressedFire && player.Mana >= manaCost && Time.time - lastAttack >= fireRate)
         {
             AudioManager.instance.PlaySFX2D(fireClips[Random.Range(0, fireClips.Length)]);
             lastAttack = Time.time;

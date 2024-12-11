@@ -5649,6 +5649,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046cfda1b7736fa43afec2e8b5bf975c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathclips:
+  - {fileID: 8300000, guid: b6d7ca10b4875d54ca276a559e578c52, type: 3}
+  - {fileID: 8300000, guid: ce7d9a0307d4d5e4daa45094fb78c4ad, type: 3}
+  - {fileID: 8300000, guid: 50a9837c9d580904b87dbae229a5ce5b, type: 3}
+  - {fileID: 8300000, guid: 18403cf97c50d8e40878b0d1e3a852ad, type: 3}
+  - {fileID: 8300000, guid: 47fcd502c3933c448840d917c24237c2, type: 3}
+  hitClips:
+  - {fileID: 8300000, guid: 3d3bbdb94a6f6da499c12f1b22b15fff, type: 3}
+  - {fileID: 8300000, guid: 4e894f268cba147488d1fef08dd404ad, type: 3}
+  - {fileID: 8300000, guid: b0205ecc564a7f7489bc6240bf850a0a, type: 3}
+  - {fileID: 8300000, guid: 6794e7b9431dafe4bb5e4d654d45fd05, type: 3}
+  - {fileID: 8300000, guid: 5ec3a081b742721418abb4c04bfb3b9d, type: 3}
+  - {fileID: 8300000, guid: 5f69564224491a340b72a9b4a5789590, type: 3}
+  shieldBreakClip:
+  - {fileID: 8300000, guid: 033ad80e56f41084f84e5016f442524a, type: 3}
+  - {fileID: 8300000, guid: 9a3b6ee28ac2dfb4e8f2a0bddef0f015, type: 3}
+  - {fileID: 8300000, guid: 284ce6e8345494d428331f7f7c8df19f, type: 3}
+  - {fileID: 8300000, guid: 6988be00715923549a9c126d8d59b389, type: 3}
+  shieldHitClip:
+  - {fileID: 8300000, guid: 5b1ba6fe83049494095db9b2ace6562c, type: 3}
+  - {fileID: 8300000, guid: c7a08eadb764ac54195e7a682ec179c6, type: 3}
+  - {fileID: 8300000, guid: da3d87053343e664f9236b68d97cd8a6, type: 3}
+  - {fileID: 8300000, guid: cf5753c9e49b07b4ead2e119b6ffcf13, type: 3}
+  - {fileID: 8300000, guid: 1a6828d5fff646a4499d760c4cf4fab8, type: 3}
+  shieldNoDmgClip:
+  - {fileID: 8300000, guid: c41a7cf6f1a3dd244aa0de225aaa4a20, type: 3}
+  - {fileID: 8300000, guid: 91781992a03198a4990dc7c1bdfb5d9c, type: 3}
+  - {fileID: 8300000, guid: 6d0d830f70320b34abb64a1b9803ae6b, type: 3}
+  - {fileID: 8300000, guid: 9c71ef57b39fba5438df370655fafd99, type: 3}
+  - {fileID: 8300000, guid: cfc28d24ee1f53245b16abc63aa13305, type: 3}
+  - {fileID: 8300000, guid: f8d263207148e434ebfc6ecfd338f744, type: 3}
+  - {fileID: 8300000, guid: 7fb4fdff57779a047a525cddc88c9a8f, type: 3}
+  shotClip:
+  - {fileID: 8300000, guid: 34f349cb6e027ec4090dc866adf35e8d, type: 3}
+  - {fileID: 8300000, guid: 68759e0d6790d6a4589952547256f907, type: 3}
+  - {fileID: 8300000, guid: 914413d106909444b81670383b93f165, type: 3}
+  - {fileID: 8300000, guid: 511c62c4aae2af94eaf8c56446451797, type: 3}
+  - {fileID: 8300000, guid: df036bddc6f7d7e4580c7c66316e1430, type: 3}
+  - {fileID: 8300000, guid: 789d2bf58bfcc7f40972851f5bcd189c, type: 3}
+  - {fileID: 8300000, guid: 2cbab54e2e876eb4d9f86b1ba76d8fda, type: 3}
 --- !u!1 &6618025732873979788
 GameObject:
   m_ObjectHideFlags: 0
