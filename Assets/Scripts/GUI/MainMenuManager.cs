@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 
@@ -20,6 +21,13 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private AudioClip[] buttonClips;
     [SerializeField] private AudioClip startClip;
 
+    [Header("Event System")]
+    [SerializeField] private EventSystem eventSystem;
+    [SerializeField] private GameObject generalObj;
+    [SerializeField] private GameObject creditsObj;
+    [SerializeField] private GameObject settingsObj;
+
+
     public void Click_Quit()
     {
         AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
@@ -37,6 +45,14 @@ public class MainMenuManager : MonoBehaviour
     {
         AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
         settings.Open();
+        eventSystem.SetSelectedGameObject(settingsObj);
+    }
+
+    public void Click_CloseSettings()
+    {
+        AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
+        settings.Close();
+        eventSystem.SetSelectedGameObject(generalObj);
     }
 
     public void Click_Credits()
@@ -44,6 +60,8 @@ public class MainMenuManager : MonoBehaviour
         AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
         creditsRoot.SetActive(true);
         generalRoot.SetActive(false);
+
+        eventSystem.SetSelectedGameObject(creditsObj);
     }
 
     public void Click_General()
@@ -51,5 +69,7 @@ public class MainMenuManager : MonoBehaviour
         AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
         creditsRoot.SetActive(false);
         generalRoot.SetActive(true);
+
+        eventSystem.SetSelectedGameObject(generalObj);
     }
 }

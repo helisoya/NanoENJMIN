@@ -896,6 +896,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9c88aea607682ac42838c8c3b064b757, type: 3}
   - {fileID: 8300000, guid: 8af813229f7f04645940de5143000dc1, type: 3}
   startClip: {fileID: 8300000, guid: 34a2eb48f1204b74490815b47c980739, type: 3}
+  eventSystem: {fileID: 1011054974}
+  generalObj: {fileID: 228242050}
+  creditsObj: {fileID: 613441700}
+  settingsObj: {fileID: 1768866907}
 --- !u!1 &400142713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,9 +1429,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.44141686, g: 0.91562915, b: 0.94716984, a: 1}
+    m_PressedColor: {r: 0.2728728, g: 0.4261776, b: 0.82641506, a: 1}
+    m_SelectedColor: {r: 0.32773942, g: 0.8549911, b: 0.90943396, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2757,6 +2761,18 @@ PrefabInstance:
     - target: {fileID: 2155136522602230282, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345305795565321164, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 357684065}
+    - target: {fileID: 3345305795565321164, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click_CloseSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345305795565321164, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3503841988548852234, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
       propertyPath: m_Pivot.x
@@ -4249,6 +4265,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726812696}
   m_CullTransparentMesh: 1
+--- !u!1 &1768866907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1841757357186848605, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+  m_PrefabInstance: {fileID: 1142808361}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1869490961
 GameObject:
   m_ObjectHideFlags: 0

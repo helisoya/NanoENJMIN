@@ -28,7 +28,6 @@ public class GameGUI : MonoBehaviour
     [Header("General")]
     [SerializeField] private GameObject gameplayScreen;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private EventSystem eventSystem;
 
     [Header("End Screen")]
     [SerializeField] private GameObject endScreen;
@@ -49,6 +48,12 @@ public class GameGUI : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioClip[] buttonClips;
+
+    [Header("Event System")]
+    [SerializeField] private EventSystem eventSystem;
+    [SerializeField] private GameObject pauseObj;
+    [SerializeField] private GameObject endObj;
+    [SerializeField] private GameObject settingsObj;
 
     void Awake()
     {
@@ -74,6 +79,7 @@ public class GameGUI : MonoBehaviour
         pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
         Time.timeScale = pauseScreen.activeInHierarchy ? 0 : 1;
         if (!pauseScreen.activeInHierarchy) settings.Close();
+        else eventSystem.SetSelectedGameObject(pauseObj);
     }
 
     /// <summary>
@@ -108,6 +114,8 @@ public class GameGUI : MonoBehaviour
         winOnlyWidgets.SetActive(hasWon);
 
         endScreenTitle.text = hasWon ? "You won !" : "Game over";
+
+        eventSystem.SetSelectedGameObject(endObj);
 
         if (hasWon) RefreshLeaderboard();
 
@@ -280,5 +288,13 @@ public class GameGUI : MonoBehaviour
     {
         PlayButtonClip();
         settings.Open();
+        eventSystem.SetSelectedGameObject(settingsObj);
+    }
+
+    public void Click_CloseSettings()
+    {
+        PlayButtonClip();
+        settings.Close();
+        eventSystem.SetSelectedGameObject(pauseObj);
     }
 }

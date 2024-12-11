@@ -235,9 +235,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.37981486, g: 0.82044166, b: 0.85660374, a: 1}
+    m_PressedColor: {r: 0.23660369, g: 0.40569174, b: 0.78867924, a: 1}
+    m_SelectedColor: {r: 0.46796006, g: 0.8578424, b: 0.90188676, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -401,7 +401,6 @@ MonoBehaviour:
   - {r: 0.85660374, g: 0.22465639, b: 0.8247022, a: 1}
   gameplayScreen: {fileID: 4122442397063324165}
   scoreText: {fileID: 3943742817275224465}
-  eventSystem: {fileID: 2855289708485479570}
   endScreen: {fileID: 680285201277700741}
   endScoreText: {fileID: 3631799296652669365}
   endNameInputField: {fileID: 4752052261152665643}
@@ -428,6 +427,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1b37059e0ebd3b04581465bcf28ab741, type: 3}
   - {fileID: 8300000, guid: 9c88aea607682ac42838c8c3b064b757, type: 3}
   - {fileID: 8300000, guid: 8af813229f7f04645940de5143000dc1, type: 3}
+  eventSystem: {fileID: 2855289708485479570}
+  pauseObj: {fileID: 3661598891008251493}
+  endObj: {fileID: 3249444576646725495}
+  settingsObj: {fileID: 5553367101832021946}
 --- !u!1 &261768907808812583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,9 +1996,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.33524385, g: 0.7579111, b: 0.8113208, a: 1}
+    m_PressedColor: {r: 0.4065859, g: 0.52598333, b: 0.8867924, a: 1}
+    m_SelectedColor: {r: 0.36042002, g: 0.80359936, b: 0.85660374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2515,9 +2518,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.37981486, g: 0.82044166, b: 0.85660374, a: 1}
+    m_PressedColor: {r: 0.23660369, g: 0.40569174, b: 0.78867924, a: 1}
+    m_SelectedColor: {r: 0.46796006, g: 0.8578424, b: 0.90188676, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2939,9 +2942,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.4534353, g: 0.833775, b: 0.8867924, a: 1}
+    m_PressedColor: {r: 0.21793516, g: 0.43791842, b: 0.6754716, a: 1}
+    m_SelectedColor: {r: 0.32605904, g: 0.7193342, b: 0.8037735, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3253,9 +3256,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.37981486, g: 0.82044166, b: 0.85660374, a: 1}
+    m_PressedColor: {r: 0.23660369, g: 0.40569174, b: 0.78867924, a: 1}
+    m_SelectedColor: {r: 0.46796006, g: 0.8578424, b: 0.90188676, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3694,9 +3697,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.37981486, g: 0.82044166, b: 0.85660374, a: 1}
+    m_PressedColor: {r: 0.23660369, g: 0.40569174, b: 0.78867924, a: 1}
+    m_SelectedColor: {r: 0.46796006, g: 0.8578424, b: 0.90188676, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4198,9 +4201,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.37981486, g: 0.82044166, b: 0.85660374, a: 1}
+    m_PressedColor: {r: 0.23660369, g: 0.40569174, b: 0.78867924, a: 1}
+    m_SelectedColor: {r: 0.46796006, g: 0.8578424, b: 0.90188676, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4467,9 +4470,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.37981486, g: 0.82044166, b: 0.85660374, a: 1}
+    m_PressedColor: {r: 0.23660369, g: 0.40569174, b: 0.78867924, a: 1}
+    m_SelectedColor: {r: 0.46796006, g: 0.8578424, b: 0.90188676, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4980,9 +4983,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.37981486, g: 0.82044166, b: 0.85660374, a: 1}
+    m_PressedColor: {r: 0.23660369, g: 0.40569174, b: 0.78867924, a: 1}
+    m_SelectedColor: {r: 0.46796006, g: 0.8578424, b: 0.90188676, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -6066,6 +6069,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 3345305795565321164, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7104886947264426865}
+    - target: {fileID: 3345305795565321164, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click_CloseSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345305795565321164, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameGUI, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3503841988548852234, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6170,6 +6185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e8ae63ded4c64e97704de0ad496b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5553367101832021946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1841757357186848605, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+  m_PrefabInstance: {fileID: 6097514879841489127}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7223383215242816237 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3503841988548852234, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
