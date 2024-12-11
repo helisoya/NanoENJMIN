@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class WavePlayableBehaviour : PlayableBehaviour
 {
-    public WaveSO wave;
+    public List<SpawnSetup> spawnSetups;
 
     private bool _isProcessed;
     
@@ -17,7 +18,7 @@ public class WavePlayableBehaviour : PlayableBehaviour
         {
             return;
         }
-        EnemyManager.instance.SpawnWave(wave);
+        EnemyManager.instance.SpawnWave(spawnSetups);
         _isProcessed = true;
     }
 

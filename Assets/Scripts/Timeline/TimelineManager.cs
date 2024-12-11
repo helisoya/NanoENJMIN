@@ -50,7 +50,6 @@ public class TimelineManager : MonoBehaviour, INotificationReceiver
 
     public void HideDialog()
     {
-        Debug.Log("HideDialog");
         StartCoroutine(AlphaCoroutine(1, 0, .6f));
     }
 

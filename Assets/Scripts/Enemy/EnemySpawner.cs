@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -13,19 +14,19 @@ public class EnemySpawner : MonoBehaviour
         _spline = GetComponent<SplineContainer>();
     }
 
-    public void SpawnPattern(EnemyPatternSO pattern)
+    public void SpawnEnemies(List<EnemyTypeSO> enemies, float spawnRate)
     {
-        StartCoroutine(EnemySpawnCoroutine(pattern));
+        StartCoroutine(EnemySpawnCoroutine(enemies, spawnRate));
     }
 
-    private IEnumerator EnemySpawnCoroutine(EnemyPatternSO pattern)
+    private IEnumerator EnemySpawnCoroutine(List<EnemyTypeSO> enemies, float spawnRate)
     {
         int enemiesSpawned = 0;
-        while (enemiesSpawned < pattern.enemies.Count)
+        while (enemiesSpawned < enemies.Count)
         {
-            CreateEnemy(pattern.enemies[enemiesSpawned], (Vector3) _spline.Spline.EvaluatePosition(0f) + transform.position, Quaternion.LookRotation(-transform.right));
+            CreateEnemy(enemies[enemiesSpawned], (Vector3) _spline.Spline.EvaluatePosition(0f) + transform.position, Quaternion.LookRotation(-transform.right));
             enemiesSpawned++;
-            yield return new WaitForSeconds(pattern.spawnRate);
+            yield return new WaitForSeconds(spawnRate);
         }
 
         yield return null;

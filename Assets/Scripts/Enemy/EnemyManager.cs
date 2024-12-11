@@ -68,11 +68,11 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void SpawnWave(WaveSO wave)
+    public void SpawnWave(List<SpawnSetup> spawnSetups)
     {
-        foreach (WaveSpawnerSetup waveSpawner in wave.waveSpawnerSetups)
+        foreach (var spawnSetup in spawnSetups)
         {
-            _spawners[waveSpawner.spawnerIndex].SpawnPattern(waveSpawner.pattern);
+            _spawners[spawnSetup.spawnerIndex].SpawnEnemies(spawnSetup.enemies, spawnSetup.spawnRate);
         }
     }
 }
