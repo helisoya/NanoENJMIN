@@ -1795,7 +1795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37364c69d0a49a74cb45d1794f3f0feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 6.111111
   destroyAtThreshold: -150
 --- !u!4 &441874493
 Transform:
