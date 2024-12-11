@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 690488188108307976, guid: a558bcc310a514842abd1a06f97490d4, type: 3}
   colour: 2
-  speed: 2.5
+  speed: 5
   score: 1
   lifePoints: 5
   hasShield: 0
@@ -22,6 +22,9 @@ MonoBehaviour:
   shieldLifePoints: 0
   canFire: 1
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
-  targetingType: 0
+  fireMode: 0
+  targetingMode: 0
   fireAngleRange: 0
   fireRate: 0.5
+  nbBurstProjectiles: 0
+  burstProjectileAngleSpacing: 0

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af34d4357b5f1ef4690309c8eeee63fe, type: 3}
-  m_Name: Enemy_P1
+  m_Name: Enemy_NoShoot_Shield_P1_MidLife
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6742168279788613008, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
-  colour: 1
+  prefab: {fileID: 1422151104337354219, guid: 7d6c80b3d0218074aac63e21f79a78be, type: 3}
+  colour: 0
   speed: 5
   score: 1
-  lifePoints: 5
+  lifePoints: 3
   hasShield: 0
   shieldMaterial: {fileID: 0}
   shieldLifePoints: 0
-  canFire: 1
+  canFire: 0
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
   fireMode: 0
   targetingMode: 0
   fireAngleRange: 0
-  fireRate: 0.5
+  fireRate: 0.8
   nbBurstProjectiles: 0
   burstProjectileAngleSpacing: 0

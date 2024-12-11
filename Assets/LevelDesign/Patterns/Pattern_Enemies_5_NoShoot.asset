@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Pattern_Enemies_5_NoShoot
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 11400000, guid: ff74911b01eb125479745136ab6f33b0, type: 2}
-  - {fileID: 11400000, guid: ff74911b01eb125479745136ab6f33b0, type: 2}
-  - {fileID: 11400000, guid: ff74911b01eb125479745136ab6f33b0, type: 2}
-  - {fileID: 11400000, guid: ff74911b01eb125479745136ab6f33b0, type: 2}
-  - {fileID: 11400000, guid: ff74911b01eb125479745136ab6f33b0, type: 2}
+  - {fileID: 11400000, guid: 16310622593b9244083bc65fd5f51167, type: 2}
+  - {fileID: 11400000, guid: 16310622593b9244083bc65fd5f51167, type: 2}
+  - {fileID: 11400000, guid: 16310622593b9244083bc65fd5f51167, type: 2}
+  - {fileID: 11400000, guid: 16310622593b9244083bc65fd5f51167, type: 2}
+  - {fileID: 11400000, guid: 16310622593b9244083bc65fd5f51167, type: 2}
   spawnRate: 1
