@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private PlayerAnimHandler _playerAnimHandler;
 
+    private Collider _bodyCollider;
+
     [Header("Collisions")]
     [SerializeField] private PlayerInput playerInput;
 
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         GameManager.instance.onGameStarted += OnGameStarted;
+        _bodyCollider = _bodyModel.GetComponent<Collider>();
     }
 
     void Start()
@@ -75,7 +78,7 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
-
+        
         _bodyModelStartRot = _bodyModel.transform.rotation;
     }
 
@@ -273,6 +276,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator RespawnCoroutine(Vector3 destination)
     {
+        _bodyCollider.enabled = false;
         float distance = Vector3.Distance(transform.position, destination);
         while (distance > 0.5f)
         {
@@ -283,6 +287,7 @@ public class Player : MonoBehaviour
         }
 
         takingDamage = false;
+        _bodyCollider.enabled = true;
         yield return null;
     }
 }
