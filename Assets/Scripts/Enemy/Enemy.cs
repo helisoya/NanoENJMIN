@@ -126,7 +126,7 @@ public class Enemy : MonoBehaviour
                 TakeHit(damage, playerProjectile.GetParent());
             else EnemyManager.instance.PlayShieldNoDmgClip();
 
-            Destroy(other.gameObject);
+            playerProjectile.DestroyProjectile();
         }
 
         if (other.gameObject.CompareTag("Player"))
