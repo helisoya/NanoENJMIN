@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class PlayerGUI : MonoBehaviour
 {
     [SerializeField] private Animator[] healthBar;
+    [SerializeField] private Image[] healthFillSprite;
     [SerializeField] private Image manaFill;
     [SerializeField] private Image manaBg;
     private Sprite spriteAlive;
@@ -33,6 +34,11 @@ public class PlayerGUI : MonoBehaviour
         manaFill.sprite = sprites.manaFill;
         manaBg.sprite = sprites.manaBg;
         SetPlayerHealth(50);
+
+        foreach(Image i in healthFillSprite)
+        {
+            i.sprite = spriteAlive;
+        }
     }
 
 
