@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
     /// Takes damage
     /// </summary>
     /// <param name="amount"></param>
-    void OnTakeDamage(int amount)
+    public void OnTakeDamage(int amount)
     {
         if (!Alive || isInvincible)
         {
@@ -178,13 +178,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    /// <summary>
+    /// Recharges the player
+    /// </summary>
+    /// <param name="inkRecharge">How many ink should be recharged</param>
+    public void Recharge(float inkRecharge)
     {
-        if (Alive && !GameManager.instance.InGame) return;
-
-        // Collided with thing
+        AudioManager.instance.PlaySFX2D(inkAbsortionClips[UnityEngine.Random.Range(0, inkAbsortionClips.Length)]);
+        AddMana(inkRecharge);
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EnemyProjectile"))
@@ -205,6 +209,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    */
 
     private void Die()
     {

@@ -21,6 +21,9 @@ namespace Editor
             objsRoot = (Transform)EditorGUILayout.ObjectField("Objs root", objsRoot, typeof(Transform), true);
             sectionSize = EditorGUILayout.FloatField("Section size", sectionSize);
 
+            EditorUtility.SetDirty(this);
+            serializedObject.ApplyModifiedProperties();
+
             if (GUILayout.Button("Separate"))
             {
                 SectionsManager manager = (SectionsManager)target;

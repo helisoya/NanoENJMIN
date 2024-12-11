@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     #region params
 
     private ColorTarget _colour;
-    
+
     private float _speed;
     private int _score;
     private int _lifePoints;
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     #endregion
 
     [CanBeNull] private Player _targetPlayer;
-    
+
     private GameObject _shield;
     private MeshRenderer _shieldRenderer;
 
@@ -48,11 +48,11 @@ public class Enemy : MonoBehaviour
     {
         //Params
         _colour = enemyTypeSo.colour;
-        
+
         _speed = enemyTypeSo.speed;
         _score = enemyTypeSo.score;
         _lifePoints = enemyTypeSo.lifePoints;
-        
+
         //Shield params
         _shield = transform.GetChild(0).gameObject;
         _hasShield = enemyTypeSo.hasShield;
@@ -101,11 +101,11 @@ public class Enemy : MonoBehaviour
         if (_ready)
         {
             Move();
-            
-            if(_targetingMode ==  TargetingMode.Locked || _targetingMode == TargetingMode.PredictedLocked || !_canFire)
+
+            if (_targetingMode == TargetingMode.Locked || _targetingMode == TargetingMode.PredictedLocked || !_canFire)
                 Rotate();
-            
-            if(_canFire)
+
+            if (_canFire)
                 Firing();
         }
     }
@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
             PlayerProjectile playerProjectile = other.gameObject.GetComponent<PlayerProjectile>();
             int damage = playerProjectile.GetDamage(_hasShield, _colour);
             if (damage != 0)
-                TakeHit(damage);
+                TakeHit(damage, playerProjectile.GetParent());
 
             Destroy(other.gameObject);
         }
@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour
 
     private void Rotate()
     {
-        if(_targetPlayer)
+        if (_targetPlayer)
             transform.LookAt(_targetPlayer.transform.position);
     }
 
@@ -171,14 +171,14 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    
+
     private void FireSingle()
     {
         Quaternion spawnRotation = GetRotatationFromTargetMode(_targetingMode);
-        
+
         GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, spawnRotation);
         spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
-        
+
         _fireTimer = _fireRate;
     }
 
@@ -193,7 +193,7 @@ public class Enemy : MonoBehaviour
             GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, spawnRotation);
             spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
         }
-        
+
         _fireTimer = _fireRate;
     }
 
@@ -206,13 +206,13 @@ public class Enemy : MonoBehaviour
             case TargetingMode.None:
                 return Quaternion.Euler(transform.rotation.eulerAngles.x + RandomAngle(),
                     transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-            
+
             case TargetingMode.Locked:
                 direction = Vector3.Normalize(_targetPlayer.transform.position - transform.position);
                 targetRotation = Quaternion.LookRotation(direction);
                 return Quaternion.Euler(targetRotation.eulerAngles.x + RandomAngle(),
                     targetRotation.eulerAngles.y, targetRotation.eulerAngles.z);
-            
+
             case TargetingMode.PredictedLocked:
                 direction = Vector3.Normalize(_targetPlayer.transform.position + _targetPlayer.GetVelocity() - transform.position);
                 targetRotation = Quaternion.LookRotation(direction);
@@ -228,8 +228,8 @@ public class Enemy : MonoBehaviour
     {
         return Random.Range(-(_fireAngleRange / 2), _fireAngleRange / 2);
     }
- 
-    private void TakeHit(int damage)
+
+    private void TakeHit(int damage, Player from)
     {
         if (_hasShield)
         {
@@ -241,7 +241,7 @@ public class Enemy : MonoBehaviour
         {
             _lifePoints -= damage;
             if (_lifePoints <= 0)
-                Die();
+                Die(from);
         }
     }
 
@@ -251,8 +251,9 @@ public class Enemy : MonoBehaviour
         _hasShield = false;
     }
 
-    private void Die()
+    private void Die(Player killer)
     {
+        killer.AddScore(_score);
         Destroy(gameObject);
     }
 
