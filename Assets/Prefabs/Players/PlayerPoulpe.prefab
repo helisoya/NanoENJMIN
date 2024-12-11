@@ -317,6 +317,7 @@ MonoBehaviour:
   _bodyModel: {fileID: 2479793791921661018}
   _animator: {fileID: 2803935618796434054}
   _playerAnimHandler: {fileID: 4998611209254269979}
+  bubbleMovement: {fileID: 7893661890168703194}
   playerInput: {fileID: 7006348633870953166}
   inkAbsortionClips:
   - {fileID: 8300000, guid: c7f85fbaa3ea3574e8d66ce35dd0e23f, type: 3}
@@ -584,6 +585,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f86987ec8f480341a7a8005c1bc2742, type: 3}
+--- !u!198 &7893661890168703194 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5461238711066236168, guid: 1f86987ec8f480341a7a8005c1bc2742, type: 3}
+  m_PrefabInstance: {fileID: 2756726367708798418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8108521095069775211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6252857752609712313, guid: 1f86987ec8f480341a7a8005c1bc2742, type: 3}
