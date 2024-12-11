@@ -6,6 +6,7 @@ namespace Editor
     using UnityEditor;
     using UnityEngine;
     
+    [CanEditMultipleObjects]
     [CustomEditor(typeof(EnemyTypeSO))]
     public class EnemyTypeCustomEditor : Editor
     {
@@ -46,8 +47,6 @@ namespace Editor
 
                 enemyTypeSo.projectileTypeSo = (ProjectileTypeSO)EditorGUILayout.ObjectField("Projectile Type", enemyTypeSo.projectileTypeSo, typeof(ProjectileTypeSO), false);
                     
-                enemyTypeSo.fireMode = (FireMode)EditorGUILayout.EnumPopup("Fire Mode", enemyTypeSo.fireMode);
-
                 if (enemyTypeSo.fireMode == FireMode.Homing)
                     return;
                 
