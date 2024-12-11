@@ -50,7 +50,7 @@ namespace Editor
 
                 foreach (Transform child in childs)
                 {
-                    int index = Mathf.CeilToInt(child.transform.position.x / sectionSize);
+                    int index = Mathf.Clamp(Mathf.CeilToInt(child.transform.position.x / sectionSize), 0, manager.transform.childCount - 1);
                     Transform parent = manager.transform.GetChild(index);
                     child.parent = parent;
                 }
@@ -63,7 +63,7 @@ namespace Editor
                 foreach (Transform child in manager.transform)
                 {
                     LODGroup group = child.GetComponent<LODGroup>();
-                    group.GetLODs()[0].renderers = child.GetComponentsInChildren<Renderer>();
+                    group.GetLODs()[0].renderers = child.GetComponentsInChildren<MeshRenderer>();
                 }
             }
 
