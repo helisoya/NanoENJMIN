@@ -97,6 +97,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.InGame)
+        {
+            attack.SetCanAttack(false);
+        }
+        
         if (currentMana < maxMana)
         {
             AddMana(manaFillSpeed * Time.deltaTime);

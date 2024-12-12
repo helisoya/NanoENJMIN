@@ -46,6 +46,7 @@ public class PlayerProjectile : MonoBehaviour
     public void DestroyProjectile()
     {
         animator.SetTrigger("Destroy");
+        isDestroyed = true;
         Destroy(gameObject, destroyAfter);
     }
 
@@ -64,6 +65,12 @@ public class PlayerProjectile : MonoBehaviour
                 return 0;
         }
 
+        return damage;
+    }
+
+    public int GetDamage()
+    {
+        if (isDestroyed) return 0;
         return damage;
     }
 
