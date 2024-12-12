@@ -332,6 +332,9 @@ public class Player : MonoBehaviour
         bubbleMovement.Stop();
         _bodyCollider.enabled = false;
 
+        currentMana = maxMana;
+        GameGUI.instance.SetPlayerManaFill(GUIID, 1f);
+
         float distance = Vector3.Distance(transform.position, destination);
         while (distance > 0.5f)
         {

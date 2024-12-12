@@ -32,13 +32,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 267afaef9a2122c469b94329eae55e14, type: 2}
+    - target: {fileID: 5269111184769994086, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
+      propertyPath: useParticleSystem
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269111184769994086, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
+      propertyPath: particleSystemPrefab
+      value: 
+      objectReference: {fileID: 2414669993548283072, guid: 77ffd8c6559361f4fbdc0fdead6aedc7, type: 3}
     - target: {fileID: 6515510177957202452, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 267afaef9a2122c469b94329eae55e14, type: 2}
     - target: {fileID: 6742168279788613008, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
       propertyPath: m_Name
-      value: SharkProt_Purple
+      value: Shark_Purple
       objectReference: {fileID: 0}
     - target: {fileID: 7147609303764445976, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
       propertyPath: m_LocalPosition.x
@@ -85,7 +93,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 43fe04f918198894b89acdad1f16d23c, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1184839985049327822, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}

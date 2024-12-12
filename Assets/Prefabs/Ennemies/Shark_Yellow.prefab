@@ -107,6 +107,8 @@ MonoBehaviour:
   - {fileID: 4581180786392553095}
   - {fileID: 2145021556134329557}
   - {fileID: 4433604225967662024}
+  useParticleSystem: 1
+  particleSystemPrefab: {fileID: 2414669993548283072, guid: 77ffd8c6559361f4fbdc0fdead6aedc7, type: 3}
 --- !u!1 &8272894933216877444
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +234,8 @@ MonoBehaviour:
   _hitFlashOutDuration: 0.064
   _renderers:
   - {fileID: 7404516205052219052}
+  useParticleSystem: 0
+  particleSystemPrefab: {fileID: 0}
 --- !u!1001 &8025771710366210455
 PrefabInstance:
   m_ObjectHideFlags: 0
