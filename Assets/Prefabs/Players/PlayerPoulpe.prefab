@@ -1192,6 +1192,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11681416529774285, guid: 1fb4b9b5e55365440b76c6380b7d6309, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -53.280003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11681416529774285, guid: 1fb4b9b5e55365440b76c6380b7d6309, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 11681416529774285, guid: 1fb4b9b5e55365440b76c6380b7d6309, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1fb4b9b5e55365440b76c6380b7d6309, type: 3}
       propertyPath: m_Name
       value: Weapon_Yellow
@@ -1208,6 +1220,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b7626fe9f455bdf47a02726b1f9bb2ac, type: 2}
+    - target: {fileID: 7791393102573176481, guid: 1fb4b9b5e55365440b76c6380b7d6309, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -53.280003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791393102573176481, guid: 1fb4b9b5e55365440b76c6380b7d6309, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791393102573176481, guid: 1fb4b9b5e55365440b76c6380b7d6309, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
