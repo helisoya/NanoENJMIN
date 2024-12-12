@@ -16,7 +16,6 @@ public class BossDoor : MonoBehaviour
     {
         if (other.CompareTag("PlayerProjectile"))
         {
-            Debug.Log("hit by player projectile");
             if (other.TryGetComponent<PlayerProjectile>(out var playerProjectile))
             {
                 int damage = playerProjectile.GetDamage();
@@ -54,6 +53,7 @@ public class BossDoor : MonoBehaviour
         {
             player.AddScore(50);
         }
+        gameObject.SetActive(false);
         GameManager.instance.EndGame();
     }
 }
