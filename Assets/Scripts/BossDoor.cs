@@ -54,6 +54,6 @@ public class BossDoor : MonoBehaviour
             player.AddScore(50);
         }
         gameObject.SetActive(false);
-        GameManager.instance.EndGame();
+        GameManager.instance.Win();
     }
 }
