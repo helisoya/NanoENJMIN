@@ -43,9 +43,10 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerAnimHandler _playerAnimHandler;
     [SerializeField] private ParticleSystem bubbleMovement;
 
-    [SerializeField] private List<GameObject> _colorWeapons;
-    
+
     private Animator _animatorWeapon;
+
+    [SerializeField] private List<PlayerWeapon> _colorWeapons;
 
     private Collider _bodyCollider;
 
@@ -98,10 +99,24 @@ public class Player : MonoBehaviour
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
         _colorWeapons[(int)Color - 1].SetActive(true);
         _animatorWeapon = _colorWeapons[(int)Color - 1].GetComponent<Animator>();
+        switch (Color)
+        {
+            case ColorTarget.YELLOW:
+                _colorWeapons[1].gameObject.SetActive(false);
+                break;
+            case ColorTarget.PURPLE:
+                _colorWeapons[0].gameObject.SetActive(false);
+                break;
+        }
         _hitPlayerParticles = GameManager.instance.GetHitParticles(Color);
         absortionObj.GetComponent<Renderer>().material.SetColor("_Color", ID == 0 ? UnityEngine.Color.yellow : new Color(0.8f, 0, 0.8f));
 
         _bodyModelStartRot = _bodyModel.transform.rotation;
+        
+        foreach (var weapon in _colorWeapons)
+        {
+            weapon.SetEmissionIntensity(currentMana / maxMana);
+        }
     }
 
     void Update()
@@ -213,6 +228,10 @@ public class Player : MonoBehaviour
         {
             currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
             GameGUI.instance.SetPlayerManaFill(GUIID, currentMana / maxMana);
+            foreach (var weapon in _colorWeapons)
+            {
+                weapon.SetEmissionIntensity(currentMana / maxMana);
+            }
         }
     }
 

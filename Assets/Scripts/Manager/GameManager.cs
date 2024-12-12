@@ -50,6 +50,11 @@ public class GameManager : MonoBehaviour
         readyUps = new List<int>();
     }
 
+    void Start()
+    {
+        AudioManager.instance.SetAMB(0f);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))

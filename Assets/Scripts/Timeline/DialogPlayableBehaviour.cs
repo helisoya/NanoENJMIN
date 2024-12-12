@@ -19,7 +19,7 @@ public class DialogPlayableBehaviour : PlayableBehaviour
         }
 
         _isProcessed = true;
-        TimelineManager.instance.ShowDialog(dialogText);
+        TimelineManager.instance.DialogManager.ShowDialog(dialogText);
     }
 
     public override void OnBehaviourPause(Playable playable, FrameData info)
@@ -33,6 +33,6 @@ public class DialogPlayableBehaviour : PlayableBehaviour
             return;
         }
         _isProcessed = false;
-        TimelineManager.instance.HideDialog();
+        TimelineManager.instance.DialogManager.HideDialog();
     }
 }
