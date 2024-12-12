@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController[] playerBulletControllers;
     [SerializeField] private ParticleSystem[] shootPlayerParticles;
     [SerializeField] private ParticleSystem[] hitPlayerParticles;
+    [SerializeField] private ParticleSystem[] deathPlayerParticles;
     [SerializeField] private PlayerInputManager inputManager;
 
     public static GameManager instance;
@@ -204,6 +205,11 @@ public class GameManager : MonoBehaviour
     public ParticleSystem GetHitParticles(ColorTarget color)
     {
         return hitPlayerParticles[(int)color];
+    }
+
+    public ParticleSystem GetDeathParticles(ColorTarget color)
+    {
+        return deathPlayerParticles[(int)color];
     }
 
     public Player GetPlayerFromColour(ColorTarget colour)

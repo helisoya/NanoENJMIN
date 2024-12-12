@@ -343,6 +343,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 01fe051e6f4f0f4418a24c49a65f6f97, type: 3}
   absortionObj: {fileID: 4570935752294998165}
   absortionVFXLength: 1
+  vibrationLength: 0.3
+  vibrationStrength: 0.3
 --- !u!114 &7197915407237680396
 MonoBehaviour:
   m_ObjectHideFlags: 0
