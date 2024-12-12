@@ -189,14 +189,14 @@ public class Enemy : MonoBehaviour
             switch (_fireMode)
             {
                 case FireMode.Single:
+                    EnemyManager.instance.PlayShotClip();
                     FireSingle();
                     break;
                 case FireMode.Burst:
+                    EnemyManager.instance.PlayShotClip();
                     FireBurst();
                     break;
             }
-
-            EnemyManager.instance.PlayShotClip();
         }
     }
 
@@ -229,6 +229,11 @@ public class Enemy : MonoBehaviour
     {
         Vector3 direction;
         Quaternion targetRotation;
+        if (!_targetPlayer)
+        {
+            return Quaternion.Euler(transform.rotation.eulerAngles.x + RandomAngle(),
+                                    transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        }
         switch (targetingMode)
         {
             case TargetingMode.None:
