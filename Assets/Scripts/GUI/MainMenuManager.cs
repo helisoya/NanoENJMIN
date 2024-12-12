@@ -45,6 +45,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void Click_Settings()
     {
+        generalRoot.SetActive(false);
         AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
         settings.Open();
         eventSystem.SetSelectedGameObject(settingsObj);
@@ -54,6 +55,7 @@ public class MainMenuManager : MonoBehaviour
     {
         AudioManager.instance.PlaySFX2D(buttonClips[Random.Range(0, buttonClips.Length)]);
         settings.Close();
+        generalRoot.SetActive(true);
         eventSystem.SetSelectedGameObject(generalAfterSettingsObj);
     }
 

@@ -19,10 +19,10 @@ public enum ColorTarget
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Cheats")] 
+    [Header("Cheats")]
     public bool cheatHasInfiniteLives = true;
     public bool cheatHasInfiniteAmmo = true;
-    
+
     [Header("Players")]
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private Transform[] respawnPositions;
@@ -164,6 +164,12 @@ public class GameManager : MonoBehaviour
         GameGUI.instance.OpenEndScreen(players, false);
     }
 
+    public void Win()
+    {
+        InGame = false;
+        GameGUI.instance.OpenEndScreen(players, true);
+    }
+
     /// <summary>
     /// Gets a ColorTarget's material
     /// </summary>
@@ -178,7 +184,7 @@ public class GameManager : MonoBehaviour
     {
         return playerBulletControllers[(int)color];
     }
-    
+
     public ParticleSystem GetShootParticles(ColorTarget color)
     {
         return shootPlayerParticles[(int)color];

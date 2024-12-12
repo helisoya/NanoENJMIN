@@ -306,10 +306,10 @@ MonoBehaviour:
   winClip: {fileID: 8300000, guid: fe4382816b666614a97e5f51c5af99ea, type: 3}
   loseClip: {fileID: 8300000, guid: ec671bce92a261c4ba338d87ffbe8f13, type: 3}
   eventSystem: {fileID: 2855289708485479570}
-  pauseObj: {fileID: 0}
-  pauseAfterSettingsObj: {fileID: 0}
-  endObj: {fileID: 0}
-  settingsObj: {fileID: 0}
+  pauseObj: {fileID: 7408707693806003131}
+  pauseAfterSettingsObj: {fileID: 8493785465500978752}
+  endObj: {fileID: 2421329875387475409}
+  settingsObj: {fileID: 7077595860116509497}
   stopReceivingInputsFor: 0.25
 --- !u!1 &261768907808812583
 GameObject:
@@ -4387,6 +4387,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}
+--- !u!1 &2421329875387475409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2133948780738759799, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}
+  m_PrefabInstance: {fileID: 4325432208879593894}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3596739226565223610 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1003505469696707868, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}
@@ -4670,6 +4675,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7793212660812691299, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7104886947264426865}
+    - target: {fileID: 7793212660812691299, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click_CloseSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793212660812691299, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameGUI, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7850266532559988013, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1
@@ -4730,6 +4747,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e8ae63ded4c64e97704de0ad496b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7077595860116509497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3937855357683581918, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
+  m_PrefabInstance: {fileID: 6097514879841489127}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7223383215242816237 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3503841988548852234, guid: 3885860aca18db743bb59ad148e8dcf6, type: 3}
@@ -4863,7 +4885,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 446859678196861142, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}
       propertyPath: m_text
-      value: Restart
+      value: Settings
       objectReference: {fileID: 0}
     - target: {fileID: 1003505469696707868, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}
       propertyPath: m_Pivot.x
@@ -4969,6 +4991,11 @@ PrefabInstance:
 --- !u!224 &7327243432922910507 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1003505469696707868, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}
+  m_PrefabInstance: {fileID: 7512765026965389879}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8493785465500978752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2133948780738759799, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}
   m_PrefabInstance: {fileID: 7512765026965389879}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8884559147334201292
@@ -5084,6 +5111,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}
+--- !u!1 &7408707693806003131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2133948780738759799, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}
+  m_PrefabInstance: {fileID: 8884559147334201292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8548220841809306320 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1003505469696707868, guid: 0fbdd8bfa1f07ed4d98900830b11e918, type: 3}

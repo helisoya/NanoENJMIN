@@ -10,6 +10,7 @@ public class SettingsMenu : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] private GameObject root;
+    public bool IsOpen { get { return root.activeInHierarchy; } }
 
     [Header("Audio")]
     [SerializeField] private AudioMixer mixer;
