@@ -201,14 +201,12 @@ MonoBehaviour:
     enemies:
     - {fileID: 11400000, guid: abd8099f6fb009e4ab6090841a1a898d, type: 2}
     - {fileID: 11400000, guid: abd8099f6fb009e4ab6090841a1a898d, type: 2}
-    - {fileID: 11400000, guid: abd8099f6fb009e4ab6090841a1a898d, type: 2}
-    spawnRate: 3
+    spawnRate: 5
   - spawnerIndex: 29
     enemies:
     - {fileID: 11400000, guid: d8f1ed8edf948b946b4f3d8d11c31fc9, type: 2}
     - {fileID: 11400000, guid: d8f1ed8edf948b946b4f3d8d11c31fc9, type: 2}
-    - {fileID: 11400000, guid: d8f1ed8edf948b946b4f3d8d11c31fc9, type: 2}
-    spawnRate: 3
+    spawnRate: 5
 --- !u!114 &-7377952803835874285
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -472,7 +470,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: DialogPlayableAsset
+    m_DisplayName: Avenge our fallen!
   - m_Version: 1
     m_Start: 31.233333333333334
     m_ClipIn: 0
@@ -541,7 +539,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: DialogPlayableAsset
+    m_DisplayName: 'Refill your ink gauge '
   - m_Version: 1
     m_Start: 51.500000000000036
     m_ClipIn: 0
@@ -610,7 +608,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: DialogPlayableAsset
+    m_DisplayName: Protect your allies!
   - m_Version: 1
     m_Start: 81.96666666666667
     m_ClipIn: 0
@@ -680,6 +678,75 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: Destroy the shields
+  - m_Version: 1
+    m_Start: 159.85
+    m_ClipIn: 0
+    m_Asset: {fileID: -2455238233428164766}
+    m_Duration: 3
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -5799901343090371041}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: The door, destroy it!
   m_Markers:
     m_Objects: []
 --- !u!114 &-5661880737850000656
@@ -699,11 +766,9 @@ MonoBehaviour:
     enemies:
     - {fileID: 11400000, guid: db8d323fe9ea45b4ab698be57eb51dc2, type: 2}
     - {fileID: 11400000, guid: db8d323fe9ea45b4ab698be57eb51dc2, type: 2}
-    - {fileID: 11400000, guid: db8d323fe9ea45b4ab698be57eb51dc2, type: 2}
     spawnRate: 3
   - spawnerIndex: 29
     enemies:
-    - {fileID: 11400000, guid: dddc128ca022d504da114b30ef1b54a1, type: 2}
     - {fileID: 11400000, guid: dddc128ca022d504da114b30ef1b54a1, type: 2}
     - {fileID: 11400000, guid: dddc128ca022d504da114b30ef1b54a1, type: 2}
     spawnRate: 3
@@ -810,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5f586a6342abf4298ad69788e44433, type: 3}
   m_Name: DialogPlayableAsset(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
-  dialogText: Shield your ally!
+  dialogText: Protect your allies!
 --- !u!114 &-5031127649377105933
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -984,6 +1049,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
     - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
     - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
+    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
+    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
+    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
     spawnRate: 1
 --- !u!114 &-2755805247641280373
 MonoBehaviour:
@@ -1021,6 +1089,19 @@ MonoBehaviour:
     enemies:
     - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
     spawnRate: 0
+--- !u!114 &-2455238233428164766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5f586a6342abf4298ad69788e44433, type: 3}
+  m_Name: DialogPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  dialogText: The door, destroy it!
 --- !u!114 &-2326458979129841902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1036,6 +1117,9 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 4
     enemies:
+    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
     - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
     - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
     - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
@@ -1445,7 +1529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5f586a6342abf4298ad69788e44433, type: 3}
   m_Name: DialogPlayableAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
-  dialogText: 'Refill your ink sac by
+  dialogText: 'Refill your ink gauge by
 
     absorbing your color!'
 --- !u!114 &1514698023733875384
@@ -3379,10 +3463,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Wave_NoShoot_VertUp_1
   - m_Version: 1
-    m_Start: 162.85
+    m_Start: 164.85
     m_ClipIn: 0
     m_Asset: {fileID: -5661880737850000656}
-    m_Duration: 9
+    m_Duration: 6
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5267396193888784221}
     m_EaseInDuration: 0
@@ -3957,7 +4041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5f586a6342abf4298ad69788e44433, type: 3}
   m_Name: DialogPlayableAsset
   m_EditorClassIdentifier: 
-  dialogText: Destroy all the sharks!
+  dialogText: 'Avenge our fallen!
+
+    Destroy our ennemies!'
 --- !u!114 &6289590808837329892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4648,7 +4734,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: P1 Burst
   - m_Version: 1
-    m_Start: 144.75000000000003
+    m_Start: 144.7
     m_ClipIn: 0
     m_Asset: {fileID: -7394833129469817879}
     m_Duration: 10
