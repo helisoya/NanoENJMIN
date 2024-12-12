@@ -19,6 +19,10 @@ public enum ColorTarget
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Cheats")] 
+    public bool cheatHasInfiniteLives = true;
+    public bool cheatHasInfiniteAmmo = true;
+    
     [Header("Players")]
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private Transform[] respawnPositions;
@@ -43,6 +47,30 @@ public class GameManager : MonoBehaviour
         InGame = false;
         players = new List<Player>();
         readyUps = new List<int>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            cheatHasInfiniteLives = !cheatHasInfiniteLives;
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            cheatHasInfiniteAmmo = !cheatHasInfiniteAmmo;
+        }
+    }
+
+    private void OnGUI()
+    {
+        if (cheatHasInfiniteLives)
+        {
+            GUI.Button(new Rect(10, 10, 120, 30), "Infinite lives: on");
+        }
+        if (cheatHasInfiniteAmmo)
+        {
+            GUI.Button(new Rect(10, 50, 120, 30), "Infinite ammo: on");
+        }
     }
 
     public void RespawnPlayer(Player player)
@@ -124,11 +152,16 @@ public class GameManager : MonoBehaviour
 
             if (readyUps.Count >= players.Count)
             {
-                InGame = false;
-                readyUps.Clear();
-                GameGUI.instance.OpenEndScreen(players, false);
+                EndGame();
             }
         }
+    }
+
+    public void EndGame()
+    {
+        InGame = false;
+        readyUps.Clear();
+        GameGUI.instance.OpenEndScreen(players, false);
     }
 
     /// <summary>

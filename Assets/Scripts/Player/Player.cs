@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
         movements.SetVelocity(Vector2.zero);
         attack.SetCanAttack(false);
 
-        if (currentHealth == 0)
+        if (!GameManager.instance.cheatHasInfiniteLives && currentHealth == 0)
         {
             AudioManager.instance.PlaySFX2D(deathClips[UnityEngine.Random.Range(0, deathClips.Length)]);
             Die();

@@ -35,11 +35,14 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (player.Alive && pressedFire && player.Mana >= manaCost && Time.time - lastAttack >= fireRate)
+        if (player.Alive && pressedFire && (GameManager.instance.cheatHasInfiniteAmmo || player.Mana >= manaCost) && Time.time - lastAttack >= fireRate)
         {
             AudioManager.instance.PlaySFX2D(fireClips[Random.Range(0, fireClips.Length)]);
             lastAttack = Time.time;
-            player.AddMana(-manaCost);
+            if (!GameManager.instance.cheatHasInfiniteAmmo)
+            {
+                player.AddMana(-manaCost);
+            }
             Instantiate(prefabProjectile, transform.position, Quaternion.identity).OnSpawn(player.Color, player);
             _shootParticles.Play();
         }
