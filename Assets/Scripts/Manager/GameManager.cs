@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool cheatHasInfiniteAmmo = true;
 
     [Header("Players")]
+    [SerializeField] private int requiredNumberOfPlayers = 2;
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private Transform[] respawnPositions;
     [SerializeField] private Material[] playerMaterials;
@@ -131,7 +132,7 @@ public class GameManager : MonoBehaviour
         {
             readyUps.Add(ID);
             GameGUI.instance.ReadyUpPlayer(ID);
-            if (readyUps.Count >= players.Count)
+            if (readyUps.Count >= players.Count && players.Count >= requiredNumberOfPlayers)
             {
                 InGame = true;
                 readyUps.Clear();
