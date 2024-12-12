@@ -57,7 +57,7 @@ MonoBehaviour:
   - {fileID: 4199338711919274997}
   playerMaterials:
   - {fileID: 2100000, guid: d2210df6b8e0a684e8a3a9b359602de0, type: 2}
-  - {fileID: 2100000, guid: 5f837c7a58341ee46983337c70200be7, type: 2}
+  - {fileID: 2100000, guid: 5e56726942b148343b03d200753f9e1b, type: 2}
   - {fileID: 2100000, guid: 8966a19a532efa146a477e3245894dfc, type: 2}
   playerBulletControllers:
   - {fileID: 9100000, guid: 32a30f0009ce4c842869f8a4e85f2819, type: 2}
