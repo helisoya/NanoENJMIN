@@ -26,6 +26,6 @@ MonoBehaviour:
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
   targetingMode: 0
   fireAngleRange: 0
-  fireRate: 2
+  fireRate: 1.5
   nbBurstProjectiles: 1
   burstProjectileAngleSpacing: 10

@@ -50,7 +50,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 44
     enemies:
-    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 4f6ec8147b7643143ab65ce03a68ddb6, type: 2}
     spawnRate: 0
 --- !u!114 &-8402004871100756052
 MonoBehaviour:
@@ -223,7 +223,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 34
     enemies:
-    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
+    - {fileID: 11400000, guid: e6bd35492cb1dc745aa24c076694820a, type: 2}
     spawnRate: 0
 --- !u!114 &-7026381469765379063
 MonoBehaviour:
@@ -257,7 +257,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 41
     enemies:
-    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 4f6ec8147b7643143ab65ce03a68ddb6, type: 2}
     spawnRate: 0
 --- !u!114 &-6552242903001199308
 MonoBehaviour:
@@ -323,7 +323,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 35
     enemies:
-    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
+    - {fileID: 11400000, guid: e6bd35492cb1dc745aa24c076694820a, type: 2}
     spawnRate: 0
 --- !u!114 &-5805024872479173664
 MonoBehaviour:
@@ -754,7 +754,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 42
     enemies:
-    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 4f6ec8147b7643143ab65ce03a68ddb6, type: 2}
     spawnRate: 0
 --- !u!114 &-5334877444402910562
 MonoBehaviour:
@@ -771,7 +771,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 33
     enemies:
-    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
+    - {fileID: 11400000, guid: e6bd35492cb1dc745aa24c076694820a, type: 2}
     spawnRate: 0
 --- !u!114 &-5272391878779025006
 MonoBehaviour:
@@ -811,7 +811,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 40
     enemies:
-    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 4f6ec8147b7643143ab65ce03a68ddb6, type: 2}
     spawnRate: 0
 --- !u!114 &-5173356756871908054
 MonoBehaviour:
@@ -858,7 +858,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 43
     enemies:
-    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 4f6ec8147b7643143ab65ce03a68ddb6, type: 2}
     spawnRate: 0
 --- !u!114 &-4887160699477086443
 MonoBehaviour:
@@ -1160,9 +1160,11 @@ MonoBehaviour:
     enemies:
     - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
     - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
     spawnRate: 1
   - spawnerIndex: 1
     enemies:
+    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
     - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
     - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
     spawnRate: 1
@@ -1464,7 +1466,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 36
     enemies:
-    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
+    - {fileID: 11400000, guid: e6bd35492cb1dc745aa24c076694820a, type: 2}
     spawnRate: 0
 --- !u!114 &1444512050217236807
 MonoBehaviour:
@@ -1496,7 +1498,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 37
     enemies:
-    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
+    - {fileID: 11400000, guid: e6bd35492cb1dc745aa24c076694820a, type: 2}
     spawnRate: 0
 --- !u!114 &1654077178610996607
 MonoBehaviour:
@@ -1532,9 +1534,11 @@ MonoBehaviour:
     enemies:
     - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
     - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
     spawnRate: 1
   - spawnerIndex: 1
     enemies:
+    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
     - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
     - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
     spawnRate: 1
@@ -1711,7 +1715,7 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 38
     enemies:
-    - {fileID: 11400000, guid: 5a8140b3969588441aabe353aab0dec6, type: 2}
+    - {fileID: 11400000, guid: e6bd35492cb1dc745aa24c076694820a, type: 2}
     spawnRate: 0
 --- !u!114 &4101082683456082788
 MonoBehaviour:
@@ -4566,7 +4570,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Wave
+    m_DisplayName: P1 & P2 LowLife HighRate
   - m_Version: 1
     m_Start: 118.06666666666666
     m_ClipIn: 0
@@ -4635,7 +4639,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Wave
+    m_DisplayName: P1 & P2 LowLife HighRate Locked
   - m_Version: 1
     m_Start: 163.73333333333332
     m_ClipIn: 0
@@ -4999,5 +5003,5 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 39
     enemies:
-    - {fileID: 11400000, guid: 54540a64e904970448b02dc44371caf4, type: 2}
+    - {fileID: 11400000, guid: 4f6ec8147b7643143ab65ce03a68ddb6, type: 2}
     spawnRate: 0
