@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
     {
         GameManager.instance.onGameStarted += OnGameStarted;
         _bodyCollider = _bodyModel.GetComponent<Collider>();
-        
+
     }
 
     void Start()
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
     {
         _animatorBody.SetTrigger(triggerName);
     }
-    
+
     public void SetWeaponAnimationTrigger(string triggerName)
     {
         _animatorWeapon.SetTrigger(triggerName);

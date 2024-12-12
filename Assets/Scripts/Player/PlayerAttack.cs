@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float fireRate = 0.3f;
     [SerializeField] private PlayerProjectile prefabProjectile;
     [SerializeField] private AudioClip[] fireClips;
+    [SerializeField] private AudioClip[] noAmmoClip;
     [SerializeField] private float manaCost = 1f;
     [SerializeField] private Transform shootParticlesPos;
 
@@ -39,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
         {
             AudioManager.instance.PlaySFX2D(fireClips[Random.Range(0, fireClips.Length)]);
             lastAttack = Time.time;
-            
+
             if (!GameManager.instance.cheatHasInfiniteAmmo)
             {
                 player.AddMana(-manaCost);
@@ -47,10 +48,12 @@ public class PlayerAttack : MonoBehaviour
             Instantiate(prefabProjectile, shootParticlesPos.position, Quaternion.identity).OnSpawn(player.Color, player);
             _shootParticles.Play();
             player.SetWeaponAnimationTrigger("Fire");
-            
+
         }
         else if (player.Alive && pressedFire && player.Mana < manaCost && Time.time - lastAttack >= fireRate)
         {
+            lastAttack = Time.time;
+            AudioManager.instance.PlaySFX2D(noAmmoClip[Random.Range(0, noAmmoClip.Length)]);
             player.SetWeaponAnimationTrigger("FireEmpty");
         }
     }

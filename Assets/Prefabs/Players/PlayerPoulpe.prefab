@@ -411,6 +411,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 613ab438d2a51824eabe9c4b3a9cc348, type: 3}
   - {fileID: 8300000, guid: 01b5f0a92eb7c3140a7dab0ddea06687, type: 3}
   - {fileID: 8300000, guid: dd8608626ddedb04d858307462d72ae3, type: 3}
+  noAmmoClip:
+  - {fileID: 8300000, guid: e139fb33776e88b4c87ab9de62fe9f0a, type: 3}
+  - {fileID: 8300000, guid: 0cdb2b120a9cad349b74e1c94dc0a506, type: 3}
+  - {fileID: 8300000, guid: 34bc399a0a45dfc4383ebe0d94ba8ed1, type: 3}
+  - {fileID: 8300000, guid: d280ea39948eb484a958319a75b2aaa2, type: 3}
   manaCost: 2.15
   shootParticlesPos: {fileID: 361905718180455832}
 --- !u!1 &4570935752294998165
