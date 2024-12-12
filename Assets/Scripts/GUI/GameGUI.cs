@@ -61,7 +61,8 @@ public class GameGUI : MonoBehaviour
     [SerializeField] private float stopReceivingInputsFor = 0.25f;
     private float stopStart;
 
-    public bool InMenu { get { return pauseScreen.activeInHierarchy || settings.IsOpen; } }
+    public bool InMenu      { get { return pauseScreen.activeInHierarchy || settings.IsOpen; } }
+    public bool CanBePaused => !TimelineDialogManager.instance.InDialog;
 
     void Awake()
     {
@@ -83,7 +84,7 @@ public class GameGUI : MonoBehaviour
     /// </summary>
     public void TogglePauseMenu()
     {
-        if (Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
+        if (!CanBePaused || Time.unscaledTime - stopStart < stopReceivingInputsFor) return;
 
         stopStart = Time.unscaledTime;
 

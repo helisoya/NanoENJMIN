@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TimelineDialogManager : MonoBehaviour
 {
+    public static TimelineDialogManager instance;
  
     [SerializeField]
     private CanvasGroup _dialogTextCanvasGroup;
@@ -19,11 +20,19 @@ public class TimelineDialogManager : MonoBehaviour
     [SerializeField]
     private Image _rightBackground;
 
+    [SerializeField]
+    [Range(0, 2)]
+    private float _slomoTimeScale = 0.3f;
+    
+    public bool InDialog { get; private set; }
+
     private RectTransform _leftBackgroundRect;
     private RectTransform _rightBackgroundRect;
+    private float         _previousTimeScale;
     
     private void Awake()
     {
+        instance = this;
         _leftBackgroundRect = _leftBackground.rectTransform;
         _rightBackgroundRect = _rightBackground.rectTransform;
         _leftBackgroundRect.anchoredPosition = new Vector2(-Screen.width, 0);
@@ -32,15 +41,18 @@ public class TimelineDialogManager : MonoBehaviour
 
     public void ShowDialog(string text)
     {
+        InDialog = true;
         _dialogText.text = text;
         StartCoroutine(ShowDialogCoroutine(.5f));
-        StartCoroutine(TimeScaleCoroutine(1, .3f, 1f));
+        _previousTimeScale = Time.timeScale;
+        StartCoroutine(TimeScaleCoroutine(_previousTimeScale, _slomoTimeScale, 1f));
     }
 
     public void HideDialog()
     {
         StartCoroutine(HideDialogCoroutine(.5f));
-        StartCoroutine(TimeScaleCoroutine(.3f, 1f, 1f));
+        StartCoroutine(TimeScaleCoroutine(_slomoTimeScale, _previousTimeScale, 1f, () => InDialog = false));
+        
     }
 
     private IEnumerator ShowDialogCoroutine(float duration)
@@ -90,7 +102,7 @@ public class TimelineDialogManager : MonoBehaviour
         }
     }
 
-    private IEnumerator TimeScaleCoroutine(float startValue, float endValue, float duration)
+    private IEnumerator TimeScaleCoroutine(float startValue, float endValue, float duration, Action callback = null)
     {
         float time = 0;
         while (time < duration)
@@ -100,6 +112,9 @@ public class TimelineDialogManager : MonoBehaviour
             time += Time.unscaledDeltaTime;
             yield return null;
         }
+
+        callback?.Invoke();
+        
         float EaseOutQuad(float x) {
             return 1 - (1 - x) * (1 - x);
         }
