@@ -59,6 +59,11 @@ public class GameManager : MonoBehaviour
         {
             cheatHasInfiniteAmmo = !cheatHasInfiniteAmmo;
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Win();
+        }
     }
 
     private void OnGUI()
