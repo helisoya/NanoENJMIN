@@ -257,13 +257,13 @@ MonoBehaviour:
   m_text: 'Game Designers :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -842,13 +842,13 @@ MonoBehaviour:
   m_text: Matthieu GOLSENNE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1797,13 +1797,13 @@ MonoBehaviour:
     Samy DIF'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1934,13 +1934,13 @@ MonoBehaviour:
     & Tech Artist\n\nDaphn\xE9 RENAULD\nChara, Anim, Rig Artist"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2789,13 +2789,13 @@ MonoBehaviour:
     Marvin LAMACCHIA'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2927,13 +2927,13 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3262,13 +3262,13 @@ MonoBehaviour:
   m_text: "S\xE9bastien MORRIS\nProg Gameplay / Tools"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3398,13 +3398,13 @@ MonoBehaviour:
   m_text: "Producer :\n\nR\xE9mi BERNARD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -8562,13 +8562,13 @@ MonoBehaviour:
   m_text: "F\xE9lix VON EUW"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -9064,13 +9064,13 @@ MonoBehaviour:
     Core Gameplay / UI'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
-  m_sharedMaterial: {fileID: 5460754350399735785, guid: 917fc381b061b7b4db28b1d32e4c1db4, type: 2}
+  m_sharedMaterial: {fileID: 7132874457803310696, guid: 83b593ba958e18d4480e744a1bf6d437, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
