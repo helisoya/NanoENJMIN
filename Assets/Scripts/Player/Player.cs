@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Represents a player
@@ -38,9 +39,12 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerAttack attack;
     [SerializeField] private Renderer playerRenderer;
     [SerializeField] private GameObject _bodyModel;
-    [SerializeField] private Animator _animator;
+    [SerializeField] private Animator _animatorBody;
     [SerializeField] private PlayerAnimHandler _playerAnimHandler;
     [SerializeField] private ParticleSystem bubbleMovement;
+
+
+    private Animator _animatorWeapon;
 
     [SerializeField] private List<PlayerWeapon> _colorWeapons;
 
@@ -80,6 +84,7 @@ public class Player : MonoBehaviour
     {
         GameManager.instance.onGameStarted += OnGameStarted;
         _bodyCollider = _bodyModel.GetComponent<Collider>();
+        
     }
 
     void Start()
@@ -101,6 +106,9 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
+        print(_colorWeapons[(int)Color - 1]);
+        _colorWeapons[(int)Color - 1].gameObject.SetActive(true);
+        _animatorWeapon = _colorWeapons[(int)Color - 1].GetComponent<Animator>();
         switch (Color)
         {
             case ColorTarget.YELLOW:
@@ -168,7 +176,12 @@ public class Player : MonoBehaviour
     /// <param name="triggerName">The trigger's name</param>
     public void SetAnimationTrigger(string triggerName)
     {
-        _animator.SetTrigger(triggerName);
+        _animatorBody.SetTrigger(triggerName);
+    }
+    
+    public void SetWeaponAnimationTrigger(string triggerName)
+    {
+        _animatorWeapon.SetTrigger(triggerName);
     }
 
 
@@ -193,7 +206,7 @@ public class Player : MonoBehaviour
         // particles spawn
         Destroy(Instantiate(_hitPlayerParticles, transform.position, Quaternion.identity), 4);
 
-        _animator.SetTrigger("Die");
+        _animatorBody.SetTrigger("Die");
         takingDamage = true;
         movements.SetVelocity(Vector2.zero);
         attack.SetCanAttack(false);
@@ -277,7 +290,7 @@ public class Player : MonoBehaviour
 
     private void OnGameStarted()
     {
-        _animator.SetBool("isMoving", true);
+        _animatorBody.SetBool("isMoving", true);
     }
 
     void OnPause(InputValue input)

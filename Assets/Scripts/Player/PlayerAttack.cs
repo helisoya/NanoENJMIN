@@ -46,6 +46,12 @@ public class PlayerAttack : MonoBehaviour
             }
             Instantiate(prefabProjectile, shootParticlesPos.position, Quaternion.identity).OnSpawn(player.Color, player);
             _shootParticles.Play();
+            player.SetWeaponAnimationTrigger("Fire");
+            
+        }
+        else if (player.Alive && pressedFire && player.Mana < manaCost && Time.time - lastAttack >= fireRate)
+        {
+            player.SetWeaponAnimationTrigger("FireEmpty");
         }
     }
 }
