@@ -275,13 +275,14 @@ public class Enemy : MonoBehaviour
         else
         {
             _lifePoints -= damage;
+            _hitFlash.HitFlashAnimation();
+
             if (_lifePoints <= 0)
             {
                 Die(from);
             }
             else
             {
-                _hitFlash.HitFlashAnimation();
                 EnemyManager.instance.PlayHitClip();
             }
         }

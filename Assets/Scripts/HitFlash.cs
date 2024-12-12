@@ -8,8 +8,12 @@ public class HitFlash : MonoBehaviour
     [SerializeField] private float _hitFlashInDuration = .064f;
     [SerializeField] private float _hitFlashOutDuration = .064f;
     [SerializeField] private List<Renderer> _renderers;
+
+    [SerializeField] private bool useParticleSystem = false;
+    [SerializeField] private ParticleSystem particleSystemPrefab;
+
     private MaterialPropertyBlock _materialPropertyBlock;
-    
+
     private static readonly int Opacity = Shader.PropertyToID("_FlashOpacity");
 
     private void Awake()
@@ -20,6 +24,10 @@ public class HitFlash : MonoBehaviour
 
     public void HitFlashAnimation()
     {
+        if (useParticleSystem)
+        {
+            Destroy(Instantiate(particleSystemPrefab, transform.position, Quaternion.identity), 4f);
+        }
         StartCoroutine(HitFlashAnimationCoroutine());
     }
 
@@ -51,7 +59,8 @@ public class HitFlash : MonoBehaviour
             }
         }
 
-        float EaseOutQuad(float x) {
+        float EaseOutQuad(float x)
+        {
             return 1 - (1 - x) * (1 - x);
         }
     }
