@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
         _splineRelativePosition = splineRelativePosition;
 
         _hitFlash = GetComponent<HitFlash>();
-        
+
         _ready = true;
     }
 
@@ -271,7 +271,7 @@ public class Enemy : MonoBehaviour
             {
                 LoseShield();
             }
-            else 
+            else
             {
                 _shieldHitFlash.HitFlashAnimation();
                 EnemyManager.instance.PlayShieldHitClip();

@@ -321,8 +321,8 @@ MonoBehaviour:
   _playerAnimHandler: {fileID: 4998611209254269979}
   bubbleMovement: {fileID: 7893661890168703194}
   _colorWeapons:
-  - {fileID: 6390252447984204048}
-  - {fileID: 8756106833505705276}
+  - {fileID: 5916420286753586677}
+  - {fileID: 467308445793785499}
   playerInput: {fileID: 7006348633870953166}
   inkAbsortionClips:
   - {fileID: 8300000, guid: c7f85fbaa3ea3574e8d66ce35dd0e23f, type: 3}
@@ -1131,7 +1131,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8756106833505705276}
+      addedObject: {fileID: 5832459562871106205}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 467308445793785499}
   m_SourcePrefab: {fileID: 100100000, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
 --- !u!4 &5033293329247100939 stripped
 Transform:
@@ -1143,7 +1146,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
   m_PrefabInstance: {fileID: 4779270148829775840}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8756106833505705276
+--- !u!95 &5832459562871106205
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5661597787996666545}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72598a6d991bcd64b8b9871591c4489a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &467308445793785499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1169,7 +1194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.493
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1269,14 +1294,39 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6390252447984204048}
+      addedObject: {fileID: 5628590604539378077}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5916420286753586677}
   m_SourcePrefab: {fileID: 100100000, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
 --- !u!1 &7451746150734204844 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7df3472af1613cd40bb7e270640ab5f1, type: 3}
   m_PrefabInstance: {fileID: 7757593799230534397}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6390252447984204048
+--- !u!95 &5628590604539378077
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7451746150734204844}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72598a6d991bcd64b8b9871591c4489a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5916420286753586677
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

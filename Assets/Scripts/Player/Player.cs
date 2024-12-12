@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
         {
             attack.SetCanAttack(false);
         }
-        
+
         if (currentMana < maxMana)
         {
             AddMana(manaFillSpeed * Time.deltaTime);
@@ -183,11 +183,12 @@ public class Player : MonoBehaviour
 
         if (!GameManager.instance.cheatHasInfiniteLives && currentHealth == 0)
         {
-            AudioManager.instance.PlaySFX2D(deathClips[UnityEngine.Random.Range(0, deathClips.Length)]);
+
             Die();
         }
         else
         {
+            AudioManager.instance.PlaySFX2D(deathClips[UnityEngine.Random.Range(0, deathClips.Length)]);
             AudioManager.instance.PlaySFX2D(hitClips[UnityEngine.Random.Range(0, hitClips.Length)]);
             invincibilityStart = Time.time;
             isInvincible = true;
@@ -318,7 +319,7 @@ public class Player : MonoBehaviour
     {
         bubbleMovement.Stop();
         _bodyCollider.enabled = false;
-        
+
         float distance = Vector3.Distance(transform.position, destination);
         while (distance > 0.5f)
         {
@@ -327,7 +328,7 @@ public class Player : MonoBehaviour
             distance = Vector3.Distance(transform.position, destination);
             yield return new WaitForEndOfFrame();
         }
-        
+
         isInvincible = true;
         invincibilityStart = Time.time;
 
