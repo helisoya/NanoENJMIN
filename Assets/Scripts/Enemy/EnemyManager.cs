@@ -46,7 +46,7 @@ public class EnemyManager : MonoBehaviour
 
     public void PlayShotClip()
     {
-        AudioManager.instance.PlaySFX2D(shotClip[Random.Range(0, shotClip.Length)], 2);
+        // AudioManager.instance.PlaySFX2D(shotClip[Random.Range(0, shotClip.Length)], 2);
     }
 
 

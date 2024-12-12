@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 6742168279788613008, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
   colour: 1
   speed: 5
-  score: 10
+  score: 15
   lifePoints: 3
   hasShield: 1
   shieldColour: 1
@@ -26,6 +26,6 @@ MonoBehaviour:
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
   targetingMode: 0
   fireAngleRange: 0
-  fireRate: 2
+  fireRate: 1.5
   nbBurstProjectiles: 1
   burstProjectileAngleSpacing: 10
