@@ -131,7 +131,7 @@ public class GameGUI : MonoBehaviour
 
         eventSystem.SetSelectedGameObject(endObj);
         AudioManager.instance.StopBGM();
-        if (hasWon) AudioManager.instance.StopAMB();
+        AudioManager.instance.SetAMB(hasWon ? 0f : 1f);
         AudioManager.instance.PlaySFX2D(hasWon ? winClip : loseClip);
 
         if (hasWon) RefreshLeaderboard();

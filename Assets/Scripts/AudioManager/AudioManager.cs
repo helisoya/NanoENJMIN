@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixerGroup sfxGroup;
     [SerializeField] private float bgmTransitionSpeed = 1f;
     [SerializeField] private AudioSource[] bgms;
-    [SerializeField] private AudioSource sfx2DSource;
+    [SerializeField] private AudioSource[] sfx2DSources;
     [SerializeField] private AudioSource ambSource;
 
     public static AudioManager instance { get; private set; }
@@ -23,11 +23,12 @@ public class AudioManager : MonoBehaviour
 
 
     /// <summary>
-    /// Stops the AMB
+    /// Sets the AMB Volume
     /// </summary>
-    public void StopAMB()
+    /// <param name="value">The new volume</param>
+    public void SetAMB(float value)
     {
-        ambSource.volume = 0f;
+        ambSource.volume = value;
     }
 
     /// <summary>
@@ -74,9 +75,10 @@ public class AudioManager : MonoBehaviour
     /// Plays a 2D SFX
     /// </summary>
     /// <param name="clip">The SFX</param>
-    public void PlaySFX2D(AudioClip clip)
+    public void PlaySFX2D(AudioClip clip, int channel = 0)
     {
-        sfx2DSource.PlayOneShot(clip);
+        if (channel >= sfx2DSources.Length) return;
+        sfx2DSources[channel].PlayOneShot(clip);
     }
 
     /// <summary>
