@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af34d4357b5f1ef4690309c8eeee63fe, type: 3}
   m_Name: Enemy_P2_LowLife_Locked
   m_EditorClassIdentifier: 
-  prefab: {fileID: 690488188108307976, guid: a558bcc310a514842abd1a06f97490d4, type: 3}
+  prefab: {fileID: 1451916526550127311, guid: 72657099487d67343a29f298207154f2, type: 3}
   colour: 2
   speed: 5
   score: 3
