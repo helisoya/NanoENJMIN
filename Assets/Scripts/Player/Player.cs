@@ -64,9 +64,18 @@ public class Player : MonoBehaviour
     [Header("Absortion")]
     [SerializeField] private GameObject absortionObj;
     [SerializeField] private float absortionVFXLength = 1f;
+
+    [Header("Vibration")]
+    [SerializeField] private float vibrationLength = 0.5f;
+    [SerializeField] private float vibrationStrength = 0.1f;
+
+    private float vibrationStart;
+    private bool vibrating;
+
     private float absortionStart;
     private bool absortionVSFX = false;
     private ParticleSystem _hitPlayerParticles;
+    private ParticleSystem _deathPlayerParticles;
 
     private Gamepad pad;
 
@@ -97,6 +106,7 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
+        print(_colorWeapons[(int)Color - 1]);
         _colorWeapons[(int)Color - 1].gameObject.SetActive(true);
         _animatorWeapon = _colorWeapons[(int)Color - 1].GetComponent<Animator>();
         switch (Color)
@@ -109,10 +119,12 @@ public class Player : MonoBehaviour
                 break;
         }
         _hitPlayerParticles = GameManager.instance.GetHitParticles(Color);
+        _deathPlayerParticles = GameManager.instance.GetDeathParticles(Color);
+
         absortionObj.GetComponent<Renderer>().material.SetColor("_Color", ID == 0 ? UnityEngine.Color.yellow : new Color(0.8f, 0, 0.8f));
 
         _bodyModelStartRot = _bodyModel.transform.rotation;
-        
+
         foreach (var weapon in _colorWeapons)
         {
             weapon.SetEmissionIntensity(currentMana / maxMana);
@@ -124,6 +136,12 @@ public class Player : MonoBehaviour
         if (!GameManager.instance.InGame)
         {
             attack.SetCanAttack(false);
+        }
+
+        if (vibrating && Time.time - vibrationStart >= vibrationLength)
+        {
+            vibrating = false;
+            if (pad != null) pad.SetMotorSpeeds(0f, 0f);
         }
 
         if (currentMana < maxMana)
@@ -186,16 +204,21 @@ public class Player : MonoBehaviour
         GameGUI.instance.SetPlayerHealth(GUIID, currentHealth);
 
         // particles spawn
-        Instantiate(_hitPlayerParticles, transform.position, Quaternion.identity);
+        Destroy(Instantiate(_hitPlayerParticles, transform.position, Quaternion.identity), 4);
 
         _animatorBody.SetTrigger("Die");
         takingDamage = true;
         movements.SetVelocity(Vector2.zero);
         attack.SetCanAttack(false);
 
+        vibrating = true;
+        vibrationStart = Time.time;
+        if (pad != null) pad.SetMotorSpeeds(vibrationStrength, vibrationStrength);
+
         if (!GameManager.instance.cheatHasInfiniteLives && currentHealth == 0)
         {
 
+            Destroy(Instantiate(_deathPlayerParticles, transform.position, Quaternion.identity), 8);
             Die();
         }
         else
@@ -315,7 +338,12 @@ public class Player : MonoBehaviour
     public void OnEndDeathAnim()
     {
         if (Alive)
+        {
+
+            Destroy(Instantiate(_deathPlayerParticles, transform.position, Quaternion.identity), 8);
             GameManager.instance.RespawnPlayer(this);
+        }
+
     }
 
     public void ResetBodyRotation()
