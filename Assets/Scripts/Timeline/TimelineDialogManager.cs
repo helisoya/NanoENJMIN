@@ -28,7 +28,6 @@ public class TimelineDialogManager : MonoBehaviour
         _rightBackgroundRect = _rightBackground.rectTransform;
         _leftBackgroundRect.anchoredPosition = new Vector2(-Screen.width, 0);
         _rightBackgroundRect.anchoredPosition = new Vector2(Screen.width, 0);
-        throw new NotImplementedException();
     }
 
     public void ShowDialog(string text)
@@ -97,6 +96,7 @@ public class TimelineDialogManager : MonoBehaviour
         while (time < duration)
         {
             Time.timeScale = Mathf.Lerp(startValue, endValue, EaseOutQuad(time / duration));
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
             time += Time.unscaledDeltaTime;
             yield return null;
         }
