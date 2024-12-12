@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Represents a player
@@ -38,11 +39,13 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerAttack attack;
     [SerializeField] private Renderer playerRenderer;
     [SerializeField] private GameObject _bodyModel;
-    [SerializeField] private Animator _animator;
+    [SerializeField] private Animator _animatorBody;
     [SerializeField] private PlayerAnimHandler _playerAnimHandler;
     [SerializeField] private ParticleSystem bubbleMovement;
 
     [SerializeField] private List<GameObject> _colorWeapons;
+    
+    private Animator _animatorWeapon;
 
     private Collider _bodyCollider;
 
@@ -71,6 +74,7 @@ public class Player : MonoBehaviour
     {
         GameManager.instance.onGameStarted += OnGameStarted;
         _bodyCollider = _bodyModel.GetComponent<Collider>();
+        
     }
 
     void Start()
@@ -93,6 +97,7 @@ public class Player : MonoBehaviour
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
         _colorWeapons[(int)Color - 1].SetActive(true);
+        _animatorWeapon = _colorWeapons[(int)Color - 1].GetComponent<Animator>();
         _hitPlayerParticles = GameManager.instance.GetHitParticles(Color);
         absortionObj.GetComponent<Renderer>().material.SetColor("_Color", ID == 0 ? UnityEngine.Color.yellow : new Color(0.8f, 0, 0.8f));
 
@@ -138,7 +143,12 @@ public class Player : MonoBehaviour
     /// <param name="triggerName">The trigger's name</param>
     public void SetAnimationTrigger(string triggerName)
     {
-        _animator.SetTrigger(triggerName);
+        _animatorBody.SetTrigger(triggerName);
+    }
+    
+    public void SetWeaponAnimationTrigger(string triggerName)
+    {
+        _animatorWeapon.SetTrigger(triggerName);
     }
 
 
@@ -163,7 +173,7 @@ public class Player : MonoBehaviour
         // particles spawn
         Instantiate(_hitPlayerParticles, transform.position, Quaternion.identity);
 
-        _animator.SetTrigger("Die");
+        _animatorBody.SetTrigger("Die");
         takingDamage = true;
         movements.SetVelocity(Vector2.zero);
         attack.SetCanAttack(false);
@@ -238,7 +248,7 @@ public class Player : MonoBehaviour
 
     private void OnGameStarted()
     {
-        _animator.SetBool("isMoving", true);
+        _animatorBody.SetBool("isMoving", true);
     }
 
     void OnPause(InputValue input)
