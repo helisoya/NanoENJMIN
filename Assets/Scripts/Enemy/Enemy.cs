@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     [CanBeNull] private Player _targetPlayer;
 
     private GameObject _shield;
+    private HitFlash _shieldHitFlash;
     private MeshRenderer _shieldRenderer;
 
     private SplineContainer _spline;
@@ -44,6 +45,8 @@ public class Enemy : MonoBehaviour
 
     private float _fireTimer;
     private float _splineTraveledDistance;
+
+    private HitFlash _hitFlash;
 
     public void Initialize(EnemyTypeSO enemyTypeSo, SplineContainer spline, Vector3 splineRelativePosition)
     {
@@ -56,6 +59,7 @@ public class Enemy : MonoBehaviour
 
         //Shield params
         _shield = transform.GetChild(0).gameObject;
+        _shieldHitFlash = _shield.GetComponent<HitFlash>();
         _hasShield = enemyTypeSo.hasShield;
         _shieldColour = enemyTypeSo.shieldColour;
         _shield.SetActive(_hasShield);
@@ -95,7 +99,8 @@ public class Enemy : MonoBehaviour
         _spline = spline;
         _splineRelativePosition = splineRelativePosition;
 
-
+        _hitFlash = GetComponent<HitFlash>();
+        
         _ready = true;
     }
 
@@ -127,8 +132,13 @@ public class Enemy : MonoBehaviour
             PlayerProjectile playerProjectile = other.gameObject.GetComponent<PlayerProjectile>();
             int damage = playerProjectile.GetDamage(_hasShield, _shieldColour);
             if (damage != 0)
+            {
                 TakeHit(damage, playerProjectile.GetParent());
-            else EnemyManager.instance.PlayShieldNoDmgClip();
+            }
+            else
+            {
+                EnemyManager.instance.PlayShieldNoDmgClip();
+            }
 
             playerProjectile.DestroyProjectile();
         }
@@ -253,15 +263,27 @@ public class Enemy : MonoBehaviour
         {
             _shieldLifePoints -= damage;
             if (_shieldLifePoints <= 0)
+            {
                 LoseShield();
-            else EnemyManager.instance.PlayShieldHitClip();
+            }
+            else 
+            {
+                _shieldHitFlash.HitFlashAnimation();
+                EnemyManager.instance.PlayShieldHitClip();
+            }
         }
         else
         {
             _lifePoints -= damage;
             if (_lifePoints <= 0)
+            {
                 Die(from);
-            else EnemyManager.instance.PlayHitClip();
+            }
+            else
+            {
+                _hitFlash.HitFlashAnimation();
+                EnemyManager.instance.PlayHitClip();
+            }
         }
     }
 
