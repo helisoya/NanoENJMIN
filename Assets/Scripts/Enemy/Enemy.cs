@@ -22,9 +22,12 @@ public class Enemy : MonoBehaviour
     private bool _canFire;
     private FireMode _fireMode;
     private ProjectileTypeSO _projectileTypeSo;
+    private Transform _projectileSpawnPoint;
+    private ParticleSystem _projectileParticleSystem;
     private TargetingMode _targetingMode;
     private float _fireAngleRange;
     private float _fireRate;
+
 
     private int _nbBurstProjectiles;
     private float _burstProjectileAngleSpacing;
@@ -76,6 +79,8 @@ public class Enemy : MonoBehaviour
         if (_canFire)
         {
             _projectileTypeSo = enemyTypeSo.projectileTypeSo;
+            _projectileSpawnPoint = transform.Find("ProjectileSpawnPoint");
+            _projectileParticleSystem = _projectileSpawnPoint.GetComponentInChildren<ParticleSystem>();
             _fireMode = enemyTypeSo.fireMode;
             _targetingMode = enemyTypeSo.targetingMode;
             _fireAngleRange = enemyTypeSo.fireAngleRange;
@@ -204,8 +209,9 @@ public class Enemy : MonoBehaviour
     {
         Quaternion spawnRotation = GetRotatationFromTargetMode(_targetingMode);
 
-        GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, spawnRotation);
+        GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, _projectileSpawnPoint.position, spawnRotation);
         spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
+        _projectileParticleSystem.Play();
 
         _fireTimer = _fireRate;
     }
@@ -218,9 +224,10 @@ public class Enemy : MonoBehaviour
         for (int i = -_nbBurstProjectiles; i <= _nbBurstProjectiles; i++)
         {
             spawnRotation = Quaternion.Euler(baseSpawnRotation.eulerAngles.x + (_burstProjectileAngleSpacing * i), baseSpawnRotation.eulerAngles.y, baseSpawnRotation.eulerAngles.z);
-            GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, transform.position, spawnRotation);
+            GameObject spawnedProjectile = Instantiate(_projectileTypeSo.prefab, _projectileSpawnPoint.position, spawnRotation);
             spawnedProjectile.AddComponent<EnemyProjectile>().Initialize(_projectileTypeSo, _colour);
         }
+        _projectileParticleSystem.Play();
 
         _fireTimer = _fireRate;
     }
