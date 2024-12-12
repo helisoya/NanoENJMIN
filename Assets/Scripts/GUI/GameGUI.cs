@@ -101,6 +101,8 @@ public class GameGUI : MonoBehaviour
     /// <param name="hasWon">Have the players won ?</param>
     public void OpenEndScreen(List<Player> players, bool hasWon)
     {
+        stopStart = Time.unscaledTime;
+
         gameplayScreen.SetActive(false);
         endScreen.SetActive(true);
 
