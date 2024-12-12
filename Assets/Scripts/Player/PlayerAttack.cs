@@ -39,11 +39,12 @@ public class PlayerAttack : MonoBehaviour
         {
             AudioManager.instance.PlaySFX2D(fireClips[Random.Range(0, fireClips.Length)]);
             lastAttack = Time.time;
+            
             if (!GameManager.instance.cheatHasInfiniteAmmo)
             {
                 player.AddMana(-manaCost);
             }
-            Instantiate(prefabProjectile, transform.position, Quaternion.identity).OnSpawn(player.Color, player);
+            Instantiate(prefabProjectile, shootParticlesPos.position, Quaternion.identity).OnSpawn(player.Color, player);
             _shootParticles.Play();
         }
     }
