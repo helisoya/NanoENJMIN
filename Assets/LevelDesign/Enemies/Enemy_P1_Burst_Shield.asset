@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 6742168279788613008, guid: 1902b74093d9b2a45b5c82661c565255, type: 3}
   colour: 1
   speed: 5
-  score: 10
+  score: 15
   lifePoints: 3
   hasShield: 1
   shieldColour: 1

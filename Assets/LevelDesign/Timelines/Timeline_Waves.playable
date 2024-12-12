@@ -95,40 +95,7 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 162.85
-    m_ClipIn: 0
-    m_Asset: {fileID: 1167160595081852037}
-    m_Duration: 8
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8176961529095649224}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: P2 Burst
+  m_Clips: []
   m_Markers:
     m_Objects: []
 --- !u!114 &-8137002984963104076
@@ -199,13 +166,13 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 28
     enemies:
-    - {fileID: 11400000, guid: abd8099f6fb009e4ab6090841a1a898d, type: 2}
-    - {fileID: 11400000, guid: abd8099f6fb009e4ab6090841a1a898d, type: 2}
+    - {fileID: 11400000, guid: 3758c48a7c73de045ba9d7a08c579ebb, type: 2}
+    - {fileID: 11400000, guid: 3758c48a7c73de045ba9d7a08c579ebb, type: 2}
     spawnRate: 5
   - spawnerIndex: 29
     enemies:
-    - {fileID: 11400000, guid: d8f1ed8edf948b946b4f3d8d11c31fc9, type: 2}
-    - {fileID: 11400000, guid: d8f1ed8edf948b946b4f3d8d11c31fc9, type: 2}
+    - {fileID: 11400000, guid: b3997b69236a2f44c9d3fdf854197f87, type: 2}
+    - {fileID: 11400000, guid: b3997b69236a2f44c9d3fdf854197f87, type: 2}
     spawnRate: 5
 --- !u!114 &-7377952803835874285
 MonoBehaviour:
@@ -764,13 +731,13 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 28
     enemies:
-    - {fileID: 11400000, guid: db8d323fe9ea45b4ab698be57eb51dc2, type: 2}
-    - {fileID: 11400000, guid: db8d323fe9ea45b4ab698be57eb51dc2, type: 2}
+    - {fileID: 11400000, guid: 3758c48a7c73de045ba9d7a08c579ebb, type: 2}
+    - {fileID: 11400000, guid: 3758c48a7c73de045ba9d7a08c579ebb, type: 2}
     spawnRate: 3
   - spawnerIndex: 29
     enemies:
-    - {fileID: 11400000, guid: dddc128ca022d504da114b30ef1b54a1, type: 2}
-    - {fileID: 11400000, guid: dddc128ca022d504da114b30ef1b54a1, type: 2}
+    - {fileID: 11400000, guid: b3997b69236a2f44c9d3fdf854197f87, type: 2}
+    - {fileID: 11400000, guid: b3997b69236a2f44c9d3fdf854197f87, type: 2}
     spawnRate: 3
 --- !u!114 &-5647618359085004223
 MonoBehaviour:
@@ -821,14 +788,14 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 31
     enemies:
-    - {fileID: 11400000, guid: 7e1de69725c82f343b8a81cbef06a3ab, type: 2}
-    - {fileID: 11400000, guid: 7e1de69725c82f343b8a81cbef06a3ab, type: 2}
-    spawnRate: 4
+    - {fileID: 11400000, guid: b3997b69236a2f44c9d3fdf854197f87, type: 2}
+    - {fileID: 11400000, guid: b3997b69236a2f44c9d3fdf854197f87, type: 2}
+    spawnRate: 3
   - spawnerIndex: 32
     enemies:
-    - {fileID: 11400000, guid: 4878951b73a149748bf65cdf84faa441, type: 2}
-    - {fileID: 11400000, guid: 4878951b73a149748bf65cdf84faa441, type: 2}
-    spawnRate: 4
+    - {fileID: 11400000, guid: 3758c48a7c73de045ba9d7a08c579ebb, type: 2}
+    - {fileID: 11400000, guid: 3758c48a7c73de045ba9d7a08c579ebb, type: 2}
+    spawnRate: 3
 --- !u!114 &-5228798256753506438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1482,24 +1449,6 @@ MonoBehaviour:
     enemies:
     - {fileID: 11400000, guid: 71621fecb03f2f8478037ff61bc2855f, type: 2}
     spawnRate: 0
---- !u!114 &1167160595081852037
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96be9cbb6dee43245afaa2f439f12a41, type: 3}
-  m_Name: WavePlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  spawnSetups:
-  - spawnerIndex: 23
-    enemies:
-    - {fileID: 11400000, guid: b4c8f5bf88b8fba42937e349e5dd4b87, type: 2}
-    - {fileID: 11400000, guid: b4c8f5bf88b8fba42937e349e5dd4b87, type: 2}
-    spawnRate: 4
 --- !u!114 &1396373053358993446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1739,8 +1688,13 @@ MonoBehaviour:
   spawnSetups:
   - spawnerIndex: 22
     enemies:
-    - {fileID: 11400000, guid: 6d6b95481d7191241aeb3a89484d924c, type: 2}
-    - {fileID: 11400000, guid: 6d6b95481d7191241aeb3a89484d924c, type: 2}
+    - {fileID: 11400000, guid: 43e0b8d8a0aac0a44bc6d8a5352f68ab, type: 2}
+    - {fileID: 11400000, guid: 43e0b8d8a0aac0a44bc6d8a5352f68ab, type: 2}
+    spawnRate: 4
+  - spawnerIndex: 23
+    enemies:
+    - {fileID: 11400000, guid: 91313c953ecdfef4bb3e2724d1f7ceac, type: 2}
+    - {fileID: 11400000, guid: 91313c953ecdfef4bb3e2724d1f7ceac, type: 2}
     spawnRate: 4
 --- !u!114 &4084450092257970188
 MonoBehaviour:
@@ -3463,57 +3417,6 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Wave_NoShoot_VertUp_1
   - m_Version: 1
-    m_Start: 164.85
-    m_ClipIn: 0
-    m_Asset: {fileID: -5661880737850000656}
-    m_Duration: 6
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 5267396193888784221}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Homing Shielded P1 & P2
-  - m_Version: 1
     m_Start: 145.2
     m_ClipIn: 0
     m_Asset: {fileID: 218832769814799154}
@@ -3961,10 +3864,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: P1 Burst
   - m_Version: 1
-    m_Start: 156.91666666666666
+    m_Start: 174
     m_ClipIn: 0
     m_Asset: {fileID: -5272391878779025006}
-    m_Duration: 4
+    m_Duration: 6
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5267396193888784221}
     m_EaseInDuration: 0
@@ -3992,7 +3895,58 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Wave_NoShoot_VertDown_2
+    m_DisplayName: Homing back P1 & P2
+  - m_Version: 1
+    m_Start: 157.35
+    m_ClipIn: 0
+    m_Asset: {fileID: -5661880737850000656}
+    m_Duration: 4.7666666666666515
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 5267396193888784221}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Homing front P1 & P2
   m_Markers:
     m_Objects: []
 --- !u!114 &5391405401720029206
@@ -4683,7 +4637,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Wave
   - m_Version: 1
-    m_Start: 162.85
+    m_Start: 163.73333333333332
     m_ClipIn: 0
     m_Asset: {fileID: 3888782218194335434}
     m_Duration: 8
@@ -4732,7 +4686,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: P1 Burst
+    m_DisplayName: P1 & P2 Burst Shield
   - m_Version: 1
     m_Start: 144.7
     m_ClipIn: 0
