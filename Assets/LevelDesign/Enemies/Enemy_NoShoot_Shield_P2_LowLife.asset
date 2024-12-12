@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af34d4357b5f1ef4690309c8eeee63fe, type: 3}
   m_Name: Enemy_NoShoot_Shield_P2_LowLife
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1422151104337354219, guid: 7d6c80b3d0218074aac63e21f79a78be, type: 3}
+  prefab: {fileID: 1422151104337354219, guid: 87aa696e80729584783ac06e174c4e48, type: 3}
   colour: 0
   speed: 5
   score: 1
