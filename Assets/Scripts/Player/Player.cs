@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
+        print(_colorWeapons[(int)Color - 1]);
         _colorWeapons[(int)Color - 1].gameObject.SetActive(true);
         _animatorWeapon = _colorWeapons[(int)Color - 1].GetComponent<Animator>();
         switch (Color)
