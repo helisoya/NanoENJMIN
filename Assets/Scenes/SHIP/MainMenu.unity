@@ -624,7 +624,8 @@ MonoBehaviour:
   sfxGroup: {fileID: -7404617353024545036, guid: 711f00e651a88434881c94c83bb4c524, type: 2}
   bgmTransitionSpeed: 1
   bgms: []
-  sfx2DSources: []
+  sfx2DSources:
+  - {fileID: 233410930}
   ambSource: {fileID: 0}
 --- !u!4 &345999074
 Transform:
