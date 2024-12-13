@@ -52,7 +52,7 @@ public class PlayerProjectile : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        print(collider);
+        //print(collider);
     }
 
     public int GetDamage(bool hasShield, ColorTarget targetColour)
