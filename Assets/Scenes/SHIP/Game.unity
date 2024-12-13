@@ -993,6 +993,10 @@ PrefabInstance:
       propertyPath: signalAssetEventPairs.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 488271383}
+    - target: {fileID: 7200424795996779840, guid: 4d003402e0f914b408a7d676b041f600, type: 3}
+      propertyPath: signalAssetEventPairs.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnableBGM
+      objectReference: {fileID: 0}
     - target: {fileID: 7486012612604980276, guid: 4d003402e0f914b408a7d676b041f600, type: 3}
       propertyPath: m_Name
       value: ============== LEVEL DESIGN
