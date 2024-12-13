@@ -491,8 +491,8 @@ MonoBehaviour:
   root: {fileID: 1895975410382072604}
   mixer: {fileID: 24100000, guid: 711f00e651a88434881c94c83bb4c524, type: 2}
   sliderMaster: {fileID: 7968631752933624599}
-  sliderSFX: {fileID: 7847878268995754939}
-  sliderBGM: {fileID: 1352569432059762145}
+  sliderSFX: {fileID: 1352569432059762145}
+  sliderBGM: {fileID: 7847878268995754939}
 --- !u!1 &2945232363868110914
 GameObject:
   m_ObjectHideFlags: 0
