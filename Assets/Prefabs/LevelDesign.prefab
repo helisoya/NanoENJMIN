@@ -932,7 +932,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-          m_MethodName: 
+          m_MethodName: EnableBGM
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5731,10 +5731,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 69263d2ca6a61274e912b4e536e84181, type: 2}
-  m_sharedMaterial: {fileID: -1127912504196993242, guid: 69263d2ca6a61274e912b4e536e84181, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6cded1413c53fa046a8f5cd9ac23a1b6, type: 2}
+  m_sharedMaterial: {fileID: 2982539834261022832, guid: 6cded1413c53fa046a8f5cd9ac23a1b6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5758,13 +5757,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
