@@ -61,6 +61,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Emissive:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: b6885c6f7d86fb149a0118ff43b06ba2, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -118,6 +122,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _EmissiveIntensity: 0
     - _EnvironmentReflections: 1
     - _FlashOpacity: 0
     - _GlossMapScale: 0
@@ -144,6 +149,7 @@ Material:
     - _BaseColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
     - _Color: {r: 0.36792448, g: 0.36792448, b: 0.36792448, a: 1}
     - _EmissionColor: {r: 0.329877, g: 0, b: 0.26189595, a: 1}
+    - _EmissiveColor: {r: 16, g: 16, b: 16, a: 0}
     - _FlashColor: {r: 47.93727, g: 47.93727, b: 47.93727, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
