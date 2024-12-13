@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af34d4357b5f1ef4690309c8eeee63fe, type: 3}
-  m_Name: Enemy_P2_Burst_Lock
+  m_Name: Enemy_P2_Burst_MidLife
   m_EditorClassIdentifier: 
   prefab: {fileID: 1451916526550127311, guid: 72657099487d67343a29f298207154f2, type: 3}
   colour: 2
   speed: 5
   score: 10
   lifePoints: 3
-  hasShield: 1
-  shieldColour: 2
-  shieldMaterial: {fileID: 2100000, guid: 583363d9a177c3642a76124ee76133ab, type: 2}
+  hasShield: 0
+  shieldColour: 1
+  shieldMaterial: {fileID: 2100000, guid: 35af0afa3aff7514abe623e0563d989d, type: 2}
   shieldLifePoints: 1
   canFire: 1
   fireMode: 1
   projectileTypeSo: {fileID: 11400000, guid: be067d2f50d88f24082e875cc84aeff2, type: 2}
-  targetingMode: 1
+  targetingMode: 0
   fireAngleRange: 0
-  fireRate: 2
-  nbBurstProjectiles: 2
-  burstProjectileAngleSpacing: 5
+  fireRate: 1
+  nbBurstProjectiles: 1
+  burstProjectileAngleSpacing: 10

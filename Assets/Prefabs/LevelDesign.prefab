@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 2644599807320616730}
   - component: {fileID: 7642273137258467806}
   - component: {fileID: 8387409359455763046}
+  - component: {fileID: 7200424795996779840}
   m_Layer: 0
   m_Name: WaveTimeline
   m_TagString: Untagged
@@ -852,8 +853,6 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -5805024872479173664, guid: efe65a62adfbcb348a2a2d49423e9c3d, type: 2}
     value: {fileID: 8387409359455763046}
-  - key: {fileID: -5805024872479173664, guid: 9552546e2251de5499198d976dbb8bee, type: 2}
-    value: {fileID: 8387409359455763046}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &2644599807320616730
@@ -884,6 +883,7 @@ MonoBehaviour:
   _dialogText: {fileID: 2717132838061249805}
   _leftBackground: {fileID: 5212891629527244097}
   _rightBackground: {fileID: 5459412456597109792}
+  _slomoTimeScale: 0.3
 --- !u!114 &8387409359455763046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +904,35 @@ MonoBehaviour:
         - m_Target: {fileID: 2644599807320616730}
           m_TargetAssemblyTypeName: TimelineManager, Assembly-CSharp
           m_MethodName: GoToTime
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &7200424795996779840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645387608327245749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d3183b1b985edf4d8ede0b872616fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signalAssetEventPairs:
+  - signalAsset: {fileID: 11400000, guid: 2673494cc95da714ea875a6f13079d0d, type: 2}
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+          m_MethodName: 
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3584,7 +3613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3884,7 +3913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -53,6 +53,6 @@ Material:
     m_Floats:
     - _FlashOpacity: 0
     m_Colors:
-    - _EmissiveColor: {r: 2.3691065, g: 0.5781749, b: 4.937654, a: 0}
+    - _EmissiveColor: {r: 4.3577776, g: 1.0635054, b: 9.082411, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

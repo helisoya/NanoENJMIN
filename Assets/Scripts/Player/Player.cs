@@ -1,12 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// Represents a player
@@ -20,6 +15,10 @@ public class Player : MonoBehaviour
     public int Score { get; private set; }
     public ColorTarget Color { get; private set; }
 
+    [Header("Colors")] 
+    [SerializeField, ColorUsage(true, true)] private Color _p1Color;
+    [SerializeField, ColorUsage(true, true)] private Color _p2Color;
+    
     [Header("Infos")]
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private float maxMana = 15;
@@ -43,12 +42,14 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerAnimHandler _playerAnimHandler;
     [SerializeField] private ParticleSystem bubbleMovement;
 
+    [Header("Trigger boxes")] 
+    [SerializeField] private Collider _collisionBox;
+    [SerializeField] private Collider _absorptionBox;
+
 
     private Animator _animatorWeapon;
 
     [SerializeField] private List<PlayerWeapon> _colorWeapons;
-
-    private Collider _bodyCollider;
 
     private float inputY;
     private float smoothRefVel;
@@ -83,8 +84,6 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         GameManager.instance.onGameStarted += OnGameStarted;
-        _bodyCollider = _bodyModel.GetComponent<Collider>();
-
     }
 
     void Start()
@@ -106,7 +105,7 @@ public class Player : MonoBehaviour
         isInvincible = false;
         Color = (ColorTarget)(ID + 1);
         playerRenderer.material = GameManager.instance.GetPlayerMaterial(Color);
-        print(_colorWeapons[(int)Color - 1]);
+        //print(_colorWeapons[(int)Color - 1]);
         _colorWeapons[(int)Color - 1].gameObject.SetActive(true);
         _animatorWeapon = _colorWeapons[(int)Color - 1].GetComponent<Animator>();
         switch (Color)
@@ -121,7 +120,7 @@ public class Player : MonoBehaviour
         _hitPlayerParticles = GameManager.instance.GetHitParticles(Color);
         _deathPlayerParticles = GameManager.instance.GetDeathParticles(Color);
 
-        absortionObj.GetComponent<Renderer>().material.SetColor("_Color", ID == 0 ? UnityEngine.Color.yellow : new Color(0.8f, 0, 0.8f));
+        absortionObj.GetComponent<Renderer>().material.SetColor("_Color", ID == 0 ? _p1Color : _p2Color);
 
         _bodyModelStartRot = _bodyModel.transform.rotation;
 
@@ -358,7 +357,7 @@ public class Player : MonoBehaviour
     private IEnumerator RespawnCoroutine(Vector3 destination)
     {
         bubbleMovement.Stop();
-        _bodyCollider.enabled = false;
+        _collisionBox.enabled = false;
 
         currentMana = maxMana;
         GameGUI.instance.SetPlayerManaFill(GUIID, 1f);
@@ -377,6 +376,6 @@ public class Player : MonoBehaviour
 
         bubbleMovement.Play();
         takingDamage = false;
-        _bodyCollider.enabled = true;
+        _collisionBox.enabled = true;
     }
 }

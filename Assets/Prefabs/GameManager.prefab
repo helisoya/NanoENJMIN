@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cheatHasInfiniteLives: 0
   cheatHasInfiniteAmmo: 0
-  requiredNumberOfPlayers: 2
+  requiredNumberOfPlayers: 1
   spawnPositions:
   - {fileID: 233655181609013491}
   - {fileID: 5632883873913552055}
@@ -74,6 +74,10 @@ MonoBehaviour:
   - {fileID: 5046965506579514053, guid: d82e1e96b1f1e1c428233427141f437c, type: 3}
   - {fileID: 5853932427388616115, guid: 9ebea5275e097974baf2d472da2be302, type: 3}
   - {fileID: 5046965506579514053, guid: d82e1e96b1f1e1c428233427141f437c, type: 3}
+  deathPlayerParticles:
+  - {fileID: 5834686632478722471, guid: 5b2d2d73cda9ce446b6bbf8009ebc28f, type: 3}
+  - {fileID: 5834686632478722471, guid: 5b2d2d73cda9ce446b6bbf8009ebc28f, type: 3}
+  - {fileID: 1071747415672445945, guid: 8c0074afc0f4cab42bcf92b8876d5c80, type: 3}
   inputManager: {fileID: 0}
 --- !u!1 &1393477124912235749
 GameObject:

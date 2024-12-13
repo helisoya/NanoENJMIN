@@ -127,32 +127,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnPlayerProjectileHit(PlayerProjectile playerProjectile)
     {
-        if (other.gameObject.CompareTag("Bound"))
-            Destroy(gameObject);
-
-        if (other.gameObject.CompareTag("PlayerProjectile"))
+        int damage = playerProjectile.GetDamage(_hasShield, _shieldColour);
+        if (damage != 0)
         {
-            PlayerProjectile playerProjectile = other.gameObject.GetComponent<PlayerProjectile>();
-            int damage = playerProjectile.GetDamage(_hasShield, _shieldColour);
-            if (damage != 0)
-            {
-                TakeHit(damage, playerProjectile.GetParent());
-            }
-            else
-            {
-                EnemyManager.instance.PlayShieldNoDmgClip();
-            }
-
-            playerProjectile.DestroyProjectile();
+            TakeHit(damage, playerProjectile.GetParent());
+        }
+        else
+        {
+            EnemyManager.instance.PlayShieldNoDmgClip();
         }
 
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.attachedRigidbody.SendMessage("OnTakeDamage", 1, SendMessageOptions.DontRequireReceiver);
-            TakeHit(3, other.attachedRigidbody.GetComponent<Player>());
-        }
+        playerProjectile.DestroyProjectile();
     }
 
     private void Rotate()
@@ -269,7 +256,7 @@ public class Enemy : MonoBehaviour
         return Random.Range(-(_fireAngleRange / 2), _fireAngleRange / 2);
     }
 
-    private void TakeHit(int damage, Player from)
+    public void TakeHit(int damage, Player from)
     {
         if (_hasShield)
         {

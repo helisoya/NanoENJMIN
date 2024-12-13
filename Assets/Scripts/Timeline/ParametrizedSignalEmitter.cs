@@ -1,7 +1,7 @@
 using UnityEngine.Timeline;
 
-public class ParametrizedSignalEmitter<T> : SignalEmitter
+public class ParametrizedSignalEmitter<TParam> : SignalEmitter
 {
-    public bool isActive;
-    public T parameter;
+    public bool isActive = true;
+    public TParam parameter;
 }

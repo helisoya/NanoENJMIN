@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1422151104337354219, guid: 87aa696e80729584783ac06e174c4e48, type: 3}
   colour: 2
-  speed: 10
+  speed: 8
   score: 3
   lifePoints: 1
   hasShield: 0
