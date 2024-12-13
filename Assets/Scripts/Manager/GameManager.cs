@@ -172,12 +172,17 @@ public class GameManager : MonoBehaviour
     {
         InGame = false;
         readyUps.Clear();
+        TimelineManager.instance.Stop();
+        TimelineDialogManager.instance.HideDialog();
         GameGUI.instance.OpenEndScreen(players, false);
     }
 
     public void Win()
     {
         InGame = false;
+        readyUps.Clear();
+        TimelineManager.instance.Stop();
+        TimelineDialogManager.instance.HideDialog();
         GameGUI.instance.OpenEndScreen(players, true);
     }
 

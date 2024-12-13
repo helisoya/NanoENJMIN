@@ -50,11 +50,6 @@ public class PlayerProjectile : MonoBehaviour
         Destroy(gameObject, destroyAfter);
     }
 
-    void OnTriggerEnter(Collider collider)
-    {
-        //print(collider);
-    }
-
     public int GetDamage(bool hasShield, ColorTarget targetColour)
     {
         if (isDestroyed) return 0;
@@ -76,6 +71,10 @@ public class PlayerProjectile : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.InGame)
+        {
+            return;
+        }
         if (isDestroyed) return;
 
         transform.Translate(Vector3.right * speed * Time.deltaTime);

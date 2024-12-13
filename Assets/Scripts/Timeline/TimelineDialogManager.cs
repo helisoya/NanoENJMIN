@@ -50,6 +50,10 @@ public class TimelineDialogManager : MonoBehaviour
 
     public void HideDialog()
     {
+        if (!InDialog)
+        {
+            return;
+        }
         StartCoroutine(HideDialogCoroutine(.5f));
         StartCoroutine(TimeScaleCoroutine(_slomoTimeScale, _previousTimeScale, 1f, () => InDialog = false));
         

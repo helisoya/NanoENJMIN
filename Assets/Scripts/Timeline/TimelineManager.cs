@@ -23,6 +23,11 @@ public class TimelineManager : MonoBehaviour, INotificationReceiver
         _playableDirector.Play();
     }
 
+    public void Stop()
+    {
+        _playableDirector.Stop();
+    }
+
     public void OnNotify(Playable origin, INotification notification, object context)
     {
         if (notification is TimelineLoopEvent loopEvent)

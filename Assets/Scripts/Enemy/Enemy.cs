@@ -111,6 +111,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.instance.InGame)
+        {
+            return;
+        }
         if (_ready)
         {
             Move();
