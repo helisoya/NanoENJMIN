@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="idx">The BGM's index</param>
     /// <param name="instant">Should the transition be instantanious ?</param>
-    public void EnableBGM(int idx, bool instant = false)
+    public void EnableBGM(int idx, bool instant)
     {
         if (bgms.Length <= idx) return;
 
@@ -59,6 +59,16 @@ public class AudioManager : MonoBehaviour
         {
             StartCoroutine(Routine_EnableBGM(idx));
         }
+    }
+
+
+    /// <summary>
+    /// Enables a BGM with crossfade
+    /// </summary>
+    /// <param name="idx">The BGM's index</param>
+    public void EnableBGM(int idx)
+    {
+        EnableBGM(idx, false);
     }
 
     IEnumerator Routine_EnableBGM(int idx)

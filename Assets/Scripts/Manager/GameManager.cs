@@ -144,7 +144,6 @@ public class GameManager : MonoBehaviour
                 readyUps.Clear();
                 inputManager.DisableJoining();
                 GameGUI.instance.OpenGamePlayScreen();
-                AudioManager.instance.EnableBGM(0);
                 onGameStarted.Invoke();
                 // Start the timeline
                 TimelineManager.instance.Play();
