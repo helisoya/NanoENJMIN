@@ -7,6 +7,8 @@ TagManager:
   - PlayerProjectile
   - EnemyProjectile
   - Bound
+  - PlayerAbsorption
+  - PlayerCollisionBox
   layers:
   - Default
   - TransparentFX
